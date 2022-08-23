@@ -23,7 +23,7 @@ class CarsController extends Controller
      */
     public function index()
     {
-        //
+        return __METHOD__;
     }
 
     /**
