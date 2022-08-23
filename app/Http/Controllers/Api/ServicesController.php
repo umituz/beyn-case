@@ -9,8 +9,14 @@ use Illuminate\Http\Response;
 
 class ServicesController extends Controller
 {
+    /**
+     * @var ServiceRepositoryInterface
+     */
     private ServiceRepositoryInterface $serviceRepository;
 
+    /**
+     * @param ServiceRepositoryInterface $serviceRepository
+     */
     public function __construct(ServiceRepositoryInterface $serviceRepository)
     {
         $this->serviceRepository = $serviceRepository;
@@ -23,7 +29,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return __METHOD__;
+        return $this->serviceRepository->getAll();
     }
 
     /**
