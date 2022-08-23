@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\V1\Interfaces\CarRepositoryInterface;
+use App\Repositories\CarRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 

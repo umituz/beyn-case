@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\V1\Interfaces\OrderRepositoryInterface;
+use App\Repositories\OrderRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
