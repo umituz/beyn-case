@@ -9,8 +9,14 @@ use Illuminate\Http\Response;
 
 class OrdersController extends Controller
 {
+    /**
+     * @var OrderRepositoryInterface
+     */
     private OrderRepositoryInterface $orderRepository;
 
+    /**
+     * @param OrderRepositoryInterface $orderRepository
+     */
     public function __construct(OrderRepositoryInterface $orderRepository)
     {
         $this->orderRepository = $orderRepository;
@@ -23,7 +29,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        return __METHOD__;
+        return $this->orderRepository->getAll();
     }
 
     /**
