@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\UserRepository;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\CarRepositoryInterface;
 use App\Repositories\CarRepository;
@@ -32,5 +34,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CarRepositoryInterface::class, CarRepository::class);
         $this->app->bind(ServiceRepositoryInterface::class, ServiceRepository::class);
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 }
