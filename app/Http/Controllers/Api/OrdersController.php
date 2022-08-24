@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Resources\Order\OrderCollection;
 use App\Repositories\ServiceRepositoryInterface;
 use App\Repositories\CarRepositoryInterface;
-use App\Repositories\V1\Interfaces\OrderRepositoryInterface;
+use App\Repositories\OrderRepositoryInterface;
 use App\Services\OrderService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
