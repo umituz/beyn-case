@@ -15,6 +15,8 @@ class ServiceResource extends JsonResource
      */
     public function toArray($request): array
     {
+        self::withoutWrapping();
+
         return parent::toArray($request);
     }
 }
