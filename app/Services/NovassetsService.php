@@ -23,21 +23,16 @@ class NovassetsService
     }
 
     /**
-     * @return bool|false
+     * @return false|mixed
      */
-    public function fetchAutomobiles()
+    public function fetchAutomobiles(): mixed
     {
         ini_set('memory_limit', '2048M');
 
         try {
-
             $client = Http::timeout(60)->get(self::API_URL . '/automobile.json');
-            $cars = json_decode($client, true);
 
-            foreach ($cars['RECORDS'] as $car) {
-                $this->carRepository->updateOrCreate($car);
-            }
-
+            return json_decode($client, true);
         } catch (\Exception $e) {
             return false;
         }
