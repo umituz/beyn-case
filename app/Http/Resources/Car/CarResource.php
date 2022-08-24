@@ -17,6 +17,8 @@ class CarResource extends JsonResource
      */
     public function toArray($request)
     {
+        self::withoutWrapping();
+
         return parent::toArray($request);
     }
 }

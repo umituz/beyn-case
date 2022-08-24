@@ -2,10 +2,8 @@
 
 namespace App\Http\Resources\Car;
 
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use JsonSerializable;
 
 class CarCollection extends ResourceCollection
 {
@@ -15,9 +13,9 @@ class CarCollection extends ResourceCollection
      * Transform the resource collection into an array.
      *
      * @param  Request  $request
-     * @return array|Arrayable|JsonSerializable
+     * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             'total' => $this->resource->count(),

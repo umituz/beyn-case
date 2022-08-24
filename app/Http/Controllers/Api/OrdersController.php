@@ -3,33 +3,34 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\OrderRepositoryInterface;
+use App\Http\Resources\Order\OrderCollection;
+use App\Services\OrderService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class OrdersController extends Controller
 {
     /**
-     * @var OrderRepositoryInterface
+     * @var OrderService
      */
-    private OrderRepositoryInterface $orderRepository;
+    private OrderService $orderService;
 
     /**
-     * @param OrderRepositoryInterface $orderRepository
+     * @param OrderService $orderService
      */
-    public function __construct(OrderRepositoryInterface $orderRepository)
+    public function __construct(OrderService $orderService)
     {
-        $this->orderRepository = $orderRepository;
+        $this->orderService = $orderService;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return OrderCollection
      */
-    public function index()
+    public function index(): OrderCollection
     {
-        return $this->orderRepository->getAll();
+        return $this->orderService->getList();
     }
 
     /**
