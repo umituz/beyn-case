@@ -26,16 +26,14 @@ class UserRepository implements UserRepositoryInterface
      */
     public function getAll(): mixed
     {
-        try {
-            return DB::transaction(function () {
-                return User::paginate();
-            });
-        } catch (Exception $e) {
-            return false;
-        }
+        return $this->user->paginate();
     }
 
-    public function create($data)
+    /**
+     * @param array $data
+     * @return false|mixed
+     */
+    public function create(array $data)
     {
         try {
             return DB::transaction(function () use ($data) {

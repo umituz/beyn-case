@@ -16,9 +16,22 @@ interface UserRepositoryInterface
      */
     public function getAll(): mixed;
 
-    public function create($data);
+    /**
+     * @param array $data
+     * @return mixed
+     */
+    public function create(array $data);
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getUserById($id);
 
+    /**
+     * @param $data
+     * @param User $user
+     * @return mixed
+     */
     public function updateUserById($data, User $user);
 }

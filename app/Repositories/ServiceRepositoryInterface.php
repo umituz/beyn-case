@@ -15,4 +15,10 @@ interface ServiceRepositoryInterface
      * @return mixed
      */
     public function getAll(): mixed;
+
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function getServiceById(int $id): mixed;
 }

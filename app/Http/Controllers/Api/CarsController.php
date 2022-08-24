@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\Car\CarCollection;
 use App\Services\CarService;
 use App\Services\NovassetsService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class CarsController extends Controller
+class CarsController extends ApiController
 {
     /**
      * @var CarService

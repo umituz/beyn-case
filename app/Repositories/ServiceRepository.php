@@ -25,12 +25,15 @@ class ServiceRepository implements ServiceRepositoryInterface
      */
     public function getAll(): mixed
     {
-        try {
-            return DB::transaction(function () {
-                return Service::paginate();
-            });
-        } catch (\Exception $e) {
-            return false;
-        }
+        return $this->service->paginate();
+    }
+
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function getServiceById(int $id): mixed
+    {
+        return $this->service->findOrFail($id);
     }
 }

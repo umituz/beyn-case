@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Resources\Service\ServiceCollection;
 use App\Services\Service;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class ServicesController extends Controller
+class ServicesController extends ApiController
 {
     /**
      * @var Service

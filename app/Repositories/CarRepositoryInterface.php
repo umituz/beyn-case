@@ -17,8 +17,15 @@ interface CarRepositoryInterface
     public function getAll(): mixed;
 
     /**
-     * @param $data
+     * @param array $data
      * @return mixed
      */
-    public function updateOrCreate($data): mixed;
+    public function updateOrCreate(array $data): mixed;
+
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function getCarById(int $id): mixed;
+
 }

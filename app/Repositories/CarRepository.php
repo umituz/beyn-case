@@ -26,9 +26,18 @@ class CarRepository implements CarRepositoryInterface
      */
     public function getAll(): mixed
     {
+        return $this->car->paginate();
+    }
+
+    /**
+     * @param array $data
+     * @return false|mixed
+     */
+    public function updateOrCreate(array $data): mixed
+    {
         try {
-            return DB::transaction(function () {
-                return Car::paginate();
+            return DB::transaction(function () use ($data) {
+                return $this->car->updateOrCreate($data);
             });
         } catch (Exception $e) {
             return false;
@@ -36,18 +45,11 @@ class CarRepository implements CarRepositoryInterface
     }
 
     /**
-     * @param $data
-     * @return false|mixed
+     * @param int $id
+     * @return mixed
      */
-    public function updateOrCreate($data): mixed
+    public function getCarById(int $id): mixed
     {
-        try {
-            return DB::transaction(function () use ($data) {
-                return Car::updateOrCreate($data);
-            });
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-            return false;
-        }
+        return $this->car->findOrFail($id);
     }
 }

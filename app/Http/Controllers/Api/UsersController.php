@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\UserBalanceRequest;
 use App\Http\Resources\User\UserCollection;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class UsersController extends Controller
+class UsersController extends ApiController
 {
     /**
      * @var UserService
