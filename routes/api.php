@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
     Route::get('users', [UsersController::class, 'index']);
+    Route::get('users/add-balance', [UsersController::class, 'addBalance']);
     Route::get('cars', [CarsController::class, 'index']);
     Route::get('services', [ServicesController::class, 'index']);
     Route::get('orders', [OrdersController::class, 'index']);

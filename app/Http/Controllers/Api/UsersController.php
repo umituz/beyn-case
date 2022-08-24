@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserBalanceRequest;
 use App\Http\Resources\User\UserCollection;
 use App\Services\UserService;
 use Illuminate\Http\Request;
@@ -32,6 +33,15 @@ class UsersController extends Controller
     }
 
     /**
+     * @param UserBalanceRequest $request
+     * @return mixed
+     */
+    public function addBalance(UserBalanceRequest $request): mixed
+    {
+        return $this->userService->updateUserBalance($request);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
@@ -45,7 +55,7 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -57,7 +67,7 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function update(Request $request, $id)
@@ -68,7 +78,7 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function destroy($id)
