@@ -34,4 +34,20 @@ class CarRepository implements CarRepositoryInterface
             return false;
         }
     }
+
+    /**
+     * @param $data
+     * @return false|mixed
+     */
+    public function updateOrCreate($data): mixed
+    {
+        try {
+            return DB::transaction(function () use ($data) {
+                return Car::updateOrCreate($data);
+            });
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return false;
+        }
+    }
 }

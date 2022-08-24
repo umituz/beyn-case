@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Car\CarCollection;
 use App\Services\CarService;
+use App\Services\NovassetsService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -14,23 +15,26 @@ class CarsController extends Controller
      * @var CarService
      */
     private CarService $carService;
+    private NovassetsService $novassetsService;
 
     /**
      * @param CarService $carService
      */
-    public function __construct(CarService $carService)
+    public function __construct(CarService $carService, NovassetsService $novassetsService)
     {
         $this->carService = $carService;
+        $this->novassetsService = $novassetsService;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return CarCollection
+     * @return bool
      */
-    public function index(): CarCollection
+    public function index()
     {
-        return $this->carService->getList();
+        #return $this->carService->getList();
+        return $this->novassetsService->fetchAutomobiles();
     }
 
     /**
