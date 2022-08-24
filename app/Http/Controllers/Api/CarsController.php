@@ -3,27 +3,34 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\CarRepositoryInterface;
+use App\Http\Resources\Car\CarCollection;
+use App\Services\CarService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class CarsController extends Controller
 {
-    private CarRepositoryInterface $carRepository;
+    /**
+     * @var CarService
+     */
+    private CarService $carService;
 
-    public function __construct(CarRepositoryInterface $carRepository)
+    /**
+     * @param CarService $carService
+     */
+    public function __construct(CarService $carService)
     {
-        $this->carRepository = $carRepository;
+        $this->carService = $carService;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return CarCollection
      */
-    public function index()
+    public function index(): CarCollection
     {
-        return $this->carRepository->getAll();
+        return $this->carService->getList();
     }
 
     /**
