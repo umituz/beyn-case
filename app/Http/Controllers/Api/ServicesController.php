@@ -3,33 +3,34 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\ServiceRepositoryInterface;
+use App\Http\Resources\Service\ServiceCollection;
+use App\Services\Service;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ServicesController extends Controller
 {
     /**
-     * @var ServiceRepositoryInterface
+     * @var Service
      */
-    private ServiceRepositoryInterface $serviceRepository;
+    private Service $service;
 
     /**
-     * @param ServiceRepositoryInterface $serviceRepository
+     * @param Service $service
      */
-    public function __construct(ServiceRepositoryInterface $serviceRepository)
+    public function __construct(Service $service)
     {
-        $this->serviceRepository = $serviceRepository;
+        $this->service = $service;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return ServiceCollection
      */
-    public function index()
+    public function index(): ServiceCollection
     {
-        return $this->serviceRepository->getAll();
+        return $this->service->getList();
     }
 
     /**
