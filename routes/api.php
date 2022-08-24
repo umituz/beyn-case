@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 #    return $request->user();
 #});
 
-Route::prefix('v1')->group(function () {
+Route::middleware('auth:sanctum')->prefix('v1')->group(function () {
     Route::get('users', [UsersController::class, 'index']);
     Route::get('users/add-balance', [UsersController::class, 'addBalance']);
     Route::get('cars', [CarsController::class, 'index']);
