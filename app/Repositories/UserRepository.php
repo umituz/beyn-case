@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\Car;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\DB;

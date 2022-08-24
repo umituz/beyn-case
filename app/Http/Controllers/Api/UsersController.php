@@ -3,33 +3,32 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepositoryInterface;
+use App\Http\Resources\User\UserCollection;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UsersController extends Controller
 {
     /**
-     * @var UserRepositoryInterface
+     * @var UserService
      */
-    private UserRepositoryInterface $userRepository;
+    private UserService $userService;
 
     /**
-     * @param UserRepositoryInterface $userRepository
+     * @param UserService $userService
      */
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserService $userService)
     {
-        $this->userRepository = $userRepository;
+        $this->userService = $userService;
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * @return UserCollection
      */
-    public function index()
+    public function index(): UserCollection
     {
-        return $this->userRepository->getAll();
+        return $this->userService->getList();
     }
 
     /**
