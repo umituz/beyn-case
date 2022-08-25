@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
-use App\Http\Resources\User\UserCollection;
-use App\Repositories\V1\Interfaces\UserRepositoryInterface;
+use App\Http\Resources\User\UserResource;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends Controller
+class AuthController extends ApiController
 {
     private UserRepositoryInterface $userRepository;
 
@@ -39,7 +38,7 @@ class AuthController extends Controller
 
         Auth::user()->access_token = $token;
 
-        return $this->success(__('Success'), new UserCollection(Auth::user()));
+        return $this->success(__('Success'), UserResource::make(Auth::user()));
     }
 
     /**
@@ -53,6 +52,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
+
         if (!$user) {
             return $this->error(__('User failed to register!'));
         }
@@ -67,7 +67,7 @@ class AuthController extends Controller
 
         $user->access_token = $token;
 
-        return $this->success(__('Success'), new UserCollection($user));
+        return $this->success(__('Success'), UserResource::make($user));
     }
 
     /**
