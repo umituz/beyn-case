@@ -17,8 +17,8 @@ interface ServiceRepositoryInterface
     public function getAll(): mixed;
 
     /**
-     * @param int $id
+     * @param  $id
      * @return mixed
      */
-    public function getServiceById(int $id): mixed;
+    public function getServiceById( $id): mixed;
 }

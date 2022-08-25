@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\UserOrderRequest;
 use App\Http\Resources\Order\OrderCollection;
+use App\Http\Resources\Order\OrderResource;
 use App\Repositories\ServiceRepositoryInterface;
 use App\Repositories\CarRepositoryInterface;
 use App\Repositories\OrderRepositoryInterface;
 use App\Services\OrderService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends ApiController
 {
@@ -47,11 +48,12 @@ class OrdersController extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param UserOrderRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(UserOrderRequest $request)
     {
+        $user = Auth::user();
         $service = $this->serviceRepository->getServiceById($request->service_id);
 
         if (!$service) {
@@ -64,55 +66,22 @@ class OrdersController extends ApiController
             return $this->error(__('No car found!'));
         }
 
-        if ($this->user->balance ?? 1 < $service->price) {
+        if ($user->balance < $service->price) {
             return $this->error(__('You have insufficient balance!'));
         }
 
         $order = $this->orderRepository->create([
-            'user_id' => $this->user->id,
+            'user_id' => $user->id,
             'service_id' => $request->service_id,
             'car_id' => $request->car_id,
             'status' => false,
             'price' => $service->price,
-        ], $this->user);
+        ], $user);
+
         if (!$order) {
             return $this->error(__('Failed to create order!'));
         }
 
-        return $this->success(__('Success'), new OrderCollection($order));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $this->success(__('Success'), OrderResource::make($order));
     }
 }
