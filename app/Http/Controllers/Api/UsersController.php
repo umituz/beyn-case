@@ -4,22 +4,25 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\UserBalanceRequest;
 use App\Http\Resources\User\UserCollection;
+use App\Http\Resources\User\UserResource;
+use App\Repositories\UserRepositoryInterface;
 use App\Services\UserService;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends ApiController
 {
-    /**
-     * @var UserService
-     */
+    private UserRepositoryInterface $userRepository;
     private UserService $userService;
 
     /**
-     * @param UserService $userService
+     * @param UserRepositoryInterface $userRepository
      */
-    public function __construct(UserService $userService)
+    public function __construct(
+        UserRepositoryInterface $userRepository,
+        UserService $userService
+    )
     {
+        $this->userRepository = $userRepository;
         $this->userService = $userService;
     }
 
@@ -37,51 +40,16 @@ class UsersController extends ApiController
      */
     public function addBalance(UserBalanceRequest $request): mixed
     {
-        return $this->userService->updateUserBalance($request);
-    }
+        $user = Auth::user();
+        $user = $this->userRepository->updateUserById(
+            ['balance' => $user->balance + $request->amount],
+            $user
+        );
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        if (!$user) {
+            return $this->error(__('Could not add balance'));
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $this->success(__('Success'), UserResource::make($user));
     }
 }
