@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\User;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\UserBalanceRequest;
 use App\Http\Resources\User\UserCollection;
 use App\Http\Resources\User\UserResource;
@@ -9,7 +10,7 @@ use App\Repositories\UserRepositoryInterface;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Auth;
 
-class UsersController extends ApiController
+class UsersV1Controller extends ApiController
 {
     private UserRepositoryInterface $userRepository;
     private UserService $userService;
