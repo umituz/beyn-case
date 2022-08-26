@@ -4,33 +4,31 @@ namespace App\Http\Controllers\Api\Order;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\UserOrderRequest;
-use App\Http\Resources\Order\OrderCollection;
-use App\Http\Resources\Order\OrderResource;
+use App\Http\Resources\Order\OrderV1Collection;
+use App\Http\Resources\Order\OrderV1Resource;
 use App\Repositories\ServiceRepositoryInterface;
 use App\Repositories\CarRepositoryInterface;
 use App\Repositories\OrderRepositoryInterface;
-use App\Services\OrderService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 class OrdersV1Controller extends ApiController
 {
-    private OrderService $orderService;
     private ServiceRepositoryInterface $serviceRepository;
     private CarRepositoryInterface $carRepository;
     private OrderRepositoryInterface $orderRepository;
 
     /**
-     * @param OrderService $orderService
+     * @param CarRepositoryInterface $carRepository
+     * @param ServiceRepositoryInterface $serviceRepository
+     * @param OrderRepositoryInterface $orderRepository
      */
     public function __construct(
-        OrderService $orderService,
         CarRepositoryInterface $carRepository,
         ServiceRepositoryInterface $serviceRepository,
         OrderRepositoryInterface $orderRepository
     )
     {
-        $this->orderService = $orderService;
         $this->serviceRepository = $serviceRepository;
         $this->carRepository = $carRepository;
         $this->orderRepository = $orderRepository;
@@ -39,11 +37,13 @@ class OrdersV1Controller extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return OrderCollection
+     * @return OrderV1Collection
      */
-    public function index(): OrderCollection
+    public function index(): OrderV1Collection
     {
-        return $this->orderService->getList();
+        $orders = $this->orderRepository->getAll();
+
+        return new OrderV1Collection($orders);
     }
 
     /**
@@ -83,6 +83,6 @@ class OrdersV1Controller extends ApiController
             return $this->error(__('Failed to create order!'));
         }
 
-        return $this->success(__('Success'), OrderResource::make($order));
+        return $this->success(__('Success'), OrderV1Resource::make($order));
     }
 }

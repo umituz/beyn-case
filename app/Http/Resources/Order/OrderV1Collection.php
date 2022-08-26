@@ -5,9 +5,9 @@ namespace App\Http\Resources\Order;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class OrderCollection extends ResourceCollection
+class OrderV1Collection extends ResourceCollection
 {
-    public $collects = OrderResource::class;
+    public $collects = OrderV1Resource::class;
 
     /**
      * Transform the resource collection into an array.
