@@ -19,7 +19,7 @@ class OrderV1Collection extends ResourceCollection
     {
         return [
             'total' => $this->resource->count(),
-            'data' => $this->resource
+            'data' => $this->collection,
         ];
     }
 }

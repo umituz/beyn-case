@@ -19,7 +19,7 @@ class CarV2Collection extends ResourceCollection
     {
         return [
             'total' => $this->resource->count(),
-            'data' => $this->resource,
+            'data' => $this->collection,
             'version' => 2
         ];
     }
