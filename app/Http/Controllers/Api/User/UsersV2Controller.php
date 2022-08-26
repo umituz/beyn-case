@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Requests\UserBalanceRequest;
+use App\Http\Requests\UserBalanceV2Request;
 use App\Http\Resources\User\UserV2Collection;
 use App\Http\Resources\User\UserV2Resource;
 use App\Repositories\UserRepositoryInterface;
@@ -31,10 +31,10 @@ class UsersV2Controller extends ApiController
     }
 
     /**
-     * @param UserBalanceRequest $request
+     * @param UserBalanceV2Request $request
      * @return mixed
      */
-    public function addBalance(UserBalanceRequest $request): mixed
+    public function addBalance(UserBalanceV2Request $request): mixed
     {
         $user = Auth::user();
         $user = $this->userRepository->updateUserById(

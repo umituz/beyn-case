@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Api\Order;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Requests\UserOrderRequest;
+use App\Http\Requests\UserOrderV2Request;
 use App\Http\Resources\Order\OrderV2Collection;
 use App\Http\Resources\Order\OrderV2Resource;
 use App\Repositories\ServiceRepositoryInterface;
 use App\Repositories\CarRepositoryInterface;
 use App\Repositories\OrderRepositoryInterface;
-use App\Services\OrderService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,9 +18,6 @@ class OrdersV2Controller extends ApiController
     private CarRepositoryInterface $carRepository;
     private OrderRepositoryInterface $orderRepository;
 
-    /**
-     * @param OrderService $orderService
-     */
     public function __construct(
         CarRepositoryInterface $carRepository,
         ServiceRepositoryInterface $serviceRepository,
@@ -48,10 +44,10 @@ class OrdersV2Controller extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param UserOrderRequest $request
+     * @param UserOrderV2Request $request
      * @return JsonResponse
      */
-    public function store(UserOrderRequest $request)
+    public function store(UserOrderV2Request $request)
     {
         $user = Auth::user();
         $service = $this->serviceRepository->getServiceById($request->service_id);

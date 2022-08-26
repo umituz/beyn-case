@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Order;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Requests\UserOrderRequest;
+use App\Http\Requests\UserOrderV1Request;
 use App\Http\Resources\Order\OrderV1Collection;
 use App\Http\Resources\Order\OrderV1Resource;
 use App\Repositories\ServiceRepositoryInterface;
@@ -49,10 +49,10 @@ class OrdersV1Controller extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param UserOrderRequest $request
+     * @param UserOrderV1Request $request
      * @return JsonResponse
      */
-    public function store(UserOrderRequest $request)
+    public function store(UserOrderV1Request $request)
     {
         $user = Auth::user();
         $service = $this->serviceRepository->getServiceById($request->service_id);

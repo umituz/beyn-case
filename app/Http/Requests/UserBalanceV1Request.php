@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserOrderRequest extends FormRequest
+class UserBalanceV1Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class UserOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'service_id' => ['required', 'integer'],
-            'car_id' => ['required', 'integer']
+            'amount' => ['required'],
         ];
     }
 }
