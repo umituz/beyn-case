@@ -3,18 +3,30 @@
 namespace App\Http\Controllers\Api\Service;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Resources\Service\ServiceCollection;
-use App\Services\Service;
+use App\Http\Resources\Service\ServiceV2Collection;
+use App\Repositories\ServiceRepositoryInterface;
 
 class ServicesV2Controller extends ApiController
 {
+    private ServiceRepositoryInterface $serviceRepository;
+
+    /**
+     * @param ServiceRepositoryInterface $serviceRepository
+     */
+    public function __construct(ServiceRepositoryInterface $serviceRepository)
+    {
+        $this->serviceRepository = $serviceRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return string
+     * @return ServiceV2Collection
      */
-    public function index(): string
+    public function index(): ServiceV2Collection
     {
-        return __METHOD__;
+        $services = $this->serviceRepository->getAll();
+
+        return new ServiceV2Collection($services);
     }
 }

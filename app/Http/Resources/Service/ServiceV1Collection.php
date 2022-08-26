@@ -5,9 +5,9 @@ namespace App\Http\Resources\Service;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class ServiceCollection extends ResourceCollection
+class ServiceV1Collection extends ResourceCollection
 {
-    public $collects = ServiceResource::class;
+    public $collects = ServiceV1Resource::class;
 
     /**
      * Transform the resource collection into an array.
@@ -19,7 +19,8 @@ class ServiceCollection extends ResourceCollection
     {
         return [
             'total' => $this->resource->count(),
-            'data' => $this->resource
+            'data' => $this->resource,
+            'version' => 1
         ];
     }
 }
