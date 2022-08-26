@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\Car;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Resources\Car\CarV1Collection;
-use App\Models\Car;
 use App\Repositories\CarRepositoryInterface;
 
 class CarsV1Controller extends ApiController
