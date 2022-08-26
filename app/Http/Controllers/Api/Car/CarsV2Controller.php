@@ -8,6 +8,6 @@ class CarsV2Controller extends Controller
 {
     public function index()
     {
-        return 'Version 2';
+        return __METHOD__;
     }
 }
