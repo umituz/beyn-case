@@ -3,7 +3,6 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\Car\CarsGatewayController;
 use App\Http\Controllers\Api\Order\OrdersGatewayController;
-use App\Http\Controllers\Api\OrdersController;
 use App\Http\Controllers\Api\ServicesController;
 use App\Http\Controllers\Api\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +17,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::lapiv(function () {
         Route::get('cars', [CarsGatewayController::class, 'index']);
         Route::get('orders', [OrdersGatewayController::class, 'index']);
-        Route::post('orders', [OrdersController::class, 'store']);
+        Route::post('orders', [OrdersGatewayController::class, 'store']);
     });
 
     Route::prefix('v1')->group(function () {
