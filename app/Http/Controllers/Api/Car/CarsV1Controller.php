@@ -3,35 +3,30 @@
 namespace App\Http\Controllers\Api\Car;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Resources\Car\CarCollection;
-use App\Services\CarService;
-use App\Services\NovassetsService;
+use App\Http\Resources\Car\CarV1Collection;
+use App\Repositories\CarRepositoryInterface;
 
 class CarsV1Controller extends ApiController
 {
-    /**
-     * @var CarService
-     */
-    private CarService $carService;
-    #private NovassetsService $novassetsService;
+    private CarRepositoryInterface $carRepository;
 
     /**
-     * @param CarService $carService
+     * @param CarRepositoryInterface $carRepository
      */
-    public function __construct(CarService $carService, NovassetsService $novassetsService)
+    public function __construct(CarRepositoryInterface $carRepository)
     {
-        $this->carService = $carService;
-        #$this->novassetsService = $novassetsService;
+        $this->carRepository = $carRepository;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return CarCollection
+     * @return CarV1Collection
      */
-    public function index()
+    public function index(): CarV1Collection
     {
-        return $this->carService->getList();
-        #return $this->novassetsService->fetchAutomobiles();
+        $cars =  $this->carRepository->getAll();
+
+        return new CarV1Collection($cars);
     }
 }

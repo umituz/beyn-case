@@ -5,9 +5,9 @@ namespace App\Http\Resources\Car;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class CarCollection extends ResourceCollection
+class CarV1Collection extends ResourceCollection
 {
-    public $collects = CarResource::class;
+    public $collects = CarV1Resource::class;
 
     /**
      * Transform the resource collection into an array.
@@ -19,7 +19,8 @@ class CarCollection extends ResourceCollection
     {
         return [
             'total' => $this->resource->count(),
-            'data' => $this->resource
+            'data' => $this->resource,
+            'version' => 1
         ];
     }
 }
