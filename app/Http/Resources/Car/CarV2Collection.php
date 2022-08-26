@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Car;
 
+use App\Enums\VersionEnums;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -20,7 +21,7 @@ class CarV2Collection extends ResourceCollection
         return [
             'total' => $this->resource->count(),
             'data' => $this->collection,
-            'version' => 2
+            'version' => VersionEnums::VERSION_2
         ];
     }
 }

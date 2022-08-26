@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Service;
 
+use App\Enums\VersionEnums;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -20,7 +21,7 @@ class ServiceV1Collection extends ResourceCollection
         return [
             'total' => $this->resource->count(),
             'data' => $this->collection,
-            'version' => 1
+            'version' => VersionEnums::VERSION_1
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Order;
 
+use App\Enums\VersionEnums;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -20,6 +21,7 @@ class OrderV1Collection extends ResourceCollection
         return [
             'total' => $this->resource->count(),
             'data' => $this->collection,
+            'version' => VersionEnums::VERSION_1
         ];
     }
 }
