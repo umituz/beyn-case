@@ -5,9 +5,9 @@ namespace App\Http\Resources\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class UserCollection extends ResourceCollection
+class UserV1Collection extends ResourceCollection
 {
-    public $collects = UserResource::class;
+    public $collects = UserV1Resource::class;
 
     /**
      * Transform the resource collection into an array.
@@ -19,7 +19,8 @@ class UserCollection extends ResourceCollection
     {
         return [
             'total' => $this->resource->count(),
-            'data' => $this->resource
+            'data' => $this->resource,
+            'version' => 1
         ];
     }
 }
