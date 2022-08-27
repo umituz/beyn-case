@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
- * Class OrderRepositoryInterface
+ * Interface OrderRepositoryInterface
  * @package App\Repositories
  */
 interface OrderRepositoryInterface

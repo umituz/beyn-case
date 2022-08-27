@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Service;
 
 /**
- * Class ServiceRepositoryInterface
+ * Interface ServiceRepositoryInterface
  * @package App\Repositories
  */
 interface ServiceRepositoryInterface

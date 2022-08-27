@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\User;
 
 /**
- * Class UserRepositoryInterface
+ * Interface UserRepositoryInterface
  * @package App\Repositories
  */
 interface UserRepositoryInterface

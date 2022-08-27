@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Car;
 
 /**
- * Class CarRepositoryInterface
+ * Interface CarRepositoryInterface
  * @package App\Repositories
  */
 interface CarRepositoryInterface
