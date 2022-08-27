@@ -7,7 +7,6 @@ use JulioMotol\Lapiv\GatewayController;
 class OrdersGatewayController extends GatewayController
 {
     protected array $apiControllers = [
-        OrdersV1Controller::class,
-        OrdersV2Controller::class,
+        OrdersV1Controller::class
     ];
 }

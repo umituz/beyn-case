@@ -7,7 +7,6 @@ use JulioMotol\Lapiv\GatewayController;
 class CarsGatewayController extends GatewayController
 {
     protected array $apiControllers = [
-        CarsV1Controller::class,
-        CarsV2Controller::class,
+        CarsV1Controller::class
     ];
 }
