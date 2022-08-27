@@ -51,7 +51,7 @@ class SyncAutoMobileJob implements ShouldQueue
         }
 
         if (!$cars || !isset($cars['RECORDS']) || !count($cars['RECORDS'])) {
-            $this->toSlack(config('slack.channels.sync_automobiles'), __('Could not fetch cars from api!'));
+            $this->toSlack(config('slack.channels.service_issues'), __('Could not fetch cars from api!'));
 
             return;
         }
@@ -60,14 +60,14 @@ class SyncAutoMobileJob implements ShouldQueue
             $updateOrCreate = $this->carRepository->updateOrCreate($car);
 
             if (!$updateOrCreate) {
-                $this->toSlack(config('slack.channels.sync_automobiles'), __('Failed to create or update car!'));
+                $this->toSlack(config('slack.channels.db_issues'), __('Failed to create or update car!'));
             }
         }
 
         $redis = Cache::put('cars', json_encode($cars));
 
         if (!$redis) {
-            $this->toSlack(config('slack.channels.sync_automobiles'), __('Failed to register to redis!'));
+            $this->toSlack(config('slack.channels.redis_issues'), __('Failed to register to redis!'));
         }
     }
 
