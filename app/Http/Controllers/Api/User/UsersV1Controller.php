@@ -4,41 +4,44 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\UserBalanceV1Request;
-use App\Http\Resources\User\UserV1Collection;
 use App\Http\Resources\User\UserV1Resource;
 use App\Repositories\UserRepositoryInterface;
 
+/**
+ * Class UsersV1Controller
+ * @package App\Http\Controllers\Api\User
+ */
 class UsersV1Controller extends ApiController
 {
     private UserRepositoryInterface $userRepository;
+    private $user;
 
     /**
      * @param UserRepositoryInterface $userRepository
      */
-    public function __construct(UserRepositoryInterface $userRepository){
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->user = request()->user();
         $this->userRepository = $userRepository;
     }
 
     /**
-     * @return UserV1Collection
+     * @return UserV1Resource
      */
-    public function index(): UserV1Collection
+    public function profile(): UserV1Resource
     {
-        $users = $this->userRepository->getAll();
-
-        return new UserV1Collection($users);
+        return new UserV1Resource($this->user);
     }
 
     /**
      * @param UserBalanceV1Request $request
      * @return mixed
      */
-    public function addBalance(UserBalanceV1Request $request): mixed
+    public function balance(UserBalanceV1Request $request): mixed
     {
-        $user = $request->user();
         $user = $this->userRepository->updateUserById(
-            ['balance' => $user->balance + $request->amount],
-            $user->id,
+            ['balance' => $this->user->balance + $request->amount],
+            $this->user->id,
         );
 
         if (!$user) {
