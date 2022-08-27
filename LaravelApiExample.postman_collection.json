@@ -12,6 +12,16 @@
 				{
 					"name": "Get Orders",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|IJAoxj5wBcYjJ5hjd0G8ZCkIzL1894XgqZQ4aimh",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -50,7 +60,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "12|5Vp2YSSq4HkLER1Weu6PWL5dExnjYVJZeKZkQ3gi",
+									"value": "5|IJAoxj5wBcYjJ5hjd0G8ZCkIzL1894XgqZQ4aimh",
 									"type": "string"
 								}
 							]
@@ -89,6 +99,16 @@
 				{
 					"name": "Get Services",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "5|IJAoxj5wBcYjJ5hjd0G8ZCkIzL1894XgqZQ4aimh",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -124,7 +144,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "12|5Vp2YSSq4HkLER1Weu6PWL5dExnjYVJZeKZkQ3gi",
+									"value": "5|IJAoxj5wBcYjJ5hjd0G8ZCkIzL1894XgqZQ4aimh",
 									"type": "string"
 								}
 							]
@@ -164,7 +184,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "9|QeGWGJ4kSNjFLf64xzVJUYcAGmaZk8ZgwSoHV9Ic",
+									"value": "1|UdNSkvWQBQa82dj01lVuizuvWnVpkyhp7fwFuzmR",
 									"type": "string"
 								}
 							]
@@ -178,14 +198,13 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "amount",
-									"value": "100",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 100.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/v1/users/add-balance",
@@ -215,7 +234,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "10|kr7H6Vp2s7UEk6ddDgbxtUTIGBoxuJxLkDP963I6",
+									"value": "1|fpF6krEfsQbh0O3iGEcjtWh0j3fgHnYvcSujWFLY",
 									"type": "string"
 								}
 							]
@@ -261,44 +280,9 @@
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "V2",
-			"item": [
-				{
-					"name": "Get Orders",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/orders",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v1",
-								"orders"
-							]
-						}
-					},
-					"response": []
 				},
 				{
-					"name": "Get Cars",
+					"name": "Filter Orders",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -308,7 +292,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "12|5Vp2YSSq4HkLER1Weu6PWL5dExnjYVJZeKZkQ3gi",
+									"value": "1|fpF6krEfsQbh0O3iGEcjtWh0j3fgHnYvcSujWFLY",
 									"type": "string"
 								}
 							]
@@ -322,11 +306,16 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": []
+							"mode": "raw",
+							"raw": "{\n    \"service_id\":  1,\n    \"car_id\": 1,\n    \"status\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cars",
+							"raw": "http://127.0.0.1:8000/api/v1/orders/filters",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -338,183 +327,8 @@
 							"path": [
 								"api",
 								"v1",
-								"cars"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Services",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/v2/services",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v2",
-								"services"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Users",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "12|5Vp2YSSq4HkLER1Weu6PWL5dExnjYVJZeKZkQ3gi",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/v2/users",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v2",
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add User Balance",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "9|QeGWGJ4kSNjFLf64xzVJUYcAGmaZk8ZgwSoHV9Ic",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "amount",
-									"value": "100",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/v2/users/add-balance",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v2",
-								"users",
-								"add-balance"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Order",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "10|kr7H6Vp2s7UEk6ddDgbxtUTIGBoxuJxLkDP963I6",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "service_id",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "car_id",
-									"value": "1",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://127.0.0.1:8000/api/v2/orders",
-							"protocol": "http",
-							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"v2",
-								"orders"
+								"orders",
+								"filters"
 							]
 						}
 					},
@@ -544,19 +358,13 @@
 					}
 				],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "email",
-							"value": "umituz998@gmail.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "123456789",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"umituz998@gmail.com\",\n    \"password\":\"123456789\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "http://127.0.0.1:8000/api/login",
