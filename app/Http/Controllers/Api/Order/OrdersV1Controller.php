@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Order;
 
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Requests\UserOrderFilterV1Request;
 use App\Http\Requests\UserOrderV1Request;
 use App\Http\Resources\Order\OrderV1Collection;
 use App\Http\Resources\Order\OrderV1Resource;
@@ -10,7 +11,6 @@ use App\Repositories\ServiceRepositoryInterface;
 use App\Repositories\CarRepositoryInterface;
 use App\Repositories\OrderRepositoryInterface;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Auth;
 
 class OrdersV1Controller extends ApiController
 {
@@ -24,9 +24,9 @@ class OrdersV1Controller extends ApiController
      * @param OrderRepositoryInterface $orderRepository
      */
     public function __construct(
-        CarRepositoryInterface $carRepository,
+        CarRepositoryInterface     $carRepository,
         ServiceRepositoryInterface $serviceRepository,
-        OrderRepositoryInterface $orderRepository
+        OrderRepositoryInterface   $orderRepository,
     )
     {
         $this->serviceRepository = $serviceRepository;
@@ -54,7 +54,7 @@ class OrdersV1Controller extends ApiController
      */
     public function store(UserOrderV1Request $request)
     {
-        $user = Auth::user();
+        $user = $request->user();
         $service = $this->serviceRepository->getServiceById($request->service_id);
 
         if (!$service) {
@@ -84,5 +84,20 @@ class OrdersV1Controller extends ApiController
         }
 
         return $this->success(__('Success'), OrderV1Resource::make($order));
+    }
+
+    /**
+     * @param UserOrderFilterV1Request $request
+     * @return JsonResponse
+     */
+    public function filters(UserOrderFilterV1Request $request)
+    {
+        $orders = $this->orderRepository->getUserOrdersByFilter($request);
+
+        if (!$orders->count()) {
+            return $this->error(__('No orders found!'));
+        }
+
+        return $this->success(__('Success'), new OrderV1Resource($orders));
     }
 }

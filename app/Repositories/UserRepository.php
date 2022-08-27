@@ -39,7 +39,7 @@ class UserRepository implements UserRepositoryInterface
             return DB::transaction(function () use ($data) {
                 return $this->user->create($data);
             });
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return false;
         }
     }
@@ -55,15 +55,17 @@ class UserRepository implements UserRepositoryInterface
 
     /**
      * @param $data
-     * @param User|null $user
+     * @param $userId
      * @return false|mixed
      */
-    public function updateUserById($data, ?User $user)
+    public function updateUserById($data, $userId): mixed
     {
         try {
-            return DB::transaction(function () use ($data, $user) {
-                $this->getUserById($user->id)->update($data);
-                return $this->getUserById($user->id);
+            return DB::transaction(function () use ($data, $userId) {
+                $user = $this->getUserById($userId);
+                $user->update($data);
+
+                return $user;
             });
         } catch (Exception $e) {
             return false;

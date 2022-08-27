@@ -7,7 +7,6 @@ use App\Http\Requests\UserBalanceV1Request;
 use App\Http\Resources\User\UserV1Collection;
 use App\Http\Resources\User\UserV1Resource;
 use App\Repositories\UserRepositoryInterface;
-use Illuminate\Support\Facades\Auth;
 
 class UsersV1Controller extends ApiController
 {
@@ -36,10 +35,10 @@ class UsersV1Controller extends ApiController
      */
     public function addBalance(UserBalanceV1Request $request): mixed
     {
-        $user = Auth::user();
+        $user = $request->user();
         $user = $this->userRepository->updateUserById(
             ['balance' => $user->balance + $request->amount],
-            $user
+            $user->id,
         );
 
         if (!$user) {

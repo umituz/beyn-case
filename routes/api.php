@@ -16,8 +16,13 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::lapiv(function () {
         Route::get('cars', [CarsGatewayController::class, 'index']);
-        Route::get('orders', [OrdersGatewayController::class, 'index']);
-        Route::post('orders', [OrdersGatewayController::class, 'store']);
+
+        Route::group(['prefix' => 'orders'], function () {
+            Route::get('/', [OrdersGatewayController::class, 'index']);
+            Route::get('filters', [OrdersGatewayController::class, 'filters']);
+            Route::post('/', [OrdersGatewayController::class, 'store']);
+        });
+
         Route::get('services', [ServicesGatewayController::class, 'index']);
         Route::get('users', [UsersGatewayController::class, 'index']);
         Route::put('users/add-balance', [UsersGatewayController::class, 'addBalance']);

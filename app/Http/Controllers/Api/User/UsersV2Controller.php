@@ -7,7 +7,7 @@ use App\Http\Requests\UserBalanceV2Request;
 use App\Http\Resources\User\UserV2Collection;
 use App\Http\Resources\User\UserV2Resource;
 use App\Repositories\UserRepositoryInterface;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\JsonResponse;
 
 class UsersV2Controller extends ApiController
 {
@@ -32,14 +32,14 @@ class UsersV2Controller extends ApiController
 
     /**
      * @param UserBalanceV2Request $request
-     * @return mixed
+     * @return JsonResponse
      */
-    public function addBalance(UserBalanceV2Request $request): mixed
+    public function addBalance(UserBalanceV2Request $request): JsonResponse
     {
-        $user = Auth::user();
+        $user = $request->user();
         $user = $this->userRepository->updateUserById(
             ['balance' => $user->balance + $request->amount],
-            $user
+            $user->id
         );
 
         if (!$user) {
