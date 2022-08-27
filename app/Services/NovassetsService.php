@@ -2,25 +2,18 @@
 
 namespace App\Services;
 
-use App\Repositories\CarRepositoryInterface;
+use App\Traits\NotifiableOnSlack;
 use Illuminate\Support\Facades\Http;
 
+/**
+ * Class NovassetsService
+ * @package App\Services
+ */
 class NovassetsService
 {
+    use NotifiableOnSlack;
+
     const API_URL = 'https://static.novassets.com';
-
-    /**
-     * @var CarRepositoryInterface
-     */
-    private CarRepositoryInterface $carRepository;
-
-    /**
-     * @param CarRepositoryInterface $carRepository
-     */
-    public function __construct(CarRepositoryInterface $carRepository)
-    {
-        $this->carRepository = $carRepository;
-    }
 
     /**
      * @return false|mixed
@@ -34,6 +27,8 @@ class NovassetsService
 
             return json_decode($client, true);
         } catch (\Exception $e) {
+            $this->toSlack(config('slack.channels.service_issues'), $e->getMessage());
+
             return false;
         }
     }

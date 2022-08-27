@@ -4,6 +4,10 @@ namespace App\Repositories;
 
 use App\Models\Service;
 
+/**
+ * Class ServiceRepositoryInterface
+ * @package App\Repositories
+ */
 interface ServiceRepositoryInterface
 {
     /**

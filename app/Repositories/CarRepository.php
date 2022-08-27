@@ -3,11 +3,18 @@
 namespace App\Repositories;
 
 use App\Models\Car;
+use App\Traits\NotifiableOnSlack;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class CarRepository
+ * @package App\Repositories
+ */
 class CarRepository implements CarRepositoryInterface
 {
+    use NotifiableOnSlack;
+
     /**
      * @var Car
      */
@@ -40,6 +47,8 @@ class CarRepository implements CarRepositoryInterface
                 return $this->car->updateOrCreate($data);
             });
         } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
             return false;
         }
     }

@@ -5,6 +5,10 @@ namespace App\Repositories;
 use App\Models\Service;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class ServiceRepository
+ * @package App\Repositories
+ */
 class ServiceRepository implements ServiceRepositoryInterface
 {
     /**

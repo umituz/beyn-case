@@ -4,6 +4,10 @@ namespace App\Repositories;
 
 use App\Models\User;
 
+/**
+ * Class UserRepositoryInterface
+ * @package App\Repositories
+ */
 interface UserRepositoryInterface
 {
     /**

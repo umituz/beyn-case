@@ -3,11 +3,18 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use App\Traits\NotifiableOnSlack;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class UserRepository
+ * @package App\Repositories
+ */
 class UserRepository implements UserRepositoryInterface
 {
+    use NotifiableOnSlack;
+
     /**
      * @var User
      */
@@ -40,6 +47,8 @@ class UserRepository implements UserRepositoryInterface
                 return $this->user->create($data);
             });
         } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
             return false;
         }
     }
@@ -68,7 +77,8 @@ class UserRepository implements UserRepositoryInterface
                 return $user;
             });
         } catch (Exception $e) {
-            dd($e->getMessage());
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
             return false;
         }
     }

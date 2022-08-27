@@ -4,12 +4,19 @@ namespace App\Repositories;
 
 use App\Models\Order;
 use App\Models\User;
+use App\Traits\NotifiableOnSlack;
 use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class OrderRepository
+ * @package App\Repositories
+ */
 class OrderRepository implements OrderRepositoryInterface
 {
+    use NotifiableOnSlack;
+
     /**
      * @var Order
      */
@@ -46,6 +53,8 @@ class OrderRepository implements OrderRepositoryInterface
                 return $order;
             });
         } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
             return false;
         }
     }

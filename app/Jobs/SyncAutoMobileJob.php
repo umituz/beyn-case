@@ -78,7 +78,7 @@ class SyncAutoMobileJob implements ShouldQueue
     public function failed(Exception $exception): bool
     {
         $this->toSlack(
-            config('slack.channels.failed-jobs'),
+            config('slack.channels.failed_jobs'),
             "Failed while sync cars " .
             "Exception message: ```{$exception->getMessage()}```"
         );
