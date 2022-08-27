@@ -24,7 +24,6 @@ class UserOrderFilterV1Request extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|int',
             'service_id' => 'nullable|int',
             'car_id' => 'nullable|int',
             'status' => 'nullable',

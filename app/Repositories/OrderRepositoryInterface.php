@@ -26,8 +26,7 @@ interface OrderRepositoryInterface
     public function create($data, User $user): mixed;
 
     /**
-     * @param $filter
-     * @return LengthAwarePaginator
+     * @param $request
      */
-    public function getUserOrdersByFilter($filter): LengthAwarePaginator;
+    public function getUserOrdersByFilter($request): mixed;
 }

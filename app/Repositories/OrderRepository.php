@@ -51,29 +51,25 @@ class OrderRepository implements OrderRepositoryInterface
     }
 
     /**
-     * @param $filter
-     * @return LengthAwarePaginator
+     * @param $request
+     * @return mixed
      */
-    public function getUserOrdersByFilter($filter): LengthAwarePaginator
+    public function getUserOrdersByFilter($request): mixed
     {
         $orders = auth()->user()->orders();
 
-        if (isset($filter->service_id) && $filter->service_id) {
-            $orders = $orders->where('service_id', $filter->service_id);
-        }
+        $orders = $orders->when($request->service_id, function ($query) use ($request) {
+            $query->where('service_id', $request->service_id);
+        });
 
-        if (isset($filter->car_id) && $filter->car_id) {
-            $orders = $orders->where('car_id', $filter->car_id);
-        }
+        $orders = $orders->when($request->car_id, function ($query) use ($request) {
+            $query->where('car_id', $request->car_id);
+        });
 
-        if (isset($filter->status) && $filter->status) {
-            $orders = $orders->where('status', $filter->status);
-        }
+        $orders = $orders->when($request->status, function ($query) use ($request) {
+            $query->where('status', $request->status);
+        });
 
-        if (isset($filter->price) && $filter->price) {
-            $orders = $orders->where('price', $filter->price);
-        }
-
-        return $orders->with(['car', 'service'])->paginate();
+        return $orders->get();
     }
 }

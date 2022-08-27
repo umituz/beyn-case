@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\Order;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Requests\UserOrderFilterV1Request;
 use App\Http\Requests\UserOrderFilterV2Request;
 use App\Http\Requests\UserOrderV2Request;
 use App\Http\Resources\Order\OrderV2Collection;

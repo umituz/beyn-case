@@ -94,10 +94,6 @@ class OrdersV1Controller extends ApiController
     {
         $orders = $this->orderRepository->getUserOrdersByFilter($request);
 
-        if (!$orders->count()) {
-            return $this->error(__('No orders found!'));
-        }
-
         return $this->success(__('Success'), new OrderV1Resource($orders));
     }
 }
