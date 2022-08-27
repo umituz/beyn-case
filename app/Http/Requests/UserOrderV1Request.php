@@ -4,6 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class UserOrderV1Request
+ * @package App\Http\Request
+ */
 class UserOrderV1Request extends FormRequest
 {
     /**

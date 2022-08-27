@@ -4,6 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class UserOrderFilterV1Request
+ * @package App\Http\Request
+ */
 class UserOrderFilterV1Request extends FormRequest
 {
     /**
