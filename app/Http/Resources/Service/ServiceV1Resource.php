@@ -5,6 +5,10 @@ namespace App\Http\Resources\Service;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * Class ServiceV1Resource
+ * @package App\Http\Resources\Service
+ */
 class ServiceV1Resource extends JsonResource
 {
     /**

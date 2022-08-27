@@ -3,10 +3,14 @@
 namespace App\Http\Resources\Car;
 
 use App\Enums\VersionEnums;
+use App\Http\Resources\BaseCollection;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class CarV1Collection extends ResourceCollection
+/**
+ * Class CarV1Collection
+ * @package App\Http\Resources\Car
+ */
+class CarV1Collection extends BaseCollection
 {
     public $collects = CarV1Resource::class;
 
@@ -20,8 +24,9 @@ class CarV1Collection extends ResourceCollection
     {
         return [
             'total' => $this->resource->count(),
+            'user_balance' => $this->getUserBalance($request),
             'data' => $this->collection,
-            'version' => VersionEnums::VERSION_1
+            'version' => VersionEnums::VERSION_1,
         ];
     }
 }

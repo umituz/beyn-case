@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
 
+/**
+ * Class CarV1Resource
+ * @package App\Http\Resources\Car
+ */
 class CarV1Resource extends JsonResource
 {
     /**
