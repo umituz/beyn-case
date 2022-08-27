@@ -20,6 +20,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('orders', [OrdersGatewayController::class, 'store']);
         Route::get('services', [ServicesGatewayController::class, 'index']);
         Route::get('users', [UsersGatewayController::class, 'index']);
-        Route::post('users/add-balance', [UsersGatewayController::class, 'addBalance']);
+        Route::put('users/add-balance', [UsersGatewayController::class, 'addBalance']);
     });
 });
