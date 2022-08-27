@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Repositories\CarRepositoryInterface;
 use App\Services\NovassetsService;
 use App\Traits\NotifiableOnSlack;
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -41,14 +42,47 @@ class SyncAutoMobileJob implements ShouldQueue
      */
     public function handle()
     {
-       # $cars = $this->novassetsService->fetchAutomobiles();
+        $cars = $this->novassetsService->fetchAutomobiles();
 
-        #if (json_encode($cars) === Cache::get('cars')) {
-            $this->toSlack('sync_automobiles', __('Couldn\'t find a tool to update or created!'));
+        if (json_encode($cars) === Cache::get('cars')) {
+            $this->toSlack(config('slack.channels.sync_automobiles'), __('Could not find a tool to update!'));
 
-         #   return;
-        #}
+            return;
+        }
 
+        if (!$cars || !isset($cars['RECORDS']) || !count($cars['RECORDS'])) {
+            $this->toSlack(config('slack.channels.sync_automobiles'), __('Could not fetch cars from api!'));
 
+            return;
+        }
+
+        foreach ($cars['RECORDS'] as $car) {
+            $updateOrCreate = $this->carRepository->updateOrCreate($car);
+
+            if (!$updateOrCreate) {
+                $this->toSlack(config('slack.channels.sync_automobiles'), __('Failed to create or update car!'));
+            }
+        }
+
+        $redis = Cache::put('cars', json_encode($cars));
+
+        if (!$redis) {
+            $this->toSlack(config('slack.channels.sync_automobiles'), __('Failed to register to redis!'));
+        }
+    }
+
+    /**
+     * @param Exception $exception
+     * @return bool
+     */
+    public function failed(Exception $exception): bool
+    {
+        $this->toSlack(
+            config('slack.channels.failed-jobs'),
+            "Failed while sync cars " .
+            "Exception message: ```{$exception->getMessage()}```"
+        );
+
+        return true;
     }
 }
