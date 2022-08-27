@@ -6,6 +6,10 @@ use App\Http\Controllers\Api\ApiController;
 use App\Http\Resources\Service\ServiceV1Collection;
 use App\Repositories\ServiceRepositoryInterface;
 
+/**
+ * Class ServicesV1Controller
+ * @package App\Http\Controllers\Api\Service
+ */
 class ServicesV1Controller extends ApiController
 {
     private ServiceRepositoryInterface $serviceRepository;

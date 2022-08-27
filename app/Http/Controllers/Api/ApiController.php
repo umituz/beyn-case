@@ -7,6 +7,10 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class ApiController
+ * @package App\Http\Controllers\Api
+ */
 class ApiController extends Controller
 {
     /**

@@ -12,6 +12,10 @@ use App\Repositories\CarRepositoryInterface;
 use App\Repositories\OrderRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 
+/**
+ * Class OrdersV1Controller
+ * @package App\Http\Controllers\Api\Order
+ */
 class OrdersV1Controller extends ApiController
 {
     private ServiceRepositoryInterface $serviceRepository;
