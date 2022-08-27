@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5cff9616b8f84d46795083e6491a3283",
+    "content-hash": "9a9a8daf8b51bc70b4dffb527b66c629",
     "packages": [
         {
             "name": "brick/math",
@@ -5312,6 +5312,53 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "whtht/perfectly-cache",
+            "version": "v4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/whthT/perfectly-cache.git",
+                "reference": "c1f980bb0ee1714da730094802521219f5e53c98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/whthT/perfectly-cache/zipball/c1f980bb0ee1714da730094802521219f5e53c98",
+                "reference": "c1f980bb0ee1714da730094802521219f5e53c98",
+                "shasum": ""
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Whtht\\PerfectlyCache\\Providers\\PerfectlyCacheServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Whtht\\PerfectlyCache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Musa Kurt",
+                    "email": "hackedtim61@gmail.com"
+                }
+            ],
+            "description": "Laravel database cache package",
+            "support": {
+                "issues": "https://github.com/whthT/perfectly-cache/issues",
+                "source": "https://github.com/whthT/perfectly-cache/tree/v4.3"
+            },
+            "time": "2021-06-22T12:01:38+00:00"
         }
     ],
     "packages-dev": [
