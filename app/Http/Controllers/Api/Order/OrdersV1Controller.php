@@ -52,7 +52,7 @@ class OrdersV1Controller extends ApiController
      * @param UserOrderV1Request $request
      * @return JsonResponse
      */
-    public function store(UserOrderV1Request $request)
+    public function store(UserOrderV1Request $request): JsonResponse
     {
         $user = $request->user();
         $service = $this->serviceRepository->getServiceById($request->service_id);
@@ -90,7 +90,7 @@ class OrdersV1Controller extends ApiController
      * @param UserOrderFilterV1Request $request
      * @return JsonResponse
      */
-    public function filters(UserOrderFilterV1Request $request)
+    public function filters(UserOrderFilterV1Request $request): JsonResponse
     {
         $orders = $this->orderRepository->getUserOrdersByFilter($request);
 

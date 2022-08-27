@@ -68,6 +68,7 @@ class UserRepository implements UserRepositoryInterface
                 return $user;
             });
         } catch (Exception $e) {
+            dd($e->getMessage());
             return false;
         }
     }
