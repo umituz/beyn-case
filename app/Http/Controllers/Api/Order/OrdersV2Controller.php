@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api\Order;
 
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Requests\UserOrderFilterV1Request;
+use App\Http\Requests\UserOrderFilterV2Request;
 use App\Http\Requests\UserOrderV2Request;
 use App\Http\Resources\Order\OrderV2Collection;
 use App\Http\Resources\Order\OrderV2Resource;
@@ -79,5 +81,20 @@ class OrdersV2Controller extends ApiController
         }
 
         return $this->success(__('Success'), OrderV2Resource::make($order));
+    }
+
+    /**
+     * @param UserOrderFilterV2Request $request
+     * @return JsonResponse
+     */
+    public function filters(UserOrderFilterV2Request $request): JsonResponse
+    {
+        $orders = $this->orderRepository->getUserOrdersByFilter($request);
+
+        if (!$orders->count()) {
+            return $this->error(__('No orders found!'));
+        }
+
+        return $this->success(__('Success'), new OrderV2Resource($orders));
     }
 }
