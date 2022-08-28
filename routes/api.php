@@ -7,12 +7,14 @@ use App\Http\Controllers\Api\Service\ServicesGatewayController;
 use App\Http\Controllers\Api\User\UsersGatewayController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('login', [AuthController::class, 'login']);
+});
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('auth/logout', [AuthController::class, 'logout']);
 
     Route::lapiv(function () {
         Route::get('cars', [CarsGatewayController::class, 'index']);

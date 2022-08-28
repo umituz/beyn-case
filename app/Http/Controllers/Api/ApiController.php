@@ -15,10 +15,10 @@ class ApiController extends Controller
 {
     /**
      * @param $message
-     * @param $data
+     * @param array $data
      * @return JsonResponse
      */
-    public function success($message = null, $data = []): JsonResponse
+    public function success($message = null, array $data = []): JsonResponse
     {
         if (is_null($message)) {
             $message = __('Successful');
