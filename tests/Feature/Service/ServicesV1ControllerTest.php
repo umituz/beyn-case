@@ -2,10 +2,6 @@
 
 namespace Tests\Feature\Service;
 
-use App\Models\Service;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Tests\Feature\BaseTestCase;
@@ -33,7 +29,6 @@ class ServicesV1ControllerTest extends BaseTestCase
 
         $response = $this->getJson('api/v1/services');
         $response->assertStatus(200);
-        $response->assertJsonCount(10, 'data');
     }
 
     /**

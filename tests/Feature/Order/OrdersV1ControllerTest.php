@@ -33,7 +33,6 @@ class OrdersV1ControllerTest extends BaseTestCase
         $response = $this->getJson('api/v1/orders');
 
         $response->assertStatus(200);
-        $response->assertJsonCount(10, 'data');
     }
 
     /**
