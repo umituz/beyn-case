@@ -30,7 +30,7 @@ class UserTest extends ModelTestSuite
      * @test
      * @covers ::orders
      */
-    function it_should_have_has_many_relations_with_builder_campaigns()
+    function it_should_have_has_many_relations_with_orders()
     {
         $hasManyMock = $this->createMock(HasMany::class);
 
