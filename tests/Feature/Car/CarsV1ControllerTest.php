@@ -2,10 +2,6 @@
 
 namespace Tests\Feature\Car;
 
-use App\Models\Car;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Tests\Feature\BaseTestCase;
@@ -46,14 +42,5 @@ class CarsV1ControllerTest extends BaseTestCase
 
         $response->assertStatus(401);
         $response->assertJsonPath('message', 'Unauthenticated.');
-    }
-
-    /**
-     * @param int $count
-     * @return Collection|HasFactory|Model|mixed
-     */
-    private function createCar(int $count = 1): mixed
-    {
-        return Car::factory()->count($count)->create();
     }
 }

@@ -47,13 +47,4 @@ class ServicesV1ControllerTest extends BaseTestCase
         $response->assertStatus(401);
         $response->assertJsonPath('message', 'Unauthenticated.');
     }
-
-    /**
-     * @param int $count
-     * @return Collection|HasFactory|Model|mixed
-     */
-    private function createService(int $count = 1): mixed
-    {
-        return Service::factory()->count($count)->create();
-    }
 }

@@ -2,9 +2,7 @@
 
 namespace Tests\Feature\Order;
 
-use App\Models\Car;
 use App\Models\Order;
-use App\Models\Service;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -26,7 +24,7 @@ class OrdersV1ControllerTest extends BaseTestCase
      * @covers ::index
      * @covers ::__construct
      */
-    function it_should_return_all_services()
+    function it_should_return_all_orders()
     {
         $user = $this->createUser(123456);
         $this->createOrder(10);
@@ -42,7 +40,7 @@ class OrdersV1ControllerTest extends BaseTestCase
      * @test
      * @covers ::index
      */
-    function it_should_not_return_services_with_wrong_credentials()
+    function it_should_not_return_orders_with_wrong_credentials()
     {
         $response = $this->getJson('api/v1/orders');
 
@@ -70,8 +68,8 @@ class OrdersV1ControllerTest extends BaseTestCase
 
         $response->assertStatus(200);
         $response->assertJsonPath('message', 'Success');
-        $response->assertJsonPath('data.resource.service_id', $service[0]->id);
-        $response->assertJsonPath('data.resource.car_id', $car[0]->id);
+        $response->assertJsonPath('data.service_id', $service[0]->id);
+        $response->assertJsonPath('data.car_id', $car[0]->id);
         $this->assertDatabaseHas('orders', [
             'user_id' => $user->id,
             'service_id' => $service[0]->id,
@@ -127,6 +125,41 @@ class OrdersV1ControllerTest extends BaseTestCase
         $this->assertDatabaseCount('orders', 0);
     }
 
+    /**
+     * @test
+     * @covers ::filters
+     */
+    function it_should_filter_orders()
+    {
+        $user = $this->createUser(123456);
+        $this->updateUserBalance($user);
+        Sanctum::actingAs($user, ['*']);
+        $service = $this->createService();
+        $car = $this->createCar();
+        $data = [
+            'service_id' => $service->first()->id,
+            'car_id' => $car->first()->id
+        ];
+
+        $response = $this->postJson('api/v1/orders', $data);
+
+        $response->assertStatus(200);
+        $response->assertJsonPath('message', 'Success');
+        $response->assertJsonPath('data.service_id', $service[0]->id);
+        $response->assertJsonPath('data.car_id', $car[0]->id);
+        $this->assertDatabaseHas('orders', [
+            'user_id' => $user->id,
+            'service_id' => $service[0]->id,
+            'car_id' => $car[0]->id
+        ]);
+        $this->assertDatabaseCount('orders', 1);
+    }
+
+    /**
+     * @param $user
+     * @param $balance
+     * @return mixed
+     */
     private function updateUserBalance($user, $balance = 100)
     {
         return $user->update(['balance' => $balance]);
