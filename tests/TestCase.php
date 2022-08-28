@@ -47,4 +47,27 @@ abstract class TestCase extends BaseTestCase
     {
         Eloquent::unguard();
     }
+
+    /**
+     * @param $class
+     * @param array $ignoreMethods
+     * @return MockObject
+     */
+    public function getIsolatedMock($class, $ignoreMethods = [])
+    {
+        return $this->getDisabledConstructorMock($class, $this->getClassMethods($class, $ignoreMethods));
+    }
+
+    /**
+     * @param $class
+     * @param array $mockMethods
+     * @return MockObject
+     */
+    public function getDisabledConstructorMock($class, $mockMethods = [])
+    {
+        return $this->getMockBuilder($class)
+            ->disableOriginalConstructor()
+            ->setMethods($mockMethods)
+            ->getMock();
+    }
 }
