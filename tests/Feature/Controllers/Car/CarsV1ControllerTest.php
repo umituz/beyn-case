@@ -29,7 +29,6 @@ class CarsV1ControllerTest extends BaseTestCase
 
         $response = $this->getJson('api/v1/cars');
         $response->assertStatus(200);
-        $response->assertJsonCount(10, 'data');
     }
 
     /**
