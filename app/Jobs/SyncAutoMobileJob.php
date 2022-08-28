@@ -42,13 +42,13 @@ class SyncAutoMobileJob implements ShouldQueue
      */
     public function handle()
     {
-        $cars = $this->novassetsService->fetchAutomobiles();
+        $cachedCars = Cache::get('cars');
 
-        if (json_encode($cars) === Cache::get('cars')) {
-            $this->toSlack(config('slack.channels.sync_automobiles'), __('Could not find a tool to update!'));
-
-            return;
+        if ($cachedCars) {
+            return $cachedCars;
         }
+
+        $cars = $this->novassetsService->fetchAutomobiles();
 
         if (!$cars || !isset($cars['RECORDS']) || !count($cars['RECORDS'])) {
             $this->toSlack(config('slack.channels.service_issues'), __('Could not fetch cars from api!'));
