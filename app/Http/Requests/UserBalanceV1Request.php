@@ -2,33 +2,21 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
 /**
  * Class UserBalanceV1Request
  * @package App\Http\Request
  */
-class UserBalanceV1Request extends FormRequest
+class UserBalanceV1Request extends Request
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'amount' => ['required'],
+            'amount' => ['required', 'integer'],
         ];
     }
 }

@@ -21,7 +21,7 @@ class RequestTest extends TestCase
     {
         $request = new class extends Request {
         };
-        
+
         $this->assertTrue($request->authorize());
     }
 
