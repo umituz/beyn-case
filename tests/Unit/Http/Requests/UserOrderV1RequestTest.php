@@ -1,24 +1,24 @@
 <?php
 
-namespace Tests\Unit\Http\Requests\Statistics;
+namespace Tests\Unit\Http\Requests;
 
 use App\Http\Requests\Request;
-use App\Http\Requests\Statistics\OverallStatisticsRequest;
+use App\Http\Requests\UserOrderV1Request;
 use Tests\Suites\RequestTestSuite;
 
 /**
- * Class OverallSummaryStatisticsRequestTest
- * @package Tests\Unit\Http\Requests\Statistics
- * @coversDefaultClass \App\Http\Requests\Statistics\OverallStatisticsRequest
+ * Class UserOrderV1RequestTest
+ * @package Tests\Unit\Http\Requests
+ * @coversDefaultClass \App\Http\Requests\UserOrderV1Request
  */
-class OverallStatisticsRequestTest extends RequestTestSuite
+class UserOrderV1RequestTest extends RequestTestSuite
 {
     /**
      * @return Request
      */
     public function getRequest(): Request
     {
-        return new OverallStatisticsRequest();
+        return new UserOrderV1Request();
     }
 
     /**
@@ -48,9 +48,9 @@ class OverallStatisticsRequestTest extends RequestTestSuite
     public function rulesProvider(): array
     {
         return [
-            ['partner', 'required|string|max:40'],
-            ['startTime', 'required|numeric'],
-            ['endTime', 'required|numeric|gte:startTime'],
+            ['service_id', ['required', 'integer']],
+            ['car_id', ['required', 'integer']],
+            ['price', ['nullable', 'integer']],
         ];
     }
 }
