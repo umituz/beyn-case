@@ -4,6 +4,8 @@ namespace Tests;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\MockObject\MockObject;
 
 abstract class TestCase extends BaseTestCase
@@ -69,5 +71,32 @@ abstract class TestCase extends BaseTestCase
             ->disableOriginalConstructor()
             ->setMethods($mockMethods)
             ->getMock();
+    }
+
+    /**
+     * @param Collection|array $expectedRows
+     * @param Collection $actualData
+     */
+    public function assertSameRows($expectedRows, Collection $actualData)
+    {
+        $this->assertCount(count($expectedRows), $actualData, 'Collection Count Failed');
+
+        foreach ($actualData as $key => $record) {
+            $this->assertTrue($actualData->contains($expectedRows[$key]));
+        }
+    }
+
+    /**
+     * @param Eloquent $expectedEloquent
+     * @param Eloquent $actualEloquent
+     * @param array $columns
+     */
+    public function assertSameModel(Eloquent $expectedEloquent, Eloquent $actualEloquent, array $columns = [])
+    {
+        $columns = empty($columns) ? array_keys($expectedEloquent->toArray()) : $columns;
+        $this->assertEquals(
+            Arr::only($expectedEloquent->attributesToArray(), $columns),
+            Arr::only($actualEloquent->attributesToArray(), $columns)
+        );
     }
 }
