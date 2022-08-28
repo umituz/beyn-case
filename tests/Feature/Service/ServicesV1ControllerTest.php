@@ -11,11 +11,11 @@ use Laravel\Sanctum\Sanctum;
 use Tests\Feature\BaseTestCase;
 
 /**
- * Class ServiceV1ControllerTest
+ * Class ServicesV1ControllerTest
  * @package Tests\Feature\Service
  * @coversDefaultClass \App\Http\Controllers\Api\Service\ServicesV1Controller
  */
-class ServiceV1ControllerTest extends BaseTestCase
+class ServicesV1ControllerTest extends BaseTestCase
 {
     use RefreshDatabase;
 
@@ -24,7 +24,7 @@ class ServiceV1ControllerTest extends BaseTestCase
      * @covers ::index
      * @covers ::__construct
      */
-    public function it_should_return_all_services()
+    function it_should_return_all_services()
     {
         $user = $this->createUser(123456);
         $this->createService(10);
@@ -38,8 +38,9 @@ class ServiceV1ControllerTest extends BaseTestCase
 
     /**
      * @test
+     * @covers ::index
      */
-    public function it_should_not_return_services_with_wrong_credentials()
+    function it_should_not_return_services_with_wrong_credentials()
     {
         $response = $this->getJson('api/v1/services');
 

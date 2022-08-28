@@ -71,10 +71,6 @@ class OrdersV1Controller extends ApiController
             return $this->error(__('No car found!'));
         }
 
-        if ($user->balance < $service->price) {
-            return $this->error(__('You have insufficient balance!'));
-        }
-
         $order = $this->orderRepository->create([
             'user_id' => $user->id,
             'service_id' => $request->service_id,
@@ -83,11 +79,7 @@ class OrdersV1Controller extends ApiController
             'price' => $service->price,
         ], $user);
 
-        if (!$order) {
-            return $this->error(__('Failed to create order!'));
-        }
-
-        return $this->success(__('Success'), OrderV1Resource::make($order));
+        return $this->success(__('Success'), (array)OrderV1Resource::make($order));
     }
 
     /**
@@ -98,6 +90,6 @@ class OrdersV1Controller extends ApiController
     {
         $orders = $this->orderRepository->getUserOrdersByFilter($request);
 
-        return $this->success(__('Success'), new OrderV1Resource($orders));
+        return $this->success(__('Success'), (array)new OrderV1Resource($orders));
     }
 }

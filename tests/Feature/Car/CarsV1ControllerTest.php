@@ -24,7 +24,7 @@ class CarsV1ControllerTest extends BaseTestCase
      * @covers ::index
      * @covers ::__construct
      */
-    public function it_should_return_all_cars()
+    function it_should_return_all_cars()
     {
         $user = $this->createUser(123456);
         $this->createCar(10);
@@ -38,8 +38,9 @@ class CarsV1ControllerTest extends BaseTestCase
 
     /**
      * @test
+     * @covers ::index
      */
-    public function it_should_not_return_cars_with_wrong_credentials()
+    function it_should_not_return_cars_with_wrong_credentials()
     {
         $response = $this->getJson('api/v1/cars');
 
