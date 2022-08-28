@@ -16,7 +16,7 @@ class UserBalanceV1Request extends Request
     public function rules(): array
     {
         return [
-            'amount' => ['required', 'integer'],
+            'amount' => ['required', 'numeric'],
         ];
     }
 }

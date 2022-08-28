@@ -48,7 +48,7 @@ class UserBalanceV1RequestTest extends RequestTestSuite
     public function rulesProvider(): array
     {
         return [
-            ['amount', ['required', 'integer']],
+            ['amount', ['required', 'numeric']],
         ];
     }
 }
