@@ -9,7 +9,7 @@ use Tests\Suites\NotificationTestSuite;
 
 /**
  * Class SlackTest.
- *
+ * @package Tests\Unit\Notifications
  * @coversDefaultClass \App\Notifications\Slack
  */
 class SlackTest extends NotificationTestSuite

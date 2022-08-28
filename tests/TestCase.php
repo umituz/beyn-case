@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -37,5 +38,13 @@ abstract class TestCase extends BaseTestCase
     public function getClassMethods($class, array $ignoreMethods = []): array
     {
         return array_diff(get_class_methods($class), array_merge($ignoreMethods, ['__construct']));
+    }
+
+    /**
+     * @return void
+     */
+    protected function setPrerequisites(): void
+    {
+        Eloquent::unguard();
     }
 }

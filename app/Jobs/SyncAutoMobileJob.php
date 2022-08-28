@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Cache;
  * Class SyncAutoMobileJob
  * @package App\Jobs
  */
-class SyncAutoMobileJob implements ShouldQueue
+class SyncAutoMobileJob extends \App\Console\Commands\BaseCommand implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, NotifiableOnSlack;
 

@@ -5,14 +5,13 @@ namespace App\Console\Commands;
 use App\Jobs\SyncAutoMobileJob;
 use App\Repositories\CarRepositoryInterface;
 use App\Services\NovassetsService;
-use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Queue;
 
 /**
  * Class SyncAutoMobile
  * @package App\Console\Commands
  */
-class SyncAutoMobile extends Command
+class SyncAutoMobile extends BaseCommand
 {
     /**
      * The name and signature of the console command.
