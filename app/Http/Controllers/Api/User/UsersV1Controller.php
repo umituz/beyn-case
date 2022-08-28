@@ -44,10 +44,6 @@ class UsersV1Controller extends ApiController
             $this->user->id,
         );
 
-        if (!$user) {
-            return $this->error(__('Could not add balance'));
-        }
-
         return $this->success(__('Success'), UserV1Resource::make($user));
     }
 }

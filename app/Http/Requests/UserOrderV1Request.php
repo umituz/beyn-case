@@ -29,7 +29,8 @@ class UserOrderV1Request extends FormRequest
     {
         return [
             'service_id' => ['required', 'integer'],
-            'car_id' => ['required', 'integer']
+            'car_id' => ['required', 'integer'],
+            'price' => ['nullable', 'integer'],
         ];
     }
 }

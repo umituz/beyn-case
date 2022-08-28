@@ -38,6 +38,6 @@ class ServiceRepository implements ServiceRepositoryInterface
      */
     public function getServiceById($id): mixed
     {
-        return $this->service->findOrFail($id);
+        return $this->service->find($id);
     }
 }

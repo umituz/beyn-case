@@ -6,7 +6,6 @@ use App\Models\Order;
 use App\Models\User;
 use App\Traits\NotifiableOnSlack;
 use Exception;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 
 /**

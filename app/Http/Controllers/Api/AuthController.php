@@ -40,9 +40,10 @@ class AuthController extends ApiController
             return $this->error(__('Failed to create token!'));
         }
 
+
         Auth::user()->access_token = $token;
 
-        return $this->success(__('Success'), (array)UserV1Resource::make(Auth::user()));
+        return $this->success(__('Success'), UserV1Resource::make(Auth::user()));
     }
 
     /**
@@ -52,7 +53,7 @@ class AuthController extends ApiController
     public function register(UserRegisterRequest $request): JsonResponse
     {
         $user = $this->userRepository->create([
-            'namee' => $request->name,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
@@ -71,7 +72,7 @@ class AuthController extends ApiController
 
         $user->access_token = $token;
 
-        return $this->success(__('Success'), (array)UserV1Resource::make($user));
+        return $this->success(__('Success'), UserV1Resource::make($user));
     }
 
     /**

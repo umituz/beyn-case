@@ -59,6 +59,6 @@ class CarRepository implements CarRepositoryInterface
      */
     public function getCarById(int $id): mixed
     {
-        return $this->car->findOrFail($id);
+        return $this->car->find($id);
     }
 }
