@@ -1,17 +1,17 @@
 <?php
 
-namespace Tests\Feature\Service;
+namespace Tests\Feature\Controllers\Car;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Tests\Feature\BaseTestCase;
 
 /**
- * Class ServicesV1ControllerTest
- * @package Tests\Feature\Service
- * @coversDefaultClass \App\Http\Controllers\Api\Service\ServicesV1Controller
+ * Class CarsV1ControllerTest
+ * @package Tests\Feature\Car
+ * @coversDefaultClass \App\Http\Controllers\Api\Car\CarsV1Controller
  */
-class ServicesV1ControllerTest extends BaseTestCase
+class CarsV1ControllerTest extends BaseTestCase
 {
     use RefreshDatabase;
 
@@ -20,24 +20,25 @@ class ServicesV1ControllerTest extends BaseTestCase
      * @covers ::index
      * @covers ::__construct
      */
-    function it_should_return_all_services()
+    function it_should_return_all_cars()
     {
         $user = $this->createUser(123456);
-        $this->createService(10);
+        $this->createCar(10);
 
         Sanctum::actingAs($user, ['*']);
 
-        $response = $this->getJson('api/v1/services');
+        $response = $this->getJson('api/v1/cars');
         $response->assertStatus(200);
+        $response->assertJsonCount(10, 'data');
     }
 
     /**
      * @test
      * @covers ::index
      */
-    function it_should_not_return_services_with_wrong_credentials()
+    function it_should_not_return_cars_with_wrong_credentials()
     {
-        $response = $this->getJson('api/v1/services');
+        $response = $this->getJson('api/v1/cars');
 
         $response->assertStatus(401);
         $response->assertJsonPath('message', 'Unauthenticated.');

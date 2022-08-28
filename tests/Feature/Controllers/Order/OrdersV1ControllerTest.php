@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Order;
+namespace Tests\Feature\Controllers\Order;
 
 use App\Models\Order;
 use Illuminate\Database\Eloquent\Collection;
