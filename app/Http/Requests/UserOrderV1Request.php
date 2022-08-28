@@ -13,7 +13,7 @@ class UserOrderV1Request extends Request
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'service_id' => ['required', 'integer'],

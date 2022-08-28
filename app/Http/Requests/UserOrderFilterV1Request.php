@@ -13,13 +13,12 @@ class UserOrderFilterV1Request extends Request
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'service_id' => 'nullable|int',
-            'car_id' => 'nullable|int',
-            'status' => 'nullable',
-            'price' => 'nullable|int',
+            'service_id' => ['nullable', 'integer'],
+            'car_id' => ['nullable', 'integer'],
+            'status' => ['nullable']
         ];
     }
 }
