@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 /**
  * Class NotifiableOnSlackTest.
- *
+ * @package Tests\Unit\Traits
  * @coversDefaultClass \App\Traits\NotifiableOnSlack
  */
 class NotifiableOnSlackTest extends TestCase
