@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Console\Commands\BaseCommand;
 use App\Repositories\CarRepositoryInterface;
 use App\Services\NovassetsService;
 use App\Traits\NotifiableOnSlack;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Cache;
  * Class SyncAutoMobileJob
  * @package App\Jobs
  */
-class SyncAutoMobileJob extends \App\Console\Commands\BaseCommand implements ShouldQueue
+class SyncAutoMobileJob extends BaseCommand implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, NotifiableOnSlack;
 
@@ -31,6 +32,8 @@ class SyncAutoMobileJob extends \App\Console\Commands\BaseCommand implements Sho
      */
     public function __construct(NovassetsService $novassetsService, CarRepositoryInterface $carRepository)
     {
+        parent::__construct();
+
         $this->novassetsService = $novassetsService;
         $this->carRepository = $carRepository;
     }
