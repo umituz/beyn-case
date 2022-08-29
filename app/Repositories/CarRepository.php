@@ -2,9 +2,11 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\RecordNotFoundException;
 use App\Models\Car;
 use App\Traits\NotifiableOnSlack;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -53,10 +55,18 @@ class CarRepository implements CarRepositoryInterface
     /**
      * @param int $id
      * @return mixed
+     * @throws RecordNotFoundException
      */
     public function getById(int $id): mixed
     {
-        return $this->car->find($id);
+        try {
+            return $this->car->findOrFail($id);
+        } catch (ModelNotFoundException $exception) {
+            $this->toSlack('slack.channels.db_issues', __('Record Not Found: ' . $exception->getMessage()));
+
+            throw new RecordNotFoundException();
+        }
+
     }
 
     /**
@@ -65,7 +75,15 @@ class CarRepository implements CarRepositoryInterface
      */
     public function create(array $data): mixed
     {
-        return $this->car->create($data);
+        try {
+            return DB::transaction(function () use ($data) {
+                return $this->car->create($data);
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
     }
 
     /**
@@ -74,6 +92,14 @@ class CarRepository implements CarRepositoryInterface
      */
     public function delete(int $id): int
     {
-        return $this->car->destroy($id);
+        try {
+            return DB::transaction(function () use ($id) {
+                return $this->car->destroy($id);
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
     }
 }

@@ -5,7 +5,9 @@ namespace App\Repositories;
 use App\Exceptions\RecordNotFoundException;
 use App\Models\Brand;
 use App\Traits\NotifiableOnSlack;
+use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class BrandRepository
@@ -43,7 +45,6 @@ class BrandRepository implements BrandRepositoryInterface
         try {
             return $this->brand->findOrFail($id);
         } catch (ModelNotFoundException $exception) {
-
             $this->toSlack('slack.channels.db_issues', __('Record Not Found: ' . $exception->getMessage()));
 
             throw new RecordNotFoundException();
@@ -56,7 +57,36 @@ class BrandRepository implements BrandRepositoryInterface
      */
     public function create(array $data): mixed
     {
-        return $this->brand->create($data);
+        try {
+            return DB::transaction(function () use ($data) {
+                return $this->brand->create($data);
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
+    }
+
+    /**
+     * @param int $id
+     * @param array $data
+     * @return mixed
+     */
+    public function update(int $id, array $data): mixed
+    {
+        try {
+            return DB::transaction(function () use ($id, $data) {
+                $brand = $this->getById($id);
+                $brand->update($data);
+
+                return $brand;
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
     }
 
     /**
@@ -66,5 +96,15 @@ class BrandRepository implements BrandRepositoryInterface
     public function delete(int $id): int
     {
         return $this->brand->destroy($id);
+
+        try {
+            return DB::transaction(function () use ($id) {
+                return $this->brand->destroy($id);
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
     }
 }

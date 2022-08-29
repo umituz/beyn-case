@@ -71,8 +71,7 @@ class BrandsV1Controller extends Controller
      */
     public function update(BrandRequest $request, $id): BrandResource
     {
-        $brand = $this->brandRepository->getById($id);
-        $brand->update($request->validated());
+        $brand = $this->brandRepository->update($id, $request->validated());
 
         return new BrandResource($brand);
     }
