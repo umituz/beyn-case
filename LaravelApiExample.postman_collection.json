@@ -10,6 +10,235 @@
 			"name": "V1",
 			"item": [
 				{
+					"name": "Brands",
+					"item": [
+						{
+							"name": "Get Brands",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/brands",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"brands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Brand",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test-name\",\n    \"model\":\"test-model\",\n    \"url\":\"http://test-url.com\",\n    \"year\":\"test-year\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/brands",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"brands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Brand",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/brands/1",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"brands",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Brand",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test-name-2\",\n    \"model\":\"test-model-22\",\n    \"url\":\"http://test-url-2.com\",\n    \"year\":\"test-year-2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/brands/1",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"brands",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Brand",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/brands/12",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"brands",
+										"12"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Cars",
 					"item": [
 						{
@@ -81,6 +310,140 @@
 								"body": {
 									"mode": "urlencoded",
 									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/cars/1",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Car",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand_id\": 1,\n    \"option\": \"test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/cars/1",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Car",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/cars",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"cars"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Car",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
 								"url": {
 									"raw": "{{apiUrl}}/api/v1/cars/1",
@@ -352,6 +715,140 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Create Service",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test-service\",\n    \"price\":100.50\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/services",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"services"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Service",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test-name-23\",\n    \"price\": 99.99\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/services/1",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"services",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Brand Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/services/12",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"services",
+										"12"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -445,154 +942,157 @@
 							"response": []
 						}
 					]
-				}
-			]
-		},
-		{
-			"name": "Auth",
-			"item": [
+				},
 				{
-					"name": "Login",
-					"event": [
+					"name": "Auth",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var data = pm.response.json();",
-									"",
-									"pm.environment.set(\"token\", data.data.access_token);",
-									"pm.environment.set(\"user_id\", data.data.id);"
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var data = pm.response.json();",
+											"",
+											"pm.environment.set(\"token\", data.data.access_token);",
+											"pm.environment.set(\"user_id\", data.data.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
 								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\":\"umituz998@gmail.com\",\n    \"password\":\"123456789\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{apiUrl}}/api/auth/login",
-							"host": [
-								"{{apiUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Register",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Ümit Kenan UZ",
-									"type": "text"
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"umituz998@gmail.com\",\n    \"password\":\"123456789\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
 								},
-								{
-									"key": "email",
-									"value": "1212umituz998@gmail.com232",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123456789",
-									"type": "text"
-								},
-								{
-									"key": "password_confirmation",
-									"value": "123456789",
-									"type": "text"
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/auth/login",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "{{apiUrl}}/api/auth/register",
-							"host": [
-								"{{apiUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Logout",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Ümit Kenan UZ",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "1212umituz998@gmail.com232",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/auth/register",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
 								}
-							]
+							},
+							"response": []
 						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{apiUrl}}/api/auth/logout",
-							"host": [
-								"{{apiUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"logout"
-							]
+						{
+							"name": "Logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{apiUrl}}/api/v1/auth/logout",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				}
 			]
 		}
@@ -602,7 +1102,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "13|nG6MCXccOhMLLdmha0I5ROzgpyUrGRbSIO6nXptH",
+				"value": "{{token}}",
 				"type": "string"
 			}
 		]

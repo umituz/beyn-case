@@ -10,7 +10,7 @@ use Tests\Feature\BaseTestCase;
 /**
  * Class AuthControllerTest
  * @package Tests\Feature\Auth
- * @coversDefaultClass \App\Http\Controllers\Api\AuthController
+ * @coversDefaultClass \App\Http\Controllers\Api\Auth\AuthController
  */
 class AuthControllerTest extends BaseTestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\Auth\AuthGatewayController;
 use App\Http\Controllers\Api\Brand\BrandsGatewayController;
 use App\Http\Controllers\Api\Car\CarsGatewayController;
 use App\Http\Controllers\Api\Order\OrdersGatewayController;
@@ -8,16 +8,18 @@ use App\Http\Controllers\Api\Service\ServicesGatewayController;
 use App\Http\Controllers\Api\User\UsersGatewayController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'auth'], function () {
-    Route::post('register', [AuthController::class, 'register']);
-    Route::post('login', [AuthController::class, 'login']);
+Route::lapiv(function () {
+    Route::group(['prefix' => 'auth'], function () {
+        Route::post('register', [AuthGateWayController::class, 'register']);
+        Route::post('login', [AuthGateWayController::class, 'login']);
+    });
 });
 
 Route::middleware('auth:sanctum')->group(function () {
 
-    Route::post('auth/logout', [AuthController::class, 'logout']);
-
     Route::lapiv(function () {
+
+        Route::post('auth/logout', [AuthGateWayController::class, 'logout']);
 
         Route::resource('brands', BrandsGatewayController::class);
         Route::resource('cars', CarsGatewayController::class);

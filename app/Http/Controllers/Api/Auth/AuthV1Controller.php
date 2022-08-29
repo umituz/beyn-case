@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Auth;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\V1\Auth\LoginRequest;
 use App\Http\Requests\V1\Auth\RegisterRequest;
 use App\Http\Resources\V1\User\UserResource;
@@ -11,10 +12,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class AuthController
- * @package App\Http\Controllers\Api
+ * Class AuthV1Controller
+ * @package App\Http\Controllers\Api\Auth
  */
-class AuthController extends ApiController
+class AuthV1Controller extends ApiController
 {
     private UserRepositoryInterface $userRepository;
 
@@ -39,7 +40,6 @@ class AuthController extends ApiController
         if (!$token = Auth::user()->createToken($request->email)->plainTextToken) {
             return $this->error(__('Failed to create token!'));
         }
-
 
         Auth::user()->access_token = $token;
 
