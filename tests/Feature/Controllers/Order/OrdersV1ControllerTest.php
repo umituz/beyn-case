@@ -82,53 +82,6 @@ class OrdersV1ControllerTest extends BaseTestCase
 
     /**
      * @test
-     * @covers ::store
-     */
-    public function it_should_not_create_order_with_wrong_service()
-    {
-        $user = $this->createUser(123456);
-        $this->updateUserBalance($user);
-        Sanctum::actingAs($user, ['*']);
-        $this->createService();
-        $car = $this->createCar();
-        $data = [
-            'service_id' => random_int(99,9999),
-            'car_id' => $car->first()->id
-        ];
-
-        $response = $this->postJson('api/v1/orders', $data);
-
-        $response->assertStatus(403);
-        $response->assertJsonPath('message', 'No service found!');
-        $this->assertDatabaseCount('orders', 0);
-    }
-
-    /**
-     * @test
-     * @covers ::store
-     */
-    public function it_should_not_create_order_with_wrong_car()
-    {
-        $user = $this->createUser(123456);
-        $this->updateUserBalance($user);
-        Sanctum::actingAs($user, ['*']);
-
-        $service = $this->createService();
-        $this->createCar();
-
-        $data = [
-            'service_id' => $service->first()->id,
-            'car_id' => 2222
-        ];
-        $response = $this->postJson('api/v1/orders', $data);
-
-        $response->assertStatus(403);
-        $response->assertJsonPath('message', 'No car found!');
-        $this->assertDatabaseCount('orders', 0);
-    }
-
-    /**
-     * @test
      * @covers ::filters
      */
     function it_should_filter_orders()

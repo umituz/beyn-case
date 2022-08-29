@@ -60,16 +60,7 @@ class OrdersV1Controller extends ApiController
     {
         $user = $request->user();
         $service = $this->serviceRepository->getById($request->service_id);
-
-        if (!$service) {
-            return $this->error(__('No service found!'));
-        }
-
-        $car = $this->carRepository->getById($request->car_id);
-
-        if (!$car) {
-            return $this->error(__('No car found!'));
-        }
+        $this->carRepository->getById($request->car_id);
 
         $order = $this->orderRepository->create([
             'user_id' => $user->id,
