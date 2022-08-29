@@ -16,3 +16,4 @@ yarn-error.log
 /.vscode
 coverage
 .DS_Store
+dump.rdb

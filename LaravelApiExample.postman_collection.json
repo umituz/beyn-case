@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "5|IJAoxj5wBcYjJ5hjd0G8ZCkIzL1894XgqZQ4aimh",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -31,15 +31,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/orders",
-							"protocol": "http",
+							"raw": "{{apiUrl}}/api/v1/orders",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{apiUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -60,7 +55,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "5|IJAoxj5wBcYjJ5hjd0G8ZCkIzL1894XgqZQ4aimh",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -78,15 +73,10 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/cars",
-							"protocol": "http",
+							"raw": "{{apiUrl}}/api/v1/cars",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{apiUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -104,7 +94,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "5|IJAoxj5wBcYjJ5hjd0G8ZCkIzL1894XgqZQ4aimh",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -118,15 +108,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/services",
-							"protocol": "http",
+							"raw": "{{apiUrl}}/api/v1/services",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{apiUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -137,14 +122,14 @@
 					"response": []
 				},
 				{
-					"name": "Get Users",
+					"name": "User Profile",
 					"request": {
 						"auth": {
 							"type": "bearer",
 							"bearer": [
 								{
 									"key": "token",
-									"value": "5|IJAoxj5wBcYjJ5hjd0G8ZCkIzL1894XgqZQ4aimh",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -158,7 +143,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/users",
+							"raw": "http://127.0.0.1:8000/api/v1/account/profile",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -170,7 +155,8 @@
 							"path": [
 								"api",
 								"v1",
-								"users"
+								"account",
+								"profile"
 							]
 						}
 					},
@@ -184,7 +170,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "1|UdNSkvWQBQa82dj01lVuizuvWnVpkyhp7fwFuzmR",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -199,7 +185,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"amount\": 100.00\n}",
+							"raw": "{\n    \"amount\": 100.50,\n    \"type\": \"deposit\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -207,20 +193,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/users/add-balance",
-							"protocol": "http",
+							"raw": "{{apiUrl}}/api/v1/account/balance",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{apiUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
-								"users",
-								"add-balance"
+								"account",
+								"balance"
 							]
 						}
 					},
@@ -234,7 +215,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "1|fpF6krEfsQbh0O3iGEcjtWh0j3fgHnYvcSujWFLY",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -259,19 +240,20 @@
 									"key": "car_id",
 									"value": "1",
 									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/orders",
-							"protocol": "http",
+							"raw": "{{apiUrl}}/api/v1/orders",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{apiUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -292,7 +274,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "1|fpF6krEfsQbh0O3iGEcjtWh0j3fgHnYvcSujWFLY",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -307,7 +289,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"service_id\":  1,\n    \"car_id\": 1,\n    \"status\": 0\n}",
+							"raw": "{\n    \"service_id\":  1,\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -315,15 +297,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/orders/filters",
-							"protocol": "http",
+							"raw": "{{apiUrl}}/api/v1/orders/filters",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{apiUrl}}"
 							],
-							"port": "8000",
 							"path": [
 								"api",
 								"v1",
@@ -338,13 +315,27 @@
 		},
 		{
 			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json();",
+							"",
+							"pm.environment.set(\"token\", data.data.access_token);",
+							"pm.environment.set(\"user_id\", data.data.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "aJ7R4gSVIB832kuUyErDLiQ8SVBgMmI5TA4am2eY",
+							"value": "{{token}}",
 							"type": "string"
 						}
 					]
@@ -367,17 +358,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/login",
-					"protocol": "http",
+					"raw": "{{apiUrl}}/api/auth/login",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{apiUrl}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
+						"auth",
 						"login"
 					]
 				}
@@ -421,17 +408,13 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/register",
-					"protocol": "http",
+					"raw": "{{apiUrl}}/api/auth/register",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{apiUrl}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
+						"auth",
 						"register"
 					]
 				}
@@ -446,7 +429,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "7|fW8X7k03q6TRyfKnV5lm1SBfzKCWI8XyNhXCwINU",
+							"value": "{{token}}",
 							"type": "string"
 						}
 					]
@@ -460,17 +443,13 @@
 					}
 				],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/logout",
-					"protocol": "http",
+					"raw": "{{apiUrl}}/api/auth/logout",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{apiUrl}}"
 					],
-					"port": "8000",
 					"path": [
 						"api",
+						"auth",
 						"logout"
 					]
 				}
