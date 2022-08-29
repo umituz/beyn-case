@@ -78,6 +78,6 @@ class OrderRepository implements OrderRepositoryInterface
             $query->where('status', $request->status);
         });
 
-        return $orders->get();
+        return $orders->with('service', 'car')->get();
     }
 }

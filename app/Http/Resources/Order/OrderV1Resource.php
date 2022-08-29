@@ -11,6 +11,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class OrderV1Resource extends JsonResource
 {
+    const DATE_FORMAT = 'Y-m-d H:i:s';
     /**
      * Transform the resource into an array.
      *
@@ -21,6 +22,13 @@ class OrderV1Resource extends JsonResource
     {
         self::withoutWrapping();
 
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'price' => $this->price,
+            'status' => $this->status,
+            'created_at' => $this->created_at->format(self::DATE_FORMAT),
+            'service' => $this->service,
+            'car' => $this->car,
+        ];
     }
 }

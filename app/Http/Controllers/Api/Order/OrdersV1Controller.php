@@ -90,6 +90,6 @@ class OrdersV1Controller extends ApiController
     {
         $orders = $this->orderRepository->getUserOrdersByFilter($request);
 
-        return $this->success(__('Success'), new OrderV1Resource($orders));
+        return $this->success(__('Success'), OrderV1Resource::collection($orders));
     }
 }

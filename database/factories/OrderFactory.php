@@ -17,12 +17,11 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            #'user_id' => $this->faker->numberBetween(1, 10000),
-            'user_id' => 1,
-            'service_id' => $this->faker->numberBetween(1, 10000),
-            'car_id' => $this->faker->numberBetween(1, 10000),
+            'user_id' => $this->faker->numberBetween(1, 10),
+            'service_id' => $this->faker->numberBetween(1, 10),
+            'car_id' => $this->faker->numberBetween(1, 10),
             'status' => 0,
-            'price' => $this->faker->numberBetween(1, 10000)
+            'price' => $this->faker->numberBetween(1, 10)
         ];
     }
 }
