@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Controllers;
+namespace Tests\Feature\Controllers\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -8,16 +8,16 @@ use Illuminate\Support\Facades\Hash;
 use Tests\Feature\BaseTestCase;
 
 /**
- * Class AuthControllerTest
+ * Class AuthV1ControllerTest
  * @package Tests\Feature\Auth
- * @coversDefaultClass \App\Http\Controllers\Api\Auth\AuthController
+ * @coversDefaultClass \App\Http\Controllers\Api\Auth\AuthV1Controller
  */
-class AuthControllerTest extends BaseTestCase
+class AuthV1ControllerTest extends BaseTestCase
 {
     use RefreshDatabase;
 
-    const LOGIN_ENDPOINT = 'api/auth/login';
-    const REGISTER_ENDPOINT = 'api/auth/register';
+    const LOGIN_ENDPOINT = 'api/v1/auth/login';
+    const REGISTER_ENDPOINT = 'api/v1/auth/register';
 
     /**
      * @test
