@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\V1\Auth\LoginRequest;
 use App\Http\Requests\V1\Auth\RegisterRequest;
-use App\Http\Resources\User\UserV1Resource;
+use App\Http\Resources\User\UserResource;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +43,7 @@ class AuthController extends ApiController
 
         Auth::user()->access_token = $token;
 
-        return $this->success(__('Success'), UserV1Resource::make(Auth::user()));
+        return $this->success(__('Success'), UserResource::make(Auth::user()));
     }
 
     /**
@@ -72,7 +72,7 @@ class AuthController extends ApiController
 
         $user->access_token = $token;
 
-        return $this->success(__('Success'), UserV1Resource::make($user));
+        return $this->success(__('Success'), UserResource::make($user));
     }
 
     /**

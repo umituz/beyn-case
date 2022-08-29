@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\Order;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\V1\Order\OrderFilterRequest;
 use App\Http\Requests\V1\Order\OrderRequest;
-use App\Http\Resources\Order\OrderV1Collection;
-use App\Http\Resources\Order\OrderV1Resource;
+use App\Http\Resources\Order\OrderCollection;
+use App\Http\Resources\Order\OrderResource;
 use App\Repositories\CarRepositoryInterface;
 use App\Repositories\OrderRepositoryInterface;
 use App\Repositories\ServiceRepositoryInterface;
@@ -41,13 +41,13 @@ class OrdersV1Controller extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return OrderV1Collection
+     * @return OrderCollection
      */
-    public function index(): OrderV1Collection
+    public function index(): OrderCollection
     {
         $orders = $this->orderRepository->getAll();
 
-        return new OrderV1Collection($orders);
+        return new OrderCollection($orders);
     }
 
     /**
@@ -70,7 +70,7 @@ class OrdersV1Controller extends ApiController
             'price' => $service->price,
         ], $user);
 
-        return $this->success(__('Success'), OrderV1Resource::make($order));
+        return $this->success(__('Success'), OrderResource::make($order));
     }
 
     /**
@@ -81,17 +81,17 @@ class OrdersV1Controller extends ApiController
     {
         $orders = $this->orderRepository->getUserOrdersByFilter($request);
 
-        return $this->success(__('Success'), OrderV1Resource::collection($orders));
+        return $this->success(__('Success'), OrderResource::collection($orders));
     }
 
     /**
      * @param int $id
-     * @return OrderV1Resource
+     * @return OrderResource
      */
-    public function show(int $id): OrderV1Resource
+    public function show(int $id): OrderResource
     {
         $order = $this->orderRepository->getById($id);
 
-        return new OrderV1Resource($order);
+        return new OrderResource($order);
     }
 }

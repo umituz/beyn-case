@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Resources\Order;
+namespace App\Http\Resources\V1\Order;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * Class OrderV1Resource
- * @package App\Http\Resources\Order
+ * Class OrderResource
+ * @package App\Http\Resources\V1\Order
  */
-class OrderV1Resource extends JsonResource
+class OrderResource extends JsonResource
 {
     const DATE_FORMAT = 'Y-m-d H:i:s';
     /**

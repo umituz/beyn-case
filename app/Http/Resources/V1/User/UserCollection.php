@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Resources\Order;
+namespace App\Http\Resources\V1\User;
 
 use App\Enums\VersionEnums;
 use App\Http\Resources\BaseCollection;
 use Illuminate\Http\Request;
 
 /**
- * Class OrderV1Collection
- * @package App\Http\Resources\Order
+ * Class UserCollection
+ * @package App\Http\Resources\V1\User
  */
-class OrderV1Collection extends BaseCollection
+class UserCollection extends BaseCollection
 {
-    public $collects = OrderV1Resource::class;
+    public $collects = UserResource::class;
 
     /**
      * Transform the resource collection into an array.
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return array
      */
     public function toArray($request): array

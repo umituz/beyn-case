@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\V1\User\BalanceRequest;
-use App\Http\Resources\User\UserV1Resource;
+use App\Http\Resources\User\UserResource;
 use App\Repositories\UserRepositoryInterface;
 use App\Services\UserService;
 
@@ -29,11 +29,11 @@ class UsersV1Controller extends ApiController
     }
 
     /**
-     * @return UserV1Resource
+     * @return UserResource
      */
-    public function profile(): UserV1Resource
+    public function profile(): UserResource
     {
-        return new UserV1Resource($this->user);
+        return new UserResource($this->user);
     }
 
     /**
@@ -47,6 +47,6 @@ class UsersV1Controller extends ApiController
             $this->user->id,
         );
 
-        return $this->success(__('Success'), UserV1Resource::make($user));
+        return $this->success(__('Success'), UserResource::make($user));
     }
 }

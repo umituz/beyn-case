@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Service;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Resources\Service\ServiceV1Collection;
-use App\Http\Resources\Service\ServiceV1Resource;
+use App\Http\Resources\Service\ServiceCollection;
+use App\Http\Resources\Service\ServiceResource;
 use App\Repositories\ServiceRepositoryInterface;
 
 /**
@@ -26,23 +26,23 @@ class ServicesV1Controller extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return ServiceV1Collection
+     * @return ServiceCollection
      */
-    public function index(): ServiceV1Collection
+    public function index(): ServiceCollection
     {
         $services = $this->serviceRepository->getAll();
 
-        return new ServiceV1Collection($services);
+        return new ServiceCollection($services);
     }
 
     /**
      * @param int $id
-     * @return ServiceV1Resource
+     * @return ServiceResource
      */
-    public function show(int $id): ServiceV1Resource
+    public function show(int $id): ServiceResource
     {
         $service = $this->serviceRepository->getById($id);
 
-        return new ServiceV1Resource($service);
+        return new ServiceResource($service);
     }
 }

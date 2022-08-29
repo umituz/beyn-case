@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Resources\User;
+namespace App\Http\Resources\V1\Service;
 
 use App\Enums\VersionEnums;
 use App\Http\Resources\BaseCollection;
 use Illuminate\Http\Request;
 
 /**
- * Class UserV1Collection
- * @package App\Http\Resources\User
+ * Class ServiceCollection
+ * @package App\Http\Resources\V1\Service
  */
-class UserV1Collection extends BaseCollection
+class ServiceCollection extends BaseCollection
 {
-    public $collects = UserV1Resource::class;
+    public $collects = ServiceResource::class;
 
     /**
      * Transform the resource collection into an array.

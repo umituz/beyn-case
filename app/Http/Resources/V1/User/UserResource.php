@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\User;
+namespace App\Http\Resources\V1\User;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
@@ -8,10 +8,10 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
 
 /**
- * Class UserV1Resource
- * @package App\Http\Resources\User
+ * Class UserResource
+ * @package App\Http\Resources\V1\User
  */
-class UserV1Resource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
