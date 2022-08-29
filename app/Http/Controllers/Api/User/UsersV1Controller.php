@@ -20,6 +20,7 @@ class UsersV1Controller extends ApiController
 
     /**
      * @param UserRepositoryInterface $userRepository
+     * @param UserService $userService
      */
     public function __construct(UserRepositoryInterface $userRepository, UserService $userService)
     {
@@ -42,8 +43,10 @@ class UsersV1Controller extends ApiController
      */
     public function balance(BalanceRequest $request): mixed
     {
+        $balance = $this->userService->getBalanceByType($this->user->balance, $request->amount, $request->type);
+
         $user = $this->userRepository->updateUserById(
-            ['balance' => $this->userService->getBalanceByType($this->user->balance, $request->amount, $request->type)],
+            ['balance' => $balance],
             $this->user->id,
         );
 

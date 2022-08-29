@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\V1\User;
 
+use App\Enums\BalanceEnums;
 use App\Http\Requests\Request;
 
 /**
@@ -19,7 +20,12 @@ class BalanceRequest extends Request
     {
         return [
             'amount' => ['required', 'numeric'],
-            'type' => ['required', 'string'],
+            'type' => ['required', 'string', 'in:' . BalanceEnums::DEPOSIT_TYPE . ',' . BalanceEnums::WITHDRAW_TYPE],
+            'fullname' => ['required', 'string', 'max:40', 'min:3'],
+            'card_number' => ['required', 'numeric', 'max:16', 'min:16'],
+            'expiry_month' => ['required', 'numeric',  'max:2', 'min:2'],
+            'expiry_year' => ['required', 'numeric', 'max:4', 'min:4'],
+            'cvc' => ['required', 'numeric', 'max:3', 'min:3'],
         ];
     }
 }

@@ -12,6 +12,9 @@ use Tests\Suites\RequestTestSuite;
  */
 class BalanceRequestTest extends RequestTestSuite
 {
+    const DEPOSIT_TYPE = 'deposit';
+    const WITHDRAW_TYPE = 'withdraw';
+
     /**
      * @return BalanceRequest
      */
@@ -48,7 +51,12 @@ class BalanceRequestTest extends RequestTestSuite
     {
         return [
             ['amount', ['required', 'numeric']],
-            ['type', ['required', 'string']],
+            ['type', ['required', 'string', 'in:' . self::DEPOSIT_TYPE . ',' . self::WITHDRAW_TYPE]],
+            ['fullname', ['required', 'string', 'max:40', 'min:3']],
+            ['card_number', ['required', 'numeric', 'max:16', 'min:16']],
+            ['expiry_month', ['required', 'numeric', 'max:2', 'min:2']],
+            ['expiry_year', ['required', 'numeric', 'max:4', 'min:4']],
+            ['cvc', ['required', 'numeric', 'max:3', 'min:3']],
         ];
     }
 }
