@@ -66,23 +66,30 @@ class BrandsV1Controller extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param BrandRequest $request
+     * @param int $id
+     * @return BrandResource
      */
-    public function update(Request $request, $id)
+    public function update(BrandRequest $request, $id): BrandResource
     {
-        //
+        $brand = $this->brandRepository->getById($id);
+        $brand->update($request->validated());
+
+        return new BrandResource($brand);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
-    public function destroy($id)
+    public function destroy($id): array
     {
-        //
+        $this->brandRepository->delete($id);
+
+        return [
+            'message' => __('Deleted')
+        ];
     }
 }
