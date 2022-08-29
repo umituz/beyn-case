@@ -27,7 +27,6 @@ class OrdersV1ControllerTest extends BaseTestCase
     function it_should_return_all_orders()
     {
         $user = $this->createUser(123456);
-        $this->createOrder(10);
         Sanctum::actingAs($user, ['*']);
 
         $response = $this->getJson('api/v1/orders');
@@ -91,22 +90,27 @@ class OrdersV1ControllerTest extends BaseTestCase
         Sanctum::actingAs($user, ['*']);
         $service = $this->createService();
         $car = $this->createCar();
+
         $data = [
             'service_id' => $service->first()->id,
             'car_id' => $car->first()->id
         ];
 
         $response = $this->postJson('api/v1/orders', $data);
-
         $response->assertStatus(200);
+
         $response->assertJsonPath('message', 'Success');
+
         $response->assertJsonPath('data.service.id', $service->first()->id);
+
         $response->assertJsonPath('data.car.id', $car->first()->id);
+
         $this->assertDatabaseHas('orders', [
             'user_id' => $user->id,
             'service_id' => $service->first()->id,
             'car_id' => $car->first()->id
         ]);
+
         $this->assertDatabaseCount('orders', 1);
     }
 
@@ -118,14 +122,5 @@ class OrdersV1ControllerTest extends BaseTestCase
     private function updateUserBalance($user, $balance = 100)
     {
         return $user->update(['balance' => $balance]);
-    }
-
-    /**
-     * @param int $count
-     * @return Collection|HasFactory|Model|mixed
-     */
-    private function createOrder(int $count = 1): mixed
-    {
-        return Order::factory()->count($count)->create();
     }
 }
