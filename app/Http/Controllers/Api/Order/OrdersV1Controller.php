@@ -59,7 +59,7 @@ class OrdersV1Controller extends ApiController
     public function store(UserOrderV1Request $request): JsonResponse
     {
         $user = $request->user();
-        $service = $this->serviceRepository->getServiceById($request->service_id);
+        $service = $this->serviceRepository->getById($request->service_id);
 
         if (!$service) {
             return $this->error(__('No service found!'));

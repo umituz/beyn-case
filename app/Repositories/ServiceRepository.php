@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Service;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class ServiceRepository
@@ -36,7 +35,7 @@ class ServiceRepository implements ServiceRepositoryInterface
      * @param  $id
      * @return mixed
      */
-    public function getServiceById($id): mixed
+    public function getById($id): mixed
     {
         return $this->service->find($id);
     }

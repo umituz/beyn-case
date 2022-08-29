@@ -23,7 +23,10 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::get('/{id}', [CarsGatewayController::class, 'show']);
         });
 
-        Route::get('services', [ServicesGatewayController::class, 'index']);
+        Route::group(['prefix' => 'services'], function () {
+            Route::get('/', [ServicesGatewayController::class, 'index']);
+            Route::get('/{id}', [ServicesGatewayController::class, 'show']);
+        });
 
         Route::group(['prefix' => 'orders'], function () {
             Route::get('/', [OrdersGatewayController::class, 'index']);

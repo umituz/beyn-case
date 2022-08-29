@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Service;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Resources\Service\ServiceV1Collection;
+use App\Http\Resources\Service\ServiceV1Resource;
 use App\Repositories\ServiceRepositoryInterface;
 
 /**
@@ -32,5 +33,16 @@ class ServicesV1Controller extends ApiController
         $services = $this->serviceRepository->getAll();
 
         return new ServiceV1Collection($services);
+    }
+
+    /**
+     * @param int $id
+     * @return ServiceV1Resource
+     */
+    public function show(int $id): ServiceV1Resource
+    {
+        $service = $this->serviceRepository->getById($id);
+
+        return new ServiceV1Resource($service);
     }
 }
