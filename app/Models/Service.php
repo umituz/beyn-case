@@ -17,6 +17,8 @@ class Service extends Model
 {
     use HasFactory, PerfectlyCachable, SoftDeletes;
 
+    protected $fillable = ['name', 'price'];
+
     /**
      * @return void
      */
