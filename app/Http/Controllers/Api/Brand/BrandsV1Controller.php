@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api\Brand;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\Brand\BrandRequest;
 use App\Http\Resources\V1\Brand\BrandCollection;
+use App\Http\Resources\V1\Brand\BrandResource;
 use App\Repositories\BrandRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -38,23 +40,27 @@ class BrandsV1Controller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param BrandRequest $request
+     * @return BrandResource
      */
-    public function store(Request $request)
+    public function store(BrandRequest $request): BrandResource
     {
-        //
+        $car = $this->brandRepository->create($request->validated());
+
+        return new BrandResource($car);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return BrandResource
      */
-    public function show($id)
+    public function show($id): BrandResource
     {
-        //
+        $car = $this->brandRepository->getById($id);
+
+        return new BrandResource($car);
     }
 
     /**

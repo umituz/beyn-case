@@ -22,4 +22,9 @@ Genel olarak yapılması gerekenler
     - örnek: https://webhook.site/2f416b62-093d-4d73-80b3-f3d1ca72bec7
 - 
 
-    
+Psrs
+
+- Sınıflara Phpdoc eklendi
+- 120 karakter limitine uyuldu
+- Parametre tipleri eklendi metodlar için
+- Veri geri dönüşleri eklendi metodlar için

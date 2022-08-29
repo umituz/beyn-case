@@ -37,17 +37,6 @@ class CarsV1Controller extends ApiController
     }
 
     /**
-     * @param int $id
-     * @return CarV1Resource
-     */
-    public function show(int $id): CarV1Resource
-    {
-        $car = $this->carRepository->getById($id);
-
-        return new CarV1Resource($car);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param CarRequest $request
@@ -56,6 +45,17 @@ class CarsV1Controller extends ApiController
     public function store(CarRequest $request): CarV1Resource
     {
         $car = $this->carRepository->create($request->validated());
+
+        return new CarV1Resource($car);
+    }
+
+    /**
+     * @param int $id
+     * @return CarV1Resource
+     */
+    public function show(int $id): CarV1Resource
+    {
+        $car = $this->carRepository->getById($id);
 
         return new CarV1Resource($car);
     }
