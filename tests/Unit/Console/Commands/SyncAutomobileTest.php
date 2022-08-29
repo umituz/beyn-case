@@ -4,6 +4,7 @@ namespace Tests\Unit\Console\Commands;
 
 use App\Console\Commands\SyncAutoMobile;
 use App\Jobs\SyncAutoMobileJob;
+use App\Repositories\BrandRepositoryInterface;
 use App\Repositories\CarRepositoryInterface;
 use App\Services\NovassetsService;
 use Illuminate\Support\Facades\Queue;
@@ -21,7 +22,7 @@ class SyncAutomobileTest extends CommandTestSuite
      * @covers ::handle
      * @covers ::__construct
      */
-    public function it_should_set_overall_analytics_check_jobs()
+    public function it_should_set_sync_automobile_jobs()
     {
         Queue::fake();
 
@@ -33,7 +34,11 @@ class SyncAutomobileTest extends CommandTestSuite
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->executeCommand(new SyncAutoMobile($novasetsServiceMock, $carRepositoryMock));
+        $brandRepositoryMock = $this->getMockBuilder(BrandRepositoryInterface::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $this->executeCommand(new SyncAutoMobile($novasetsServiceMock, $carRepositoryMock, $brandRepositoryMock));
 
         Queue::assertPushed(SyncAutoMobileJob::class);
     }
