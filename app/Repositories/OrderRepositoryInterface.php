@@ -33,4 +33,10 @@ interface OrderRepositoryInterface
      * @param $request
      */
     public function getUserOrdersByFilter($request): mixed;
+
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function getById(int $id): mixed;
 }

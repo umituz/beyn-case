@@ -80,4 +80,13 @@ class OrderRepository implements OrderRepositoryInterface
 
         return $orders->with('service', 'car')->get();
     }
+
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function getById(int $id): mixed
+    {
+        return $this->order->find($id);
+    }
 }

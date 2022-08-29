@@ -30,6 +30,6 @@ interface CarRepositoryInterface
      * @param int $id
      * @return mixed
      */
-    public function getCarById(int $id): mixed;
+    public function getById(int $id): mixed;
 
 }

@@ -65,7 +65,7 @@ class OrdersV1Controller extends ApiController
             return $this->error(__('No service found!'));
         }
 
-        $car = $this->carRepository->getCarById($request->car_id);
+        $car = $this->carRepository->getById($request->car_id);
 
         if (!$car) {
             return $this->error(__('No car found!'));
@@ -91,5 +91,16 @@ class OrdersV1Controller extends ApiController
         $orders = $this->orderRepository->getUserOrdersByFilter($request);
 
         return $this->success(__('Success'), OrderV1Resource::collection($orders));
+    }
+
+    /**
+     * @param int $id
+     * @return OrderV1Resource
+     */
+    public function show(int $id): OrderV1Resource
+    {
+        $order = $this->orderRepository->getById($id);
+
+        return new OrderV1Resource($order);
     }
 }

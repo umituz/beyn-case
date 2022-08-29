@@ -37,11 +37,11 @@ class CarsV1Controller extends ApiController
 
     /**
      * @param int $id
-     * @return mixed
+     * @return CarV1Resource
      */
-    public function show(int $id): mixed
+    public function show(int $id): CarV1Resource
     {
-        $car = $this->carRepository->getCarById($id);
+        $car = $this->carRepository->getById($id);
 
         return new CarV1Resource($car);
     }
