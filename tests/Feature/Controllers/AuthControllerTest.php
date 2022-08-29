@@ -59,8 +59,9 @@ class AuthControllerTest extends BaseTestCase
      */
     function it_should_not_login_when_request_has_incorrect_credentials()
     {
+        $user = $this->createUser(123456);
         $data = [
-            'email' => fake()->email,
+            'email' => $user->email,
             'password' => fake()->password
         ];
 
@@ -68,9 +69,6 @@ class AuthControllerTest extends BaseTestCase
 
         $response->assertStatus(403);
         $response->assertJsonPath('message', 'Email or password is incorrect!');
-        $this->assertDatabaseMissing('users', [
-            'email' => $data['email']
-        ]);
     }
 
     /**
