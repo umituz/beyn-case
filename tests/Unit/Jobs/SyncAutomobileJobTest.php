@@ -76,7 +76,7 @@ class SyncAutomobileJobTest extends JobTestSuite
         $exception = new Exception(fake()->word);
         $syncAutomobileJob = $this->getMockBuilder($this->getJobClassName())
             ->onlyMethods(['toSlack'])
-            ->setConstructorArgs([$this->novasetsService, $this->carRepository])
+            ->setConstructorArgs([$this->novasetsService, $this->carRepository, $this->brandRepository])
             ->getMock();
 
         $slackMessage = "Failed while sync cars " .
