@@ -3,6 +3,7 @@
 namespace Tests\Unit\Jobs;
 
 use App\Jobs\SyncAutoMobileJob;
+use App\Repositories\BrandRepositoryInterface;
 use App\Repositories\CarRepositoryInterface;
 use App\Services\NovassetsService;
 use Exception;
@@ -17,6 +18,7 @@ class SyncAutomobileJobTest extends JobTestSuite
 {
     private $novasetsService;
     private $carRepository;
+    private $brandRepository;
     /**
      * @return string
      */
@@ -30,7 +32,7 @@ class SyncAutomobileJobTest extends JobTestSuite
      */
     protected function getHandlerDependencies(): array
     {
-        return [NovassetsService::class, CarRepositoryInterface::class];
+        return [NovassetsService::class, CarRepositoryInterface::class, BrandRepositoryInterface::class];
     }
 
     /**
@@ -39,10 +41,11 @@ class SyncAutomobileJobTest extends JobTestSuite
     protected function setUp(): void
     {
         parent::setUp();
-        [$novasetsService, $carRepository] = $this->mockHandlerDependencies();
+        [$novasetsService, $carRepository, $brandRepository] = $this->mockHandlerDependencies();
 
         $this->novasetsService = $novasetsService;
         $this->carRepository = $carRepository;
+        $this->brandRepository = $brandRepository;
     }
 
     /**
@@ -54,7 +57,7 @@ class SyncAutomobileJobTest extends JobTestSuite
     {
         $completeRequester = $this->getMockBuilder($this->getJobClassName())
             ->onlyMethods([])
-            ->setConstructorArgs([$this->novasetsService, $this->carRepository])
+            ->setConstructorArgs([$this->novasetsService, $this->carRepository, $this->brandRepository])
             ->getMock();
 
         $this->novasetsService->expects($this->once())->method('fetchAutomobiles')->willReturn([
