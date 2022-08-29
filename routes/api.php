@@ -17,7 +17,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('auth/logout', [AuthController::class, 'logout']);
 
     Route::lapiv(function () {
-        Route::get('cars', [CarsGatewayController::class, 'index']);
+
+        Route::group(['prefix' => 'cars'], function () {
+            Route::get('/', [CarsGatewayController::class, 'index']);
+            Route::get('/{id}', [CarsGatewayController::class, 'show']);
+        });
+
         Route::get('services', [ServicesGatewayController::class, 'index']);
 
         Route::group(['prefix' => 'orders'], function () {

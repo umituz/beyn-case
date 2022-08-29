@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Car;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Resources\Car\CarV1Collection;
+use App\Http\Resources\Car\CarV1Resource;
 use App\Repositories\CarRepositoryInterface;
 
 /**
@@ -32,5 +33,16 @@ class CarsV1Controller extends ApiController
         $cars =  $this->carRepository->getAll();
 
         return new CarV1Collection($cars);
+    }
+
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function show(int $id): mixed
+    {
+        $car = $this->carRepository->getCarById($id);
+
+        return new CarV1Resource($car);
     }
 }
