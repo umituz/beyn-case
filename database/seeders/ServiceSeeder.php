@@ -5,6 +5,10 @@ namespace Database\Seeders;
 use App\Models\Service;
 use Illuminate\Database\Seeder;
 
+/**
+ * Class ServiceSeeder
+ * @package Database\Seeders
+ */
 class ServiceSeeder extends Seeder
 {
     /**

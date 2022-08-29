@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+/**
+ * Class DatabaseSeeder
+ * @package Database\Seeders
+ */
 class DatabaseSeeder extends Seeder
 {
     /**

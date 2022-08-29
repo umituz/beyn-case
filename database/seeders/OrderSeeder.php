@@ -5,6 +5,10 @@ namespace Database\Seeders;
 use App\Models\Order;
 use Illuminate\Database\Seeder;
 
+/**
+ * Class OrderSeeder
+ * @package Database\Seeders
+ */
 class OrderSeeder extends Seeder
 {
     /**

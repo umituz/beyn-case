@@ -5,6 +5,10 @@ namespace Database\Seeders;
 use App\Models\Car;
 use Illuminate\Database\Seeder;
 
+/**
+ * Class CarSeeder
+ * @package Database\Seeders
+ */
 class CarSeeder extends Seeder
 {
     /**
