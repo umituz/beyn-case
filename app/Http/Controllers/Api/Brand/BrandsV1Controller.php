@@ -7,7 +7,6 @@ use App\Http\Requests\V1\Brand\BrandRequest;
 use App\Http\Resources\V1\Brand\BrandCollection;
 use App\Http\Resources\V1\Brand\BrandResource;
 use App\Repositories\BrandRepositoryInterface;
-use Illuminate\Http\Request;
 
 /**
  * Class BrandsV1Controller
@@ -45,9 +44,9 @@ class BrandsV1Controller extends Controller
      */
     public function store(BrandRequest $request): BrandResource
     {
-        $car = $this->brandRepository->create($request->validated());
+        $brand = $this->brandRepository->create($request->validated());
 
-        return new BrandResource($car);
+        return new BrandResource($brand);
     }
 
     /**
@@ -58,9 +57,9 @@ class BrandsV1Controller extends Controller
      */
     public function show($id): BrandResource
     {
-        $car = $this->brandRepository->getById($id);
+        $brand = $this->brandRepository->getById($id);
 
-        return new BrandResource($car);
+        return new BrandResource($brand);
     }
 
     /**
