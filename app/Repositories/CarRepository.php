@@ -15,9 +15,6 @@ class CarRepository implements CarRepositoryInterface
 {
     use NotifiableOnSlack;
 
-    /**
-     * @var Car
-     */
     private Car $car;
 
     /**

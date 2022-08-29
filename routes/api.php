@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\Brand\BrandsGatewayController;
 use App\Http\Controllers\Api\Car\CarsGatewayController;
 use App\Http\Controllers\Api\Order\OrdersGatewayController;
 use App\Http\Controllers\Api\Service\ServicesGatewayController;
@@ -18,6 +19,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::lapiv(function () {
 
+        Route::resource('brands', BrandsGatewayController::class);
         Route::resource('cars', CarsGatewayController::class);
 
         Route::group(['prefix' => 'services'], function () {

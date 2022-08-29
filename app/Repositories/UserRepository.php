@@ -15,9 +15,6 @@ class UserRepository implements UserRepositoryInterface
 {
     use NotifiableOnSlack;
 
-    /**
-     * @var User
-     */
     private User $user;
 
     /**
