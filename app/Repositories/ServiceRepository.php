@@ -83,7 +83,6 @@ class ServiceRepository implements ServiceRepositoryInterface
                 return $service;
             });
         } catch (Exception $e) {
-
             $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
 
             return false;
