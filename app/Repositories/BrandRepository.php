@@ -95,8 +95,6 @@ class BrandRepository implements BrandRepositoryInterface
      */
     public function delete(int $id): int
     {
-        return $this->brand->destroy($id);
-
         try {
             return DB::transaction(function () use ($id) {
                 return $this->brand->destroy($id);

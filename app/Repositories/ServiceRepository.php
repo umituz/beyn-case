@@ -58,4 +58,42 @@ class ServiceRepository implements ServiceRepositoryInterface
             return false;
         }
     }
+
+    /**
+     * @param int $id
+     * @param array $data
+     * @return mixed
+     */
+    public function update(int $id, array $data): mixed
+    {
+        try {
+            return DB::transaction(function () use ($id, $data) {
+                $service = $this->getById($id);
+                $service->update($data);
+
+                return $service;
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
+    }
+
+    /**
+     * @param int $id
+     * @return int
+     */
+    public function delete(int $id): int
+    {
+        try {
+            return DB::transaction(function () use ($id) {
+                return $this->service->destroy($id);
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
+    }
 }

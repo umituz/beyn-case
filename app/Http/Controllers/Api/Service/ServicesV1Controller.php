@@ -59,4 +59,33 @@ class ServicesV1Controller extends ApiController
 
         return new ServiceResource($service);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param ServiceRequest $request
+     * @param int $id
+     * @return ServiceResource
+     */
+    public function update(ServiceRequest $request, $id): ServiceResource
+    {
+        $brand = $this->serviceRepository->update($id, $request->validated());
+
+        return new ServiceResource($brand);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return array
+     */
+    public function destroy($id): array
+    {
+        $this->serviceRepository->delete($id);
+
+        return [
+            'message' => __('Deleted')
+        ];
+    }
 }
