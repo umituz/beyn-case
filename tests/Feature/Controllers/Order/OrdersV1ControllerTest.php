@@ -66,13 +66,16 @@ class OrdersV1ControllerTest extends BaseTestCase
         $response = $this->postJson('api/v1/orders', $data);
 
         $response->assertStatus(200);
+
         $response->assertJsonPath('message', 'Success');
-        $response->assertJsonPath('data.service_id', $service[0]->id);
-        $response->assertJsonPath('data.car_id', $car[0]->id);
+
+        $response->assertJsonPath('data.service.id', $service->first()->id);
+
+        $response->assertJsonPath('data.car.id', $car->first()->id);
         $this->assertDatabaseHas('orders', [
             'user_id' => $user->id,
-            'service_id' => $service[0]->id,
-            'car_id' => $car[0]->id
+            'service_id' => $service->first()->id,
+            'car_id' => $car->first()->id
         ]);
         $this->assertDatabaseCount('orders', 1);
     }
@@ -144,12 +147,12 @@ class OrdersV1ControllerTest extends BaseTestCase
 
         $response->assertStatus(200);
         $response->assertJsonPath('message', 'Success');
-        $response->assertJsonPath('data.service_id', $service[0]->id);
-        $response->assertJsonPath('data.car_id', $car[0]->id);
+        $response->assertJsonPath('data.service.id', $service->first()->id);
+        $response->assertJsonPath('data.car.id', $car->first()->id);
         $this->assertDatabaseHas('orders', [
             'user_id' => $user->id,
-            'service_id' => $service[0]->id,
-            'car_id' => $car[0]->id
+            'service_id' => $service->first()->id,
+            'car_id' => $car->first()->id
         ]);
         $this->assertDatabaseCount('orders', 1);
     }
