@@ -3,6 +3,9 @@
 namespace App\Repositories;
 
 use App\Models\Service;
+use App\Traits\NotifiableOnSlack;
+use Exception;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class ServiceRepository
@@ -10,6 +13,8 @@ use App\Models\Service;
  */
 class ServiceRepository implements ServiceRepositoryInterface
 {
+    use NotifiableOnSlack;
+
     private Service $service;
 
     /**
@@ -35,5 +40,22 @@ class ServiceRepository implements ServiceRepositoryInterface
     public function getById($id): mixed
     {
         return $this->service->find($id);
+    }
+
+    /**
+     * @param array $data
+     * @return mixed
+     */
+    public function create(array $data): mixed
+    {
+        try {
+            return DB::transaction(function () use ($data) {
+                return $this->service->create($data);
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Service;
 
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Requests\V1\Service\ServiceRequest;
 use App\Http\Resources\V1\Service\ServiceCollection;
 use App\Http\Resources\V1\Service\ServiceResource;
 use App\Repositories\ServiceRepositoryInterface;
@@ -33,6 +34,19 @@ class ServicesV1Controller extends ApiController
         $services = $this->serviceRepository->getAll();
 
         return new ServiceCollection($services);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param ServiceRequest $request
+     * @return ServiceResource
+     */
+    public function store(ServiceRequest $request): ServiceResource
+    {
+        $brand = $this->serviceRepository->create($request->validated());
+
+        return new ServiceResource($brand);
     }
 
     /**

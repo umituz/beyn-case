@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Http\Requests\V1\Car;
 
-use App\Http\Requests\V1\Brand\BrandRequest;
 use App\Http\Requests\V1\Car\CarRequest;
 use Tests\Suites\RequestTestSuite;
 

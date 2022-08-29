@@ -21,11 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
         Route::resource('brands', BrandsGatewayController::class);
         Route::resource('cars', CarsGatewayController::class);
-
-        Route::group(['prefix' => 'services'], function () {
-            Route::get('/', [ServicesGatewayController::class, 'index']);
-            Route::get('/{id}', [ServicesGatewayController::class, 'show']);
-        });
+        Route::resource('services', ServicesGatewayController::class);
 
         Route::group(['prefix' => 'orders'], function () {
             Route::get('/', [OrdersGatewayController::class, 'index']);
