@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\UserLoginRequest;
-use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\V1\Auth\UserLoginRequest;
+use App\Http\Requests\V1\Auth\UserRegisterRequest;
 use App\Http\Resources\User\UserV1Resource;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\JsonResponse;

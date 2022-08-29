@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\V1\Auth;
+
+use App\Http\Requests\Request;
 
 /**
- * Class UserLoginRequest
- * @package App\Http\Request
+ * Class LoginRequest
+ * @package App\Http\Requests\V1\Auth
  */
-class UserLoginRequest extends Request
+class LoginRequest extends Request
 {
     /**
      * Get the validation rules that apply to the request.

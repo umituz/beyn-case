@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\V1\User;
+
+use App\Http\Requests\Request;
 
 /**
- * Class UserBalanceV1Request
- * @package App\Http\Request
+ * Class BalanceRequest
+ * @package App\Http\Requests\V1\User
  */
-class UserBalanceV1Request extends Request
+class BalanceRequest extends Request
 {
     /**
      * Get the validation rules that apply to the request.

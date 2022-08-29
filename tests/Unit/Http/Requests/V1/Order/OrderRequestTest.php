@@ -1,24 +1,23 @@
 <?php
 
-namespace Tests\Unit\Http\Requests;
+namespace Tests\Unit\Http\Requests\V1\Order;
 
-use App\Http\Requests\Request;
-use App\Http\Requests\UserBalanceV1Request;
+use App\Http\Requests\V1\Order\OrderRequest;
 use Tests\Suites\RequestTestSuite;
 
 /**
- * Class UserBalanceV1RequestTest
+ * Class UserOrderV1RequestTest
  * @package Tests\Unit\Http\Requests
- * @coversDefaultClass \App\Http\Requests\UserBalanceV1Request
+ * @coversDefaultClass \App\Http\Requests\V1\Order\OrderRequest
  */
-class UserBalanceV1RequestTest extends RequestTestSuite
+class OrderRequestTest extends RequestTestSuite
 {
     /**
-     * @return Request
+     * @return OrderRequest
      */
-    public function getRequest(): Request
+    public function getRequest(): OrderRequest
     {
-        return new UserBalanceV1Request();
+        return new OrderRequest();
     }
 
     /**
@@ -48,8 +47,9 @@ class UserBalanceV1RequestTest extends RequestTestSuite
     public function rulesProvider(): array
     {
         return [
-            ['amount', ['required', 'numeric']],
-            ['type', ['required', 'string']],
+            ['service_id', ['required', 'integer']],
+            ['car_id', ['required', 'integer']],
+            ['price', ['nullable', 'integer']],
         ];
     }
 }

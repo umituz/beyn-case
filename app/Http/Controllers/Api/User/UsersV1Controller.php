@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Requests\UserBalanceV1Request;
+use App\Http\Requests\V1\User\BalanceRequest;
 use App\Http\Resources\User\UserV1Resource;
 use App\Repositories\UserRepositoryInterface;
 use App\Services\UserService;
@@ -37,10 +37,10 @@ class UsersV1Controller extends ApiController
     }
 
     /**
-     * @param UserBalanceV1Request $request
+     * @param BalanceRequest $request
      * @return mixed
      */
-    public function balance(UserBalanceV1Request $request): mixed
+    public function balance(BalanceRequest $request): mixed
     {
         $user = $this->userRepository->updateUserById(
             ['balance' => $this->userService->getBalanceByType($this->user->balance, $request->amount, $request->type)],

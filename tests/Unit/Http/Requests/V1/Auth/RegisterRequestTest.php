@@ -1,24 +1,23 @@
 <?php
 
-namespace Tests\Unit\Http\Requests;
+namespace Tests\Unit\Http\Requests\V1\Auth;
 
-use App\Http\Requests\Request;
-use App\Http\Requests\UserRegisterRequest;
+use App\Http\Requests\V1\Auth\RegisterRequest;
 use Tests\Suites\RequestTestSuite;
 
 /**
  * Class UserRegisterRequestTest
  * @package Tests\Unit\Http\Requests
- * @coversDefaultClass \App\Http\Requests\UserRegisterRequest
+ * @coversDefaultClass \App\Http\Requests\V1\Auth\RegisterRequest
  */
-class UserRegisterRequestTest extends RequestTestSuite
+class RegisterRequestTest extends RequestTestSuite
 {
     /**
-     * @return Request
+     * @return RegisterRequest
      */
-    public function getRequest(): Request
+    public function getRequest(): RegisterRequest
     {
-        return new UserRegisterRequest();
+        return new RegisterRequest();
     }
 
     /**

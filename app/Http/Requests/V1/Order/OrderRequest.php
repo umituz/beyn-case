@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\V1\Order;
+
+use App\Http\Requests\Request;
 
 /**
- * Class UserOrderV1Request
- * @package App\Http\Request
+ * Class OrderRequest
+ * @package App\Http\Requests\V1\Order
  */
-class UserOrderV1Request extends Request
+class OrderRequest extends Request
 {
     /**
      * Get the validation rules that apply to the request.

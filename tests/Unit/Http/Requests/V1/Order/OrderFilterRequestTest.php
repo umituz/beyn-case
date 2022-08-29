@@ -1,24 +1,23 @@
 <?php
 
-namespace Tests\Unit\Http\Requests;
+namespace Tests\Unit\Http\Requests\V1\Order;
 
-use App\Http\Requests\Request;
-use App\Http\Requests\UserOrderV1Request;
+use App\Http\Requests\V1\Order\OrderFilterRequest;
 use Tests\Suites\RequestTestSuite;
 
 /**
- * Class UserOrderV1RequestTest
+ * Class UserOrderFilterV1RequestTest
  * @package Tests\Unit\Http\Requests
- * @coversDefaultClass \App\Http\Requests\UserOrderV1Request
+ * @coversDefaultClass \App\Http\Requests\V1\Order\OrderFilterRequest
  */
-class UserOrderV1RequestTest extends RequestTestSuite
+class OrderFilterRequestTest extends RequestTestSuite
 {
     /**
-     * @return Request
+     * @return OrderFilterRequest
      */
-    public function getRequest(): Request
+    public function getRequest(): OrderFilterRequest
     {
-        return new UserOrderV1Request();
+        return new OrderFilterRequest();
     }
 
     /**
@@ -48,9 +47,9 @@ class UserOrderV1RequestTest extends RequestTestSuite
     public function rulesProvider(): array
     {
         return [
-            ['service_id', ['required', 'integer']],
-            ['car_id', ['required', 'integer']],
-            ['price', ['nullable', 'integer']],
+            ['service_id', ['nullable', 'integer']],
+            ['car_id', ['nullable', 'integer']],
+            ['status', ['nullable']],
         ];
     }
 }

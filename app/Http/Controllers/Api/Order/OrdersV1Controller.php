@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Api\Order;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Requests\UserOrderFilterV1Request;
-use App\Http\Requests\UserOrderV1Request;
+use App\Http\Requests\V1\Order\OrderFilterRequest;
+use App\Http\Requests\V1\Order\OrderRequest;
 use App\Http\Resources\Order\OrderV1Collection;
 use App\Http\Resources\Order\OrderV1Resource;
-use App\Repositories\ServiceRepositoryInterface;
 use App\Repositories\CarRepositoryInterface;
 use App\Repositories\OrderRepositoryInterface;
+use App\Repositories\ServiceRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 
 /**
@@ -53,10 +53,10 @@ class OrdersV1Controller extends ApiController
     /**
      * Store a newly created resource in storage.
      *
-     * @param UserOrderV1Request $request
+     * @param OrderRequest $request
      * @return JsonResponse
      */
-    public function store(UserOrderV1Request $request): JsonResponse
+    public function store(OrderRequest $request): JsonResponse
     {
         $user = $request->user();
         $service = $this->serviceRepository->getById($request->service_id);
@@ -83,10 +83,10 @@ class OrdersV1Controller extends ApiController
     }
 
     /**
-     * @param UserOrderFilterV1Request $request
+     * @param OrderFilterRequest $request
      * @return JsonResponse
      */
-    public function filters(UserOrderFilterV1Request $request): JsonResponse
+    public function filters(OrderFilterRequest $request): JsonResponse
     {
         $orders = $this->orderRepository->getUserOrdersByFilter($request);
 
