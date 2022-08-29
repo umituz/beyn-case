@@ -49,6 +49,7 @@ class UserBalanceV1RequestTest extends RequestTestSuite
     {
         return [
             ['amount', ['required', 'numeric']],
+            ['type', ['required', 'string']],
         ];
     }
 }

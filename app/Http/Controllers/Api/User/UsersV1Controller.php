@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\UserBalanceV1Request;
 use App\Http\Resources\User\UserV1Resource;
 use App\Repositories\UserRepositoryInterface;
+use App\Services\UserService;
 
 /**
  * Class UsersV1Controller
@@ -13,16 +14,18 @@ use App\Repositories\UserRepositoryInterface;
  */
 class UsersV1Controller extends ApiController
 {
-    private UserRepositoryInterface $userRepository;
     private $user;
+    private UserRepositoryInterface $userRepository;
+    private UserService $userService;
 
     /**
      * @param UserRepositoryInterface $userRepository
      */
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository, UserService $userService)
     {
         $this->user = request()->user();
         $this->userRepository = $userRepository;
+        $this->userService = $userService;
     }
 
     /**
@@ -40,7 +43,7 @@ class UsersV1Controller extends ApiController
     public function balance(UserBalanceV1Request $request): mixed
     {
         $user = $this->userRepository->updateUserById(
-            ['balance' => $this->user->balance + $request->amount],
+            ['balance' => $this->userService->getBalanceByType($this->user->balance, $request->amount, $request->type)],
             $this->user->id,
         );
 

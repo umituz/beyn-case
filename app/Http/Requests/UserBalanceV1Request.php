@@ -17,6 +17,7 @@ class UserBalanceV1Request extends Request
     {
         return [
             'amount' => ['required', 'numeric'],
+            'type' => ['required', 'string'],
         ];
     }
 }
