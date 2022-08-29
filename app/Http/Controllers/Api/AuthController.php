@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\V1\Auth\UserLoginRequest;
-use App\Http\Requests\V1\Auth\UserRegisterRequest;
+use App\Http\Requests\V1\Auth\LoginRequest;
+use App\Http\Requests\V1\Auth\RegisterRequest;
 use App\Http\Resources\User\UserV1Resource;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\JsonResponse;
@@ -27,10 +27,10 @@ class AuthController extends ApiController
     }
 
     /**
-     * @param UserLoginRequest $request
+     * @param LoginRequest $request
      * @return JsonResponse
      */
-    public function login(UserLoginRequest $request): JsonResponse
+    public function login(LoginRequest $request): JsonResponse
     {
         if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return $this->error(__('Email or password is incorrect!'));
@@ -47,10 +47,10 @@ class AuthController extends ApiController
     }
 
     /**
-     * @param UserRegisterRequest $request
+     * @param RegisterRequest $request
      * @return JsonResponse
      */
-    public function register(UserRegisterRequest $request): JsonResponse
+    public function register(RegisterRequest $request): JsonResponse
     {
         $user = $this->userRepository->create([
             'name' => $request->name,
