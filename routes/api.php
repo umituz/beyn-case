@@ -18,10 +18,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::lapiv(function () {
 
-        Route::group(['prefix' => 'cars'], function () {
-            Route::get('/', [CarsGatewayController::class, 'index']);
-            Route::get('/{id}', [CarsGatewayController::class, 'show']);
-        });
+        Route::resource('cars', CarsGatewayController::class);
 
         Route::group(['prefix' => 'services'], function () {
             Route::get('/', [ServicesGatewayController::class, 'index']);

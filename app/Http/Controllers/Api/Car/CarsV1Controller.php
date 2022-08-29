@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Api\Car;
 
 use App\Http\Controllers\Api\ApiController;
+use App\Http\Requests\V1\Car\CarRequest;
 use App\Http\Resources\Car\CarV1Collection;
 use App\Http\Resources\Car\CarV1Resource;
 use App\Repositories\CarRepositoryInterface;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 /**
  * Class CarsV1Controller
@@ -49,14 +48,45 @@ class CarsV1Controller extends ApiController
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param CarRequest $request
+     * @return CarV1Resource
+     */
+    public function store(CarRequest $request): CarV1Resource
+    {
+        $car = $this->carRepository->create($request->validated());
+
+        return new CarV1Resource($car);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
-     * @return Response
+     * @param CarRequest $request
+     * @param int $id
+     * @return CarV1Resource
      */
-    public function update(Request $request, $id)
+    public function update(CarRequest $request, $id)
     {
-        //
+        $car = $this->carRepository->getById($id);
+        $car->update($request->validated());
+
+        return new CarV1Resource($car);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return array
+     */
+    public function destroy($id): array
+    {
+       $this->carRepository->delete($id);
+
+        return [
+            'message' => __('Deleted')
+        ];
     }
 }

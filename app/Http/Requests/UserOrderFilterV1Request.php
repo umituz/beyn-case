@@ -16,8 +16,8 @@ class UserOrderFilterV1Request extends Request
     public function rules(): array
     {
         return [
-            'service_id' => ['nullable', 'integer'],
-            'car_id' => ['nullable', 'integer'],
+            'service_id' => ['nullable', 'integer', 'exists:services'],
+            'car_id' => ['nullable', 'integer', 'exists:cars'],
             'status' => ['nullable']
         ];
     }

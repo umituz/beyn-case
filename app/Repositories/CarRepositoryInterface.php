@@ -32,4 +32,15 @@ interface CarRepositoryInterface
      */
     public function getById(int $id): mixed;
 
+    /**
+     * @param array $data
+     * @return mixed
+     */
+    public function create(array $data): mixed;
+
+    /**
+     * @param int $id
+     * @return int
+     */
+    public function delete(int $id): int;
 }
