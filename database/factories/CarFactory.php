@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Brand;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class CarFactory extends Factory
     public function definition()
     {
         return [
-            'brand_id' => 1,
+            'brand_id' => Brand::factory(),
             'option' => $this->faker->word,
             'engine_cylinders' => $this->faker->word,
             'engine_displacement' => $this->faker->word,

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Brand;
 use App\Models\Car;
 use App\Models\Service;
 use App\Models\User;
@@ -32,7 +33,7 @@ class BaseTestCase extends TestCase
      */
     public function createCar(int $count = 1): mixed
     {
-        return Car::factory()->count($count)->create();
+        return Car::factory($count)->hasBrand()->times($count)->create();
     }
 
     /**
