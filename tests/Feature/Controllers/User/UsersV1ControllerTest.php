@@ -56,7 +56,8 @@ class UsersV1ControllerTest extends BaseTestCase
         $user = $this->createUser(123456);
         Sanctum::actingAs($user, ['*']);
         $data = [
-            'amount' => 120
+            'amount' => 120,
+            'type' => 'deposit'
         ];
 
         $response = $this->putJson(self::BALANCE_ENDPOINT, $data);
