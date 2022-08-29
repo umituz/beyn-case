@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Repositories;
 
+use App\Models\Brand;
 use App\Models\Car;
 use App\Repositories\CarRepository;
 use Tests\Suites\RepositoryTestSuite;
@@ -58,12 +59,11 @@ class CarRepositoryTest extends RepositoryTestSuite
         $this->setMockedRepository(['getAll']);
 
         $car = Car::factory()->make();
+        $brand = Brand::factory()->make();
+        $brand->id = 1;
 
         $expected = [
-            'url' => $car->url,
-            'brand' => $car->brand,
-            'model' => $car->model,
-            'year' => $car->year,
+            'brand_id' => $brand->id,
             'option' => $car->option,
             'engine_cylinders' => $car->engine_cylinders,
             'engine_displacement' => $car->engine_displacement,

@@ -18,8 +18,8 @@ class OrderFilterRequest extends Request
     public function rules(): array
     {
         return [
-            'service_id' => ['nullable', 'integer', 'exists:services'],
-            'car_id' => ['nullable', 'integer', 'exists:cars'],
+            'service_id' => ['nullable', 'integer'],
+            'car_id' => ['nullable', 'integer'],
             'status' => ['nullable']
         ];
     }
