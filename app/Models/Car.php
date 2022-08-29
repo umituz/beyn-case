@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\ReverseScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -18,6 +19,16 @@ class Car extends Model
     use HasFactory, PerfectlyCachable, SoftDeletes;
 
     protected $guarded = [];
+
+    /**
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new ReverseScope());
+    }
 
     /**
      * @return HasMany

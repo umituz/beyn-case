@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Scopes\ReverseScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,6 +19,16 @@ use Whtht\PerfectlyCache\Traits\PerfectlyCachable;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, PerfectlyCachable, SoftDeletes;
+
+    /**
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new ReverseScope());
+    }
 
     /**
      * The attributes that are mass assignable.
