@@ -59,10 +59,10 @@ class UsersV1ControllerTest extends BaseTestCase
             'amount' => 120,
             'type' => 'deposit',
             'fullname' => fake()->firstName . ' ' . fake()->lastName,
-            'card_number' => '1234567891234567',
-            'expiry_month' => '02',
-            'expiry_year' => '2030',
-            'cvc' => '333',
+            'card_number' => fake()->creditCardNumber,
+            'expiry_month' => 02,
+            'expiry_year' => fake()->year,
+            'cvc' => 999,
         ];
 
         $response = $this->putJson(self::BALANCE_ENDPOINT, $data);

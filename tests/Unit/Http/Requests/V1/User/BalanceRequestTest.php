@@ -53,10 +53,10 @@ class BalanceRequestTest extends RequestTestSuite
             ['amount', ['required', 'numeric']],
             ['type', ['required', 'string', 'in:' . self::DEPOSIT_TYPE . ',' . self::WITHDRAW_TYPE]],
             ['fullname', ['required', 'string', 'max:40', 'min:3']],
-            ['card_number', ['required', 'numeric', 'max:16', 'min:16']],
-            ['expiry_month', ['required', 'numeric', 'max:2', 'min:2']],
-            ['expiry_year', ['required', 'numeric', 'max:4', 'min:4']],
-            ['cvc', ['required', 'numeric', 'max:3', 'min:3']],
+            ['card_number', ['required', 'numeric', 'min:16']],
+            ['expiry_month', ['required', 'numeric', 'min:2']],
+            ['expiry_year', ['required', 'numeric', 'min:4']],
+            ['cvc', ['required', 'numeric', 'min:3']],
         ];
     }
 }
