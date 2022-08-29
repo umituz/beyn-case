@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\Car;
+namespace App\Http\Resources\V1\Car;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
@@ -8,10 +8,10 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
 
 /**
- * Class CarV1Resource
- * @package App\Http\Resources\Car
+ * Class CarResource
+ * @package App\Http\Resources\V1\Car
  */
-class CarV1Resource extends JsonResource
+class CarResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

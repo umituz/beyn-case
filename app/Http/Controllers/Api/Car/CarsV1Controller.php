@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Car;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\V1\Car\CarRequest;
 use App\Http\Resources\Car\CarV1Collection;
-use App\Http\Resources\Car\CarV1Resource;
+use App\Http\Resources\Car\CarResource;
 use App\Repositories\CarRepositoryInterface;
 
 /**
@@ -40,24 +40,24 @@ class CarsV1Controller extends ApiController
      * Store a newly created resource in storage.
      *
      * @param CarRequest $request
-     * @return CarV1Resource
+     * @return CarResource
      */
-    public function store(CarRequest $request): CarV1Resource
+    public function store(CarRequest $request): CarResource
     {
         $car = $this->carRepository->create($request->validated());
 
-        return new CarV1Resource($car);
+        return new CarResource($car);
     }
 
     /**
      * @param int $id
-     * @return CarV1Resource
+     * @return CarResource
      */
-    public function show(int $id): CarV1Resource
+    public function show(int $id): CarResource
     {
         $car = $this->carRepository->getById($id);
 
-        return new CarV1Resource($car);
+        return new CarResource($car);
     }
 
     /**
@@ -65,14 +65,14 @@ class CarsV1Controller extends ApiController
      *
      * @param CarRequest $request
      * @param int $id
-     * @return CarV1Resource
+     * @return CarResource
      */
     public function update(CarRequest $request, $id)
     {
         $car = $this->carRepository->getById($id);
         $car->update($request->validated());
 
-        return new CarV1Resource($car);
+        return new CarResource($car);
     }
 
     /**

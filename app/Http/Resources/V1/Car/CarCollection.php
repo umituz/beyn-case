@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Resources\Car;
+namespace App\Http\Resources\V1\Car;
 
 use App\Enums\VersionEnums;
 use App\Http\Resources\BaseCollection;
 use Illuminate\Http\Request;
 
 /**
- * Class CarV1Collection
- * @package App\Http\Resources\Car
+ * Class CarCollection
+ * @package App\Http\Resources\V1\Car
  */
-class CarV1Collection extends BaseCollection
+class CarCollection extends BaseCollection
 {
-    public $collects = CarV1Resource::class;
+    public $collects = CarResource::class;
 
     /**
      * Transform the resource collection into an array.
