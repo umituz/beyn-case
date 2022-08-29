@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Service;
 
 use App\Http\Controllers\Api\ApiController;
-use App\Http\Resources\Service\ServiceCollection;
-use App\Http\Resources\Service\ServiceResource;
+use App\Http\Resources\V1\Service\ServiceCollection;
+use App\Http\Resources\V1\Service\ServiceResource;
 use App\Repositories\ServiceRepositoryInterface;
 
 /**

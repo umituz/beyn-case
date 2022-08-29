@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Car;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\V1\Car\CarRequest;
-use App\Http\Resources\Car\CarV1Collection;
-use App\Http\Resources\Car\CarResource;
+use App\Http\Resources\V1\Car\CarCollection;
+use App\Http\Resources\V1\Car\CarResource;
 use App\Repositories\CarRepositoryInterface;
 
 /**
@@ -27,13 +27,13 @@ class CarsV1Controller extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return CarV1Collection
+     * @return CarCollection
      */
-    public function index(): CarV1Collection
+    public function index(): CarCollection
     {
         $cars =  $this->carRepository->getAll();
 
-        return new CarV1Collection($cars);
+        return new CarCollection($cars);
     }
 
     /**

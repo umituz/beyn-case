@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\V1\User\BalanceRequest;
-use App\Http\Resources\User\UserResource;
+use App\Http\Resources\V1\User\UserResource;
 use App\Repositories\UserRepositoryInterface;
 use App\Services\UserService;
 
