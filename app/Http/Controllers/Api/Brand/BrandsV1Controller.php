@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Brand;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\Brand\BrandCollection;
 use App\Repositories\BrandRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -25,11 +26,13 @@ class BrandsV1Controller extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return BrandCollection
      */
-    public function index()
+    public function index(): BrandCollection
     {
-        return $this->brandRepository->getAll();
+        $brands = $this->brandRepository->getAll();
+
+        return new BrandCollection($brands);
     }
 
     /**
