@@ -6,6 +6,9 @@ use App\Jobs\SyncAutoMobileJob;
 use App\Repositories\BrandRepositoryInterface;
 use App\Repositories\CarRepositoryInterface;
 use App\Services\NovassetsService;
+use App\Traits\NotifiableOnSlack;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Queue;
 
 /**
@@ -14,6 +17,8 @@ use Illuminate\Support\Facades\Queue;
  */
 class SyncAutoMobile extends BaseCommand
 {
+    use NotifiableOnSlack;
+
     /**
      * The name and signature of the console command.
      *
@@ -32,8 +37,8 @@ class SyncAutoMobile extends BaseCommand
     private BrandRepositoryInterface $brandRepository;
 
     public function __construct(
-        NovassetsService $novassetsService,
-        CarRepositoryInterface $carRepository,
+        NovassetsService         $novassetsService,
+        CarRepositoryInterface   $carRepository,
         BrandRepositoryInterface $brandRepository
     )
     {

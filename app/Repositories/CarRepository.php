@@ -39,13 +39,19 @@ class CarRepository implements CarRepositoryInterface
      * @param array $data
      * @return false|mixed
      */
-    public function updateOrCreate(array $data): mixed
+    public function updateOrCreate( $data): mixed
     {
         try {
             return DB::transaction(function () use ($data) {
                 return $this->car->updateOrCreate($data);
             });
         } catch (Exception $e) {
+            dd(
+                "Car",
+                __METHOD__,
+                $e->getMessage()
+            );
+
             $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
 
             return false;

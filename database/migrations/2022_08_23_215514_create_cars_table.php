@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('brand_id');
+            $table->foreignId('brand_id')->constrained();
             $table->string('option', 191)->nullable();
             $table->string('engine_cylinders', 191)->nullable();
             $table->string('engine_displacement', 191)->nullable();

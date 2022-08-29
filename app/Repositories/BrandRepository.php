@@ -117,6 +117,11 @@ class BrandRepository implements BrandRepositoryInterface
                 return $this->brand->updateOrCreate($data);
             });
         } catch (Exception $e) {
+            dd(
+                "Brand",
+                __METHOD__,
+                $e->getMessage()
+            );
             $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
 
             return false;

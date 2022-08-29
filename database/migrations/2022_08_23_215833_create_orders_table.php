@@ -14,9 +14,9 @@ return new class extends Migration {
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('service_id');
-            $table->foreignId('car_id');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('service_id')->constrained();
+            $table->foreignId('car_id')->constrained();
             $table->boolean('status')->default(false);
             $table->decimal('price');
             $table->softDeletes();
