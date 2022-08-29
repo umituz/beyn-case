@@ -2,9 +2,11 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\RecordNotFoundException;
 use App\Models\Service;
 use App\Traits\NotifiableOnSlack;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -36,10 +38,17 @@ class ServiceRepository implements ServiceRepositoryInterface
     /**
      * @param  $id
      * @return mixed
+     * @throws RecordNotFoundException
      */
     public function getById($id): mixed
     {
-        return $this->service->find($id);
+        try {
+            return $this->service->findOrFail($id);
+        } catch (ModelNotFoundException $exception) {
+            $this->toSlack('slack.channels.db_issues', __('Record Not Found: ' . $exception->getMessage()));
+
+            throw new RecordNotFoundException();
+        }
     }
 
     /**

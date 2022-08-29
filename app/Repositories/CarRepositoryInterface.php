@@ -40,6 +40,13 @@ interface CarRepositoryInterface
 
     /**
      * @param int $id
+     * @param array $data
+     * @return mixed
+     */
+    public function update(int $id, array $data): mixed;
+
+    /**
+     * @param int $id
      * @return int
      */
     public function delete(int $id): int;

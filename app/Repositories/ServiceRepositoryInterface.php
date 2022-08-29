@@ -21,8 +21,27 @@ interface ServiceRepositoryInterface
     public function getAll(): mixed;
 
     /**
-     * @param  $id
+     * @param $id
      * @return mixed
      */
-    public function getById( $id): mixed;
+    public function getById($id): mixed;
+
+    /**
+     * @param array $data
+     * @return mixed
+     */
+    public function create(array $data): mixed;
+
+    /**
+     * @param int $id
+     * @param array $data
+     * @return mixed
+     */
+    public function update(int $id, array $data): mixed;
+
+    /**
+     * @param int $id
+     * @return int
+     */
+    public function delete(int $id): int;
 }

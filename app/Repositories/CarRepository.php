@@ -88,6 +88,27 @@ class CarRepository implements CarRepositoryInterface
 
     /**
      * @param int $id
+     * @param array $data
+     * @return mixed
+     */
+    public function update(int $id, array $data): mixed
+    {
+        try {
+            return DB::transaction(function () use ($id, $data) {
+                $car = $this->getById($id);
+                $car->update($data);
+
+                return $car;
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
+    }
+
+    /**
+     * @param int $id
      * @return int
      */
     public function delete(int $id): int
