@@ -11,8 +11,15 @@ Projeyi Docker ortamında çalıştırmak için gerekenler
 
 Genel olarak yapılması gerekenler
 
+- Uygulamamızın APP_KEY i yok ise aşağıdaki komut ile oluşturabiliriz. 
+  - php artisan key:generate 
+- .env.example dosyasını kopyalaıp .env olarak kaydetmemiz gerekiyor, ortam değişikliklerini görebilmek için
+  - cp .env.example .env
+- Veritabanına hazırladığımız tabloları ekleyebilmek ve fake data ekleyebilmek için aşağıdaki komutu çalıştırabiliriz.
+  - php artisan migrate --seed
 - Hata loglarını görebilmek için Slack'e mesaj gönderiyoruz. Test ortamında görebilmek için .env dosyasında SLACK_HOST değerini güncellememiz gerekiyor
   - https://webhook.site/ sitesinden Your Unique Url kısmındaki adresi kopyalayıp .env dosyasındaki SLACK_HOST ortam değişkenine aktarmak gerekiyo
-    - örnek: https://webhook.site/2f416b62-093d-4d73-80b3-f3d1ca72bec7  
+    - örnek: https://webhook.site/2f416b62-093d-4d73-80b3-f3d1ca72bec7
+- 
 
     
