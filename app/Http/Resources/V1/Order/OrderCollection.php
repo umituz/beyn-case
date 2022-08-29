@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  */
 class OrderCollection extends BaseCollection
 {
-    public $collects = OrderV1Resource::class;
+    public $collects = OrderResource::class;
 
     /**
      * Transform the resource collection into an array.
