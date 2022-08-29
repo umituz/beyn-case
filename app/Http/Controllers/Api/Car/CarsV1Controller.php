@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\ApiController;
 use App\Http\Resources\Car\CarV1Collection;
 use App\Http\Resources\Car\CarV1Resource;
 use App\Repositories\CarRepositoryInterface;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 /**
  * Class CarsV1Controller
@@ -44,5 +46,17 @@ class CarsV1Controller extends ApiController
         $car = $this->carRepository->getById($id);
 
         return new CarV1Resource($car);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request
+     * @param  int  $id
+     * @return Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
     }
 }
