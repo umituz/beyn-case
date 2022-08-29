@@ -2,16 +2,13 @@
 
 namespace App\Providers;
 
-use App\Repositories\UserRepository;
-use App\Repositories\UserRepositoryInterface;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\CarRepositoryInterface;
-use App\Repositories\CarRepository;
-use App\Repositories\ServiceRepository;
-use App\Repositories\ServiceRepositoryInterface;
-use App\Repositories\OrderRepository;
-use App\Repositories\OrderRepositoryInterface;
 
+/**
+ * Class AppServiceProvider
+ * @package App\Providers
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -31,9 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(CarRepositoryInterface::class, CarRepository::class);
-        $this->app->bind(ServiceRepositoryInterface::class, ServiceRepository::class);
-        $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
-        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        Schema::defaultStringLength(191);
     }
 }

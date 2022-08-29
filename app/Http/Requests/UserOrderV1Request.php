@@ -16,8 +16,8 @@ class UserOrderV1Request extends Request
     public function rules(): array
     {
         return [
-            'service_id' => ['required', 'integer'],
-            'car_id' => ['required', 'integer'],
+            'service_id' => ['required', 'integer', 'exists:services'],
+            'car_id' => ['required', 'integer', 'exists:cars'],
             'price' => ['nullable', 'integer'],
         ];
     }

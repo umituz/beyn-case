@@ -7,17 +7,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Whtht\PerfectlyCache\Traits\PerfectlyCachable;
 
 /**
- * Class Order
+ * Class Car
  * @package App\Models
  */
-class Order extends Model
+class Brand extends Model
 {
-    use HasFactory, PerfectlyCachable, SoftDeletes;
+    use HasFactory, SoftDeletes;
 
-    protected $guarded = [];
+    protected $fillable = ['name', 'model', 'url', 'year'];
 
     /**
      * @return void
@@ -35,21 +34,5 @@ class Order extends Model
     public function car(): BelongsTo
     {
         return $this->belongsTo(Car::class);
-    }
-
-    /**
-     * @return BelongsTo
-     */
-    public function service(): BelongsTo
-    {
-        return $this->belongsTo(Service::class);
-    }
-
-    /**
-     * @return BelongsTo
-     */
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
     }
 }

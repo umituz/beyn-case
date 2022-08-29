@@ -2,29 +2,23 @@
 
 namespace App\Repositories;
 
-use App\Models\Car;
+use App\Models\Brand;
 
 /**
- * Interface CarRepositoryInterface
+ * Interface BrandRepositoryInterface
  * @package App\Repositories
  */
-interface CarRepositoryInterface
+interface BrandRepositoryInterface
 {
     /**
-     * @param Car $car
+     * @param Brand $brand
      */
-    public function __construct(Car $car);
+    public function __construct(Brand $brand);
 
     /**
      * @return mixed
      */
     public function getAll(): mixed;
-
-    /**
-     * @param array $data
-     * @return mixed
-     */
-    public function updateOrCreate(array $data): mixed;
 
     /**
      * @param int $id

@@ -15,9 +15,6 @@ class CarRepository implements CarRepositoryInterface
 {
     use NotifiableOnSlack;
 
-    /**
-     * @var Car
-     */
     private Car $car;
 
     /**
@@ -60,5 +57,23 @@ class CarRepository implements CarRepositoryInterface
     public function getById(int $id): mixed
     {
         return $this->car->find($id);
+    }
+
+    /**
+     * @param array $data
+     * @return mixed
+     */
+    public function create(array $data): mixed
+    {
+        return $this->car->create($data);
+    }
+
+    /**
+     * @param int $id
+     * @return int
+     */
+    public function delete(int $id): int
+    {
+        return $this->car->destroy($id);
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\Brand\BrandsGatewayController;
 use App\Http\Controllers\Api\Car\CarsGatewayController;
 use App\Http\Controllers\Api\Order\OrdersGatewayController;
 use App\Http\Controllers\Api\Service\ServicesGatewayController;
@@ -18,10 +19,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::lapiv(function () {
 
-        Route::group(['prefix' => 'cars'], function () {
-            Route::get('/', [CarsGatewayController::class, 'index']);
-            Route::get('/{id}', [CarsGatewayController::class, 'show']);
-        });
+        Route::resource('brands', BrandsGatewayController::class);
+        Route::resource('cars', CarsGatewayController::class);
 
         Route::group(['prefix' => 'services'], function () {
             Route::get('/', [ServicesGatewayController::class, 'index']);

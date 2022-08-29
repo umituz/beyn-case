@@ -16,9 +16,6 @@ class OrderRepository implements OrderRepositoryInterface
 {
     use NotifiableOnSlack;
 
-    /**
-     * @var Order
-     */
     private Order $order;
 
     /**

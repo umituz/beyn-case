@@ -10,9 +10,6 @@ use App\Models\Service;
  */
 class ServiceRepository implements ServiceRepositoryInterface
 {
-    /**
-     * @var Service
-     */
     private Service $service;
 
     /**
