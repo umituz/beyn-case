@@ -571,10 +571,9 @@
 											"type": "text"
 										},
 										{
-											"key": "",
-											"value": "",
-											"type": "text",
-											"disabled": true
+											"key": "brand_id",
+											"value": "1",
+											"type": "text"
 										}
 									]
 								},
@@ -806,7 +805,7 @@
 							"response": []
 						},
 						{
-							"name": "Delete Brand Copy",
+							"name": "Delete Service",
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -836,7 +835,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{apiUrl}}/api/v1/services/12",
+									"raw": "{{apiUrl}}/api/v1/services/1",
 									"host": [
 										"{{apiUrl}}"
 									],
@@ -844,7 +843,7 @@
 										"api",
 										"v1",
 										"services",
-										"12"
+										"1"
 									]
 								}
 							},
@@ -918,13 +917,44 @@
 									}
 								],
 								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"amount\": 100.50,\n    \"type\": \"deposit\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "amount",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "withdraw",
+											"type": "text"
+										},
+										{
+											"key": "fullname",
+											"value": "Ümit Kenan UZ",
+											"type": "text"
+										},
+										{
+											"key": "card_number",
+											"value": "1111222233334444",
+											"type": "text"
+										},
+										{
+											"key": "expiry_month",
+											"value": "02",
+											"type": "text"
+										},
+										{
+											"key": "expiry_year",
+											"value": "2030",
+											"type": "text"
+										},
+										{
+											"key": "cvc",
+											"value": "999",
+											"type": "text"
 										}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{apiUrl}}/api/v1/account/balance",
