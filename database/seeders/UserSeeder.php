@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'name' => 'Ümit UZ',
             'email' => 'umituz998@gmail.com',
             'password' => bcrypt(123456789),
-            'balance' => 99999
+            'balance' => 100
         ]);
         User::factory(9)->create();
     }

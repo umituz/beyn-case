@@ -105,4 +105,21 @@ class BrandRepository implements BrandRepositoryInterface
             return false;
         }
     }
+
+    /**
+     * @param array $data
+     * @return false|mixed
+     */
+    public function updateOrCreate(array $data): mixed
+    {
+        try {
+            return DB::transaction(function () use ($data) {
+                return $this->brand->updateOrCreate($data);
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
+    }
 }

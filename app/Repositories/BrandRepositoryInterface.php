@@ -44,4 +44,10 @@ interface BrandRepositoryInterface
      * @return int
      */
     public function delete(int $id): int;
+
+    /**
+     * @param array $data
+     * @return mixed
+     */
+    public function updateOrCreate(array $data): mixed;
 }

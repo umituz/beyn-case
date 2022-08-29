@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Console\Commands\BaseCommand;
+use App\Repositories\BrandRepositoryInterface;
 use App\Repositories\CarRepositoryInterface;
 use App\Services\NovassetsService;
 use App\Traits\NotifiableOnSlack;
@@ -13,6 +14,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
 
 /**
  * Class SyncAutoMobileJob
@@ -24,18 +26,24 @@ class SyncAutoMobileJob extends BaseCommand implements ShouldQueue
 
     private NovassetsService $novassetsService;
     private CarRepositoryInterface $carRepository;
+    private BrandRepositoryInterface $brandRepository;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(NovassetsService $novassetsService, CarRepositoryInterface $carRepository)
+    public function __construct(
+        NovassetsService $novassetsService,
+        CarRepositoryInterface $carRepository,
+        BrandRepositoryInterface $brandRepository
+    )
     {
         parent::__construct();
 
         $this->novassetsService = $novassetsService;
         $this->carRepository = $carRepository;
+        $this->brandRepository = $brandRepository;
     }
 
     /**
@@ -45,13 +53,15 @@ class SyncAutoMobileJob extends BaseCommand implements ShouldQueue
      */
     public function handle()
     {
-        $cachedCars = Cache::get('cars');
+        $cars = File::get(public_path('automobile.json'));
 
-        if ($cachedCars) {
-            return $cachedCars;
-        }
+        #$cachedCars = Cache::get('cars');
 
-        $cars = $this->novassetsService->fetchAutomobiles();
+        #if ($cachedCars) {
+        #    return $cachedCars;
+        #}
+
+        #$cars = $this->novassetsService->fetchAutomobiles();
 
         if (!$cars || !isset($cars['RECORDS']) || !count($cars['RECORDS'])) {
             $this->toSlack(config('slack.channels.service_issues'), __('Could not fetch cars from api!'));
@@ -60,11 +70,8 @@ class SyncAutoMobileJob extends BaseCommand implements ShouldQueue
         }
 
         foreach ($cars['RECORDS'] as $car) {
-            $updateOrCreate = $this->carRepository->updateOrCreate($car);
-
-            if (!$updateOrCreate) {
-                $this->toSlack(config('slack.channels.db_issues'), __('Failed to create or update car!'));
-            }
+            $this->carRepository->updateOrCreate($car);
+            $this->brandRepository->updateOrCreate($car);
         }
 
         $redis = Cache::put('cars', json_encode($cars));
