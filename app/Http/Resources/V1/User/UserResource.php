@@ -23,6 +23,13 @@ class UserResource extends JsonResource
     {
         self::withoutWrapping();
 
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'balance' => $this->balance,
+            'access_token' => $this->access_token
+        ];
         return parent::toArray($request);
     }
 }

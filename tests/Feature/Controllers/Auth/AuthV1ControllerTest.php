@@ -133,7 +133,8 @@ class AuthV1ControllerTest extends BaseTestCase
             'name' => 'Name',
             'email' => 'test@test.com',
             'password' => 'password',
-            'password_confirmation' => 'password'
+            'password_confirmation' => 'password',
+            'balance' => 0.00
         ];
     }
 }

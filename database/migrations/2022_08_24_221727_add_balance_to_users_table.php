@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         if (Schema::hasTable('users')) {
             Schema::table('users', function (Blueprint $table) {
-                $table->decimal('balance')->default(0);
+                $table->decimal('balance')->default(0.00);
             });
         }
     }

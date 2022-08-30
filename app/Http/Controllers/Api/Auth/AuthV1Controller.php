@@ -55,7 +55,8 @@ class AuthV1Controller extends ApiController
         $user = $this->userRepository->create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'balance' => 0.00
         ]);
 
         if (!$user) {

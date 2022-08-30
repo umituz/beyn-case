@@ -96,6 +96,7 @@ Birim testleri çalıştırmak için:
 
 ```console
 $ ./vendor/bin/phpunit
+$ php artisan serve
 ```
 
 Tarayıcı üzerinde çalışan testleri çalıştırmak için öncelikle bir terminal'de uygulamayı ayağa kaldırın:
@@ -119,3 +120,74 @@ sorunda
 ```console
 $ chmod 755 -R ./vendor/laravel/dusk/bin/
 ```
+
+
+## RESTfull API Kaynakları
+
+### [POST] `/api/auth/login?version=1`
+
+`email` ve `password` kabul eder. Bilgiler doğrusa, kullanının bilgilerini JSON formatında geri döner.
+
+**Örnek kullanım (varsayılan kullanıcıların `seed` edilmiş olması gerekir):**
+
+İstek: 
+
+```console
+curl --location --request POST 'http://127.0.0.1:8000/api/auth/login?version=1' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer 9|al1e1c88IJ3cRCULzA46bjk3rfVWestsH4ocRZMS' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email":"umituz998@gmail.com",
+    "password":"123456789"
+}'
+```
+
+Cevap:
+
+```json
+{
+    "code": 200,
+    "message": "Success",
+    "data": {
+        "id": 1,
+        "name": "Ümit UZ",
+        "email": "umituz998@gmail.com",
+        "balance": "100.00",
+        "access_token": "11|EGyvxIbWslWBDzOGnesF7i623nAOjFjKuBZNeAbV"
+    }
+}
+```
+
+İstek: 
+
+```console
+curl --location --request POST 'http://127.0.0.1:8000/api/auth/register?version=1' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer 11|EGyvxIbWslWBDzOGnesF7i623nAOjFjKuBZNeAbV' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Ümit Kenan UZ",
+    "email": "umituz999@gmail.com",
+    "password": 123456789,
+    "password_confirmation" : 123456789
+}'
+```
+
+Cevap:
+
+```json
+{
+    "code": 200,
+    "message": "Success",
+    "data": {
+        "id": 11,
+        "name": "Ümit Kenan UZ",
+        "email": "umituz999@gmail.com",
+        "balance": 0,
+        "access_token": "1|qaimZPPKuz84cT75XFzO171tuECwfVLMJyGLje9k"
+    }
+}
+```
+
+`access_token` kısmı sonraki istekler için gerekli olacak.
