@@ -7,6 +7,7 @@ use App\Http\Requests\V1\Car\CarRequest;
 use App\Http\Resources\V1\Car\CarCollection;
 use App\Http\Resources\V1\Car\CarResource;
 use App\Repositories\CarRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Class CarsV1Controller
@@ -27,37 +28,37 @@ class CarsV1Controller extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return CarCollection
+     * @return JsonResponse
      */
-    public function index(): CarCollection
+    public function index(): JsonResponse
     {
         $cars =  $this->carRepository->getAll();
 
-        return new CarCollection($cars);
+        return $this->success(__('Success'),  new CarCollection($cars));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param CarRequest $request
-     * @return CarResource
+     * @return JsonResponse
      */
-    public function store(CarRequest $request): CarResource
+    public function store(CarRequest $request): JsonResponse
     {
         $car = $this->carRepository->create($request->validated());
 
-        return new CarResource($car);
+        return $this->success(__('Success'),  new CarResource($car));
     }
 
     /**
      * @param int $id
-     * @return CarResource
+     * @return JsonResponse
      */
-    public function show(int $id): CarResource
+    public function show(int $id): JsonResponse
     {
         $car = $this->carRepository->getById($id);
 
-        return new CarResource($car);
+        return $this->success(__('Success'),  new CarResource($car));
     }
 
     /**
@@ -65,28 +66,28 @@ class CarsV1Controller extends ApiController
      *
      * @param CarRequest $request
      * @param int $id
-     * @return CarResource
+     * @return JsonResponse
      */
     public function update(CarRequest $request, $id)
     {
         $car = $this->carRepository->getById($id);
         $car->update($request->validated());
 
-        return new CarResource($car);
+        return $this->success(__('Success'),  new CarResource($car));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return array
+     * @return JsonResponse
      */
-    public function destroy($id): array
+    public function destroy($id): JsonResponse
     {
        $this->carRepository->delete($id);
 
-        return [
-            'message' => __('Deleted')
-        ];
+        return $this->success(__('Success'), [
+            'message' => 'Deleted'
+        ]);
     }
 }
