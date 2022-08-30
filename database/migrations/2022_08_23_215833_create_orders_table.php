@@ -14,6 +14,7 @@ return new class extends Migration {
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('barcode', 50);
             $table->foreignId('user_id')->constrained();
             $table->foreignId('service_id')->constrained();
             $table->foreignId('car_id')->constrained();

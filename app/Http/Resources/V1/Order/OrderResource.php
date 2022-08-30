@@ -25,6 +25,7 @@ class OrderResource extends JsonResource
 
         return [
             'id' => $this->id,
+            'barcode' => $this->barcode,
             'price' => $this->price,
             'status' => $this->status,
             'created_at' => $this->created_at->format(self::DATE_FORMAT),

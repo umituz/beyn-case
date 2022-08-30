@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\OrderEnums;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +18,7 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
+            'barcode' => OrderEnums::PREFIX . trim(microtime()),
             'user_id' => $this->faker->numberBetween(1, 10),
             'service_id' => $this->faker->numberBetween(1, 10),
             'car_id' => $this->faker->numberBetween(1, 10),

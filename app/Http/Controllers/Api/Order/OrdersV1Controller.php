@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Order;
 
+use App\Enums\OrderEnums;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\V1\Order\OrderFilterRequest;
 use App\Http\Requests\V1\Order\OrderRequest;
@@ -63,6 +64,7 @@ class OrdersV1Controller extends ApiController
         $this->carRepository->getById($request->car_id);
 
         $order = $this->orderRepository->create([
+            'barcode' => OrderEnums::PREFIX . trim(microtime()),
             'user_id' => $user->id,
             'service_id' => $request->service_id,
             'car_id' => $request->car_id,
