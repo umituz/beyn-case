@@ -49,7 +49,7 @@ class SyncAutoMobileJob extends BaseCommand implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @return void
+     * @return bool
      */
     public function handle()
     {
@@ -74,6 +74,8 @@ class SyncAutoMobileJob extends BaseCommand implements ShouldQueue
         if (!$redis) {
             $this->toSlack(config('slack.channels.redis_issues'), __('Failed to register to redis!'));
         }
+
+        return true;
     }
 
     /**
