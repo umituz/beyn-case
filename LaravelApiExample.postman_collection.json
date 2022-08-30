@@ -419,7 +419,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"service_id\":1,\n    \"car_id\": 1\n}",
+							"raw": "{\n    \"service_id\":1,\n    \"car_id\": 1,\n    \"status\": 0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
