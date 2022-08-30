@@ -89,4 +89,42 @@ class OrderRepository implements OrderRepositoryInterface
     {
         return $this->order->find($id);
     }
+
+    /**
+     * @param int $id
+     * @param array $data
+     * @return mixed
+     */
+    public function update(int $id, array $data): mixed
+    {
+        try {
+            return DB::transaction(function () use ($id, $data) {
+                $order = $this->getById($id);
+                $order->update($data);
+
+                return $order;
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
+    }
+
+    /**
+     * @param int $id
+     * @return int
+     */
+    public function delete(int $id): int
+    {
+        try {
+            return DB::transaction(function () use ($id) {
+                return $this->order->destroy($id);
+            });
+        } catch (Exception $e) {
+            $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
+
+            return false;
+        }
+    }
 }

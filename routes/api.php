@@ -24,13 +24,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::resource('brands', BrandsGatewayController::class);
         Route::resource('cars', CarsGatewayController::class);
         Route::resource('services', ServicesGatewayController::class);
-
-        Route::group(['prefix' => 'orders'], function () {
-            Route::get('/', [OrdersGatewayController::class, 'index']);
-            Route::post('/', [OrdersGatewayController::class, 'store']);
-            Route::get('/filters', [OrdersGatewayController::class, 'filters']);
-            Route::get('/{id}', [OrdersGatewayController::class, 'show']);
-        });
+        Route::get('/filters', [OrdersGatewayController::class, 'filters']);
+        Route::resource('orders', OrdersGatewayController::class);
 
         Route::group(['prefix' => 'account'], function () {
             Route::get('profile', [UsersGatewayController::class, 'profile']);

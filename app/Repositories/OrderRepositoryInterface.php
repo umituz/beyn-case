@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\Order;
 use App\Models\User;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
  * Interface OrderRepositoryInterface
@@ -39,4 +38,17 @@ interface OrderRepositoryInterface
      * @return mixed
      */
     public function getById(int $id): mixed;
+
+    /**
+     * @param int $id
+     * @param array $data
+     * @return mixed
+     */
+    public function update(int $id, array $data): mixed;
+
+    /**
+     * @param int $id
+     * @return int
+     */
+    public function delete(int $id): int;
 }

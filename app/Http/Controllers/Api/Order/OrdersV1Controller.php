@@ -85,6 +85,35 @@ class OrdersV1Controller extends ApiController
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param OrderRequest $request
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function update(OrderRequest $request, $id): JsonResponse
+    {
+        $car = $this->orderRepository->update($id, $request->validated());
+
+        return $this->success(__('Success'),  new OrderResource($car));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return JsonResponse
+     */
+    public function destroy($id): JsonResponse
+    {
+        $this->carRepository->delete($id);
+
+        return $this->success(__('Success'), [
+            'message' => 'Deleted'
+        ]);
+    }
+
+    /**
      * @param OrderFilterRequest $request
      * @return JsonResponse
      */

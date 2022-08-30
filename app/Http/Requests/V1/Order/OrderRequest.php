@@ -18,8 +18,8 @@ class OrderRequest extends Request
     public function rules(): array
     {
         return [
-            'service_id' => ['required', 'integer'],
-            'car_id' => ['required', 'integer'],
+            'service_id' => ['nullable', 'integer'],
+            'car_id' => ['nullable', 'integer'],
             'price' => ['nullable', 'integer'],
         ];
     }
