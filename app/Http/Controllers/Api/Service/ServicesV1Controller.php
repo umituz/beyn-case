@@ -7,6 +7,7 @@ use App\Http\Requests\V1\Service\ServiceRequest;
 use App\Http\Resources\V1\Service\ServiceCollection;
 use App\Http\Resources\V1\Service\ServiceResource;
 use App\Repositories\ServiceRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Class ServicesV1Controller
@@ -27,13 +28,13 @@ class ServicesV1Controller extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return ServiceCollection
+     * @return JsonResponse
      */
-    public function index(): ServiceCollection
+    public function index(): JsonResponse
     {
         $services = $this->serviceRepository->getAll();
 
-        return new ServiceCollection($services);
+        return $this->success(__('Success'),  new ServiceCollection($services));
     }
 
     /**
@@ -51,13 +52,13 @@ class ServicesV1Controller extends ApiController
 
     /**
      * @param int $id
-     * @return ServiceResource
+     * @return JsonResponse
      */
-    public function show(int $id): ServiceResource
+    public function show(int $id): JsonResponse
     {
         $service = $this->serviceRepository->getById($id);
 
-        return new ServiceResource($service);
+        return $this->success(__('Success'),  new ServiceResource($service));
     }
 
     /**
@@ -65,27 +66,27 @@ class ServicesV1Controller extends ApiController
      *
      * @param ServiceRequest $request
      * @param int $id
-     * @return ServiceResource
+     * @return JsonResponse
      */
-    public function update(ServiceRequest $request, $id): ServiceResource
+    public function update(ServiceRequest $request, $id): JsonResponse
     {
         $brand = $this->serviceRepository->update($id, $request->validated());
 
-        return new ServiceResource($brand);
+        return $this->success(__('Success'),  new ServiceResource($brand));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return array
+     * @return JsonResponse
      */
-    public function destroy($id): array
+    public function destroy($id): JsonResponse
     {
         $this->serviceRepository->delete($id);
 
-        return [
-            'message' => __('Deleted')
-        ];
+        return $this->success(__('Success'), [
+            'message' => 'Deleted'
+        ]);
     }
 }
