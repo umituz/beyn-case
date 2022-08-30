@@ -89,3 +89,33 @@ $ php artisan db:seed
 ```console
 $ php artisan schedule:work
 ```
+
+## Test
+
+Birim testleri çalıştırmak için:
+
+```console
+$ ./vendor/bin/phpunit
+```
+
+Tarayıcı üzerinde çalışan testleri çalıştırmak için öncelikle bir terminal'de uygulamayı ayağa kaldırın:
+
+```console
+$ php artisan serve
+```
+
+daha sonra gerekli driver'ları kurmak ve testleri çalıştırmak için (bu testler `.env` dosyasında belirttiğiniz
+veritabanını kullanır ve bu testlerin çalışması uzun sürebilir):
+
+```console
+$ php artisan dusk:chrome-driver
+$ php artisan dusk
+```
+
+**NOT:** Bu komutun çalışabilmesi için bilgisayarınızda Google Chrome tarayıcısının yüklü olması gerekir. Olası bir
+sorunda
+`vendor/laravel/dusk/bin/` dizini altındaki dosyaların 755 izinlerinin olduğundan emin olun:
+
+```console
+$ chmod 755 -R ./vendor/laravel/dusk/bin/
+```
