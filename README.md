@@ -191,6 +191,9 @@ Cevap:
 }
 ``````
 
+`access_token` kısmı sonraki istekler için gerekli olacak.
+
+
 ### [POST] `/api/auth/logout?version=1`
 
 İstek: 
@@ -213,4 +216,75 @@ Cevap:
 }
 ```
 
-`access_token` kısmı sonraki istekler için gerekli olacak.
+### [GET] `/api/brands?version=1`
+
+Tüm araba markalarını JSON formatında geri döner.
+
+**Örnek kullanım:**
+
+```console
+curl --location --request GET 'http://127.0.0.1:8000/api/brands?version%3D1' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer 4|0l9exOV7dZOfy1vf3dR0RyaAtO97DQxYu7HnZQb4'
+```
+
+Cevap
+
+```json
+{
+    "code": 200,
+    "message": "Success",
+    "data": {
+        "total": 15,
+        "user_balance": "100.00",
+        "data": [
+            {
+                "id": 20,
+                "name": "eaque",
+                "model": "recusandae",
+                "url": "qui",
+                "year": "asperiores",
+                "deleted_at": null,
+                "created_at": "2022-08-30 13:07:12",
+                "updated_at": "2022-08-30 13:07:12"
+            }
+            //...
+        ],
+        "version": "api-version-1"
+    }
+}
+```
+
+### [GET] `/api/brands/{id}?version=1`
+
+Belirli bir markayı JSON formatında geri döner.
+
+**Örnek kullanım:**
+
+```console
+curl --location --request GET 'http://127.0.0.1:8000/api/brands/2?version=1' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer 4|0l9exOV7dZOfy1vf3dR0RyaAtO97DQxYu7HnZQb4' \
+--data-raw ''
+```
+
+Cevap
+
+```json
+{
+    "code": 200,
+    "message": "Success",
+    "data": {
+        "id": 2,
+        "name": "labore",
+        "model": "ad",
+        "url": "eum",
+        "year": "saepe",
+        "deleted_at": null,
+        "created_at": "2022-08-30 13:07:12",
+        "updated_at": "2022-08-30 13:07:12"
+    }
+}
+```
+
+
