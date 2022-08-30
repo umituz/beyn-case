@@ -46,12 +46,6 @@ class CarRepository implements CarRepositoryInterface
                 return $this->car->updateOrCreate($data);
             });
         } catch (Exception $e) {
-            dd(
-                "Car",
-                __METHOD__,
-                $e->getMessage()
-            );
-
             $this->toSlack(config('slack.channels.db_issues'), $e->getMessage());
 
             return false;

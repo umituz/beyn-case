@@ -68,10 +68,9 @@ class CarsV1Controller extends ApiController
      * @param int $id
      * @return JsonResponse
      */
-    public function update(CarRequest $request, $id)
+    public function update(CarRequest $request, $id): JsonResponse
     {
-        $car = $this->carRepository->getById($id);
-        $car->update($request->validated());
+        $car = $this->carRepository->update($id, $request->validated());
 
         return $this->success(__('Success'),  new CarResource($car));
     }

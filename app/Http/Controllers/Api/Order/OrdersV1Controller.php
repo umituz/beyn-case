@@ -41,13 +41,13 @@ class OrdersV1Controller extends ApiController
     /**
      * Display a listing of the resource.
      *
-     * @return OrderCollection
+     * @return JsonResponse
      */
-    public function index(): OrderCollection
+    public function index(): JsonResponse
     {
         $orders = $this->orderRepository->getAll();
 
-        return new OrderCollection($orders);
+        return $this->success(__('Success'),  new OrderCollection($orders));
     }
 
     /**
@@ -86,12 +86,12 @@ class OrdersV1Controller extends ApiController
 
     /**
      * @param int $id
-     * @return OrderResource
+     * @return JsonResponse
      */
-    public function show(int $id): OrderResource
+    public function show(int $id): JsonResponse
     {
         $order = $this->orderRepository->getById($id);
 
-        return new OrderResource($order);
+        return $this->success(__('Success'), new OrderResource($order));
     }
 }
