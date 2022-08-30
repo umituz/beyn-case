@@ -28,6 +28,7 @@ class OrderResource extends JsonResource
             'price' => $this->price,
             'status' => $this->status,
             'created_at' => $this->created_at->format(self::DATE_FORMAT),
+            'updated_at' => $this->updated_at->format(self::DATE_FORMAT),
             'service' => $this->service,
             'car' => new CarResource($this->car),
         ];

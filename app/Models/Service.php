@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Scopes\ReverseScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Whtht\PerfectlyCache\Traits\PerfectlyCachable;
@@ -13,7 +12,7 @@ use Whtht\PerfectlyCache\Traits\PerfectlyCachable;
  * Class Service
  * @package App\Models
  */
-class Service extends Model
+class Service extends BaseModel
 {
     use HasFactory, PerfectlyCachable, SoftDeletes;
 

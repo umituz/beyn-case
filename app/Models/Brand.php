@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * Class Car
  * @package App\Models
  */
-class Brand extends Model
+class Brand extends BaseModel
 {
     use HasFactory, SoftDeletes;
 
