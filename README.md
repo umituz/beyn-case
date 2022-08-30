@@ -149,12 +149,14 @@ Cevap:
 {
     "code": 200,
     "message": "Success",
+    "user_balance": "100.00",
+    "version": "api-version-1",
     "data": {
         "id": 1,
         "name": "Ümit UZ",
         "email": "umituz998@gmail.com",
         "balance": "100.00",
-        "access_token": "11|EGyvxIbWslWBDzOGnesF7i623nAOjFjKuBZNeAbV"
+        "access_token": "8|XyEFTCqhRyrab9SUw1rlCbuUvXNGRKKTLuJOnD7h"
     }
 }
 ```
@@ -181,12 +183,14 @@ Cevap:
 {
     "code": 200,
     "message": "Success",
+    "user_balance": "0.00",
+    "version": "api-version-1",
     "data": {
         "id": 11,
         "name": "Ümit Kenan UZ",
         "email": "umituz999@gmail.com",
         "balance": 0,
-        "access_token": "1|qaimZPPKuz84cT75XFzO171tuECwfVLMJyGLje9k"
+        "access_token": "1|WMlEsYQTBMObVdPbFiK4LblNQAJFzbr2x0GHAUxO"
     }
 }
 ``````
@@ -210,6 +214,8 @@ Cevap:
 {
     "code": 200,
     "message": "Success",
+    "user_balance": "100.00",
+    "version": "api-version-1",
     "data": {
         "message": "Logged Out"
     }
@@ -234,23 +240,32 @@ Cevap
 {
     "code": 200,
     "message": "Success",
+    "user_balance": "100.00",
+    "version": "api-version-1",
     "data": {
-        "total": 15,
-        "user_balance": "100.00",
+        "total": 3,
         "data": [
             {
-                "id": 20,
-                "name": "eaque",
-                "model": "recusandae",
-                "url": "qui",
-                "year": "asperiores",
+                "id": 3,
+                "name": "aliquid",
+                "model": "et",
+                "url": "aliquam",
+                "year": "quia",
                 "deleted_at": null,
-                "created_at": "2022-08-30 13:07:12",
-                "updated_at": "2022-08-30 13:07:12"
+                "created_at": "2022-08-30 15:14:24",
+                "updated_at": "2022-08-30 15:14:24"
+            },
+            {
+                "id": 2,
+                "name": "praesentium",
+                "model": "temporibus",
+                "url": "error",
+                "year": "soluta",
+                "deleted_at": null,
+                "created_at": "2022-08-30 15:14:24",
+                "updated_at": "2022-08-30 15:14:24"
             }
-            //...
-        ],
-        "version": "api-version-1"
+        ]
     }
 }
 ```
@@ -274,15 +289,17 @@ Cevap
 {
     "code": 200,
     "message": "Success",
+    "user_balance": "100.00",
+    "version": "api-version-1",
     "data": {
         "id": 2,
-        "name": "labore",
-        "model": "ad",
-        "url": "eum",
-        "year": "saepe",
+        "name": "praesentium",
+        "model": "temporibus",
+        "url": "error",
+        "year": "soluta",
         "deleted_at": null,
-        "created_at": "2022-08-30 13:07:12",
-        "updated_at": "2022-08-30 13:07:12"
+        "created_at": "2022-08-30 15:14:24",
+        "updated_at": "2022-08-30 15:14:24"
     }
 }
 ```

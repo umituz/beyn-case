@@ -18,6 +18,6 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        Order::factory(10)->hasCar()->hasService()->hasUser()->times(10)->create();
+        Order::factory(1)->hasCar()->hasService()->hasUser()->times(1)->create();
     }
 }

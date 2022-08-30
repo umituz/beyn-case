@@ -24,6 +24,6 @@ class UserSeeder extends Seeder
             'password' => bcrypt(123456789),
             'balance' => 100
         ]);
-        User::factory(9)->create();
+        User::factory(1)->create();
     }
 }
