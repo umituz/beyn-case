@@ -130,7 +130,7 @@ $ chmod 755 -R ./vendor/laravel/dusk/bin/
 
 **Örnek kullanım (varsayılan kullanıcıların `seed` edilmiş olması gerekir):**
 
-İstek: 
+Örnek Kullanımı: 
 
 ```console
 curl --location --request POST 'http://127.0.0.1:8000/api/auth/login?version=1' \
@@ -162,7 +162,7 @@ Cevap:
 ```
 ### [POST] `/api/auth/register?version=1`
 
-İstek: 
+Örnek Kullanımı: 
 
 ```console
 curl --location --request POST 'http://127.0.0.1:8000/api/auth/register?version=1' \
@@ -200,7 +200,7 @@ Cevap:
 
 ### [POST] `/api/auth/logout?version=1`
 
-İstek: 
+Örnek Kullanımı: 
 
 ```console
 curl --location --request POST 'http://127.0.0.1:8000/api/auth/logout?version=1' \
@@ -234,7 +234,7 @@ curl --location --request GET 'http://127.0.0.1:8000/api/brands?version%3D1' \
 --header 'Authorization: Bearer 4|0l9exOV7dZOfy1vf3dR0RyaAtO97DQxYu7HnZQb4'
 ```
 
-Cevap
+**Cevap:**
 
 ```json
 {
@@ -274,7 +274,7 @@ Cevap
 
 Belirli bir markayı JSON formatında geri döner.
 
-**Örnek kullanım:**
+**Örnek Kullanımı:**
 
 ```console
 curl --location --request GET 'http://127.0.0.1:8000/api/brands/2?version=1' \
@@ -283,7 +283,7 @@ curl --location --request GET 'http://127.0.0.1:8000/api/brands/2?version=1' \
 --data-raw ''
 ```
 
-Cevap
+**Cevap**:
 
 ```json
 {
@@ -304,4 +304,111 @@ Cevap
 }
 ```
 
+### [POST] `/api/brands?version=1`
 
+Yeni marka oluşturur. Oluşturulan markayı JSON formatında geri döner.
+
+* Gerekli alanlar: `name`, `model`, `url`, `year`
+
+**Örnek kullanım:**
+
+```console
+curl --location --request POST 'http://127.0.0.1:8000/api/brands?version%3D1' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer 1|uZbQqOUqn2aH9R2UMbdaMoALRGNBSoynQIe20psB' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "test-name",
+    "model":"test-model",
+    "url":"http://test-url.com",
+    "year":"test-year"
+}'
+```
+
+Cevap:
+
+```json
+{
+    "code": 200,
+    "message": "Success",
+    "user_balance": "100.00",
+    "version": "api-version-1",
+    "data": {
+        "name": "test-name",
+        "model": "test-model",
+        "url": "http://test-url.com",
+        "year": "test-year",
+        "updated_at": "2022-08-30 15:18:34",
+        "created_at": "2022-08-30 15:18:34",
+        "id": 4
+    }
+}
+```
+
+### [PUT] `/api/brands/{id}`
+
+`id`si verilen markayı günceller. Güncellenen markanın içeriği geriye JSON olarak gönderilir.
+
+**Örnek Kullanım:**
+
+```console
+curl --location --request PUT 'http://127.0.0.1:8000/api/brands/1?version%3D1' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer 1|uZbQqOUqn2aH9R2UMbdaMoALRGNBSoynQIe20psB' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "test-name-2",
+    "model":"test-model-22",
+    "url":"http://test-url-2.com",
+    "year":"test-year-2"
+}'
+```
+
+Cevap:
+
+```json
+{
+    "code": 200,
+    "message": "Success",
+    "user_balance": "100.00",
+    "version": "api-version-1",
+    "data": {
+        "id": 1,
+        "name": "test-name-2",
+        "model": "test-model-22",
+        "url": "http://test-url-2.com",
+        "year": "test-year-2",
+        "deleted_at": null,
+        "created_at": "2022-08-30 15:14:24",
+        "updated_at": "2022-08-30 15:21:03"
+    }
+}
+```
+
+
+### [DELETE] `/api/brands/{id}?version=1`
+
+`id`si verilen markayı geçici olarak siler.
+
+**Örnek Kullanım:**
+
+```console
+curl --location --request DELETE 'http://127.0.0.1:8000/api/brands/2?version%3D1' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer 1|uZbQqOUqn2aH9R2UMbdaMoALRGNBSoynQIe20psB' \
+--data-raw ''
+```
+
+**Cevap:**
+
+```json
+{
+    "code": 200,
+    "message": "Success",
+    "user_balance": "100.00",
+    "version": "api-version-1",
+    "data": {
+        "message": "Deleted"
+    }
+}
+```
