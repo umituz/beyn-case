@@ -76,10 +76,10 @@ class OrdersV1Controller extends ApiController
     }
 
     /**
-     * @param int $id
+     * @param $id
      * @return JsonResponse
      */
-    public function show(int $id): JsonResponse
+    public function show($id): JsonResponse
     {
         $order = $this->orderRepository->getById($id);
 
