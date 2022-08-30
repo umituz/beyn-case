@@ -2,15 +2,14 @@
 
 namespace App\Http\Resources\V1\Brand;
 
-use App\Enums\VersionEnums;
-use App\Http\Resources\BaseCollection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 /**
  * Class BrandCollection
  * @package App\Http\Resources\Brand
  */
-class BrandCollection extends BaseCollection
+class BrandCollection extends ResourceCollection
 {
     public $collects = BrandResource::class;
 
@@ -24,9 +23,7 @@ class BrandCollection extends BaseCollection
     {
         return [
             'total' => $this->resource->count(),
-            'user_balance' => $this->getUserBalance($request),
             'data' => $this->collection,
-            'version' => VersionEnums::VERSION_1,
         ];
     }
 }

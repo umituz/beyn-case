@@ -2,15 +2,14 @@
 
 namespace App\Http\Resources\V1\User;
 
-use App\Enums\VersionEnums;
-use App\Http\Resources\BaseCollection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 /**
  * Class UserCollection
  * @package App\Http\Resources\V1\User
  */
-class UserCollection extends BaseCollection
+class UserCollection extends ResourceCollection
 {
     public $collects = UserResource::class;
 
@@ -24,9 +23,7 @@ class UserCollection extends BaseCollection
     {
         return [
             'total' => $this->resource->count(),
-            'user_balance' => $this->getUserBalance($request),
             'data' => $this->collection,
-            'version' => VersionEnums::VERSION_1
         ];
     }
 }

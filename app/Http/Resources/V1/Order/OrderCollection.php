@@ -2,15 +2,14 @@
 
 namespace App\Http\Resources\V1\Order;
 
-use App\Enums\VersionEnums;
-use App\Http\Resources\BaseCollection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 /**
  * Class OrderCollection
  * @package App\Http\Resources\Order
  */
-class OrderCollection extends BaseCollection
+class OrderCollection extends ResourceCollection
 {
     public $collects = OrderResource::class;
 
@@ -24,9 +23,7 @@ class OrderCollection extends BaseCollection
     {
         return [
             'total' => $this->resource->count(),
-            'user_balance' => $this->getUserBalance($request),
             'data' => $this->collection,
-            'version' => VersionEnums::VERSION_1
         ];
     }
 }

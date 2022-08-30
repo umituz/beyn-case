@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\VersionEnums;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -27,7 +27,10 @@ class ApiController extends Controller
         return response()->json([
             'code' => Response::HTTP_OK,
             'message' => $message,
-            'data' => $data
+            'user_balance' => auth()->user()->balance,
+            'version' => VersionEnums::VERSION_1,
+            'data' => $data,
+
         ], Response::HTTP_OK);
     }
 
