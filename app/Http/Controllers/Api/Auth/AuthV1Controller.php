@@ -77,14 +77,14 @@ class AuthV1Controller extends ApiController
     }
 
     /**
-     * @return array
+     * @return JsonResponse
      */
-    public function logout(): array
+    public function logout(): JsonResponse
     {
         auth()->user()->tokens()->delete();
 
-        return [
+        return $this->success(__('Success'), [
             'message' => __('Logged Out')
-        ];
+        ]);
     }
 }

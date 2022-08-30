@@ -158,6 +158,7 @@ Cevap:
     }
 }
 ```
+### [POST] `/api/auth/register?version=1`
 
 İstek: 
 
@@ -186,6 +187,28 @@ Cevap:
         "email": "umituz999@gmail.com",
         "balance": 0,
         "access_token": "1|qaimZPPKuz84cT75XFzO171tuECwfVLMJyGLje9k"
+    }
+}
+``````
+
+### [POST] `/api/auth/logout?version=1`
+
+İstek: 
+
+```console
+curl --location --request POST 'http://127.0.0.1:8000/api/auth/logout?version=1' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer 2|LFyLTbAIbiO3kYo13rQBPXqBD8VdBor29U25hh9L'
+```
+
+Cevap:
+
+```json
+{
+    "code": 200,
+    "message": "Success",
+    "data": {
+        "message": "Logged Out"
     }
 }
 ```
