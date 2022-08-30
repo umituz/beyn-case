@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1\Order;
 
+use App\Http\Resources\V1\Car\CarResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -28,7 +29,7 @@ class OrderResource extends JsonResource
             'status' => $this->status,
             'created_at' => $this->created_at->format(self::DATE_FORMAT),
             'service' => $this->service,
-            'car' => $this->car,
+            'car' => new CarResource($this->car),
         ];
     }
 }
