@@ -27,7 +27,7 @@ class CarsV1ControllerTest extends BaseTestCase
 
         Sanctum::actingAs($user, ['*']);
 
-        $response = $this->getJson('api/v1/cars');
+        $response = $this->getJson('api/cars?version=1');
 
         $response->assertStatus(200);
     }
@@ -38,7 +38,7 @@ class CarsV1ControllerTest extends BaseTestCase
      */
     function it_should_not_return_cars_with_wrong_credentials()
     {
-        $response = $this->getJson('api/v1/cars');
+        $response = $this->getJson('api/cars?version=1');
 
         $response->assertStatus(401);
         $response->assertJsonPath('message', 'Unauthenticated.');

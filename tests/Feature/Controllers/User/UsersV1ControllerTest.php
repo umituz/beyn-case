@@ -15,8 +15,8 @@ class UsersV1ControllerTest extends BaseTestCase
 {
     use RefreshDatabase;
 
-    const PROFILE_ENDPOINT = 'api/v1/account/profile';
-    const BALANCE_ENDPOINT = 'api/v1/account/balance';
+    const PROFILE_ENDPOINT = 'api/account/profile?version=1';
+    const BALANCE_ENDPOINT = 'api/account/balance?version=1';
 
     /**
      * @test

@@ -16,8 +16,8 @@ class AuthV1ControllerTest extends BaseTestCase
 {
     use RefreshDatabase;
 
-    const LOGIN_ENDPOINT = 'api/v1/auth/login';
-    const REGISTER_ENDPOINT = 'api/v1/auth/register';
+    const LOGIN_ENDPOINT = 'api/auth/login?version=1';
+    const REGISTER_ENDPOINT = 'api/auth/register?version=1';
 
     /**
      * @test

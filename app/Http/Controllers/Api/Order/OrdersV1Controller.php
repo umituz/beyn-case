@@ -61,13 +61,13 @@ class OrdersV1Controller extends ApiController
     {
         $user = $request->user();
         $service = $this->serviceRepository->getById($request->service_id);
-        $this->carRepository->getById($request->car_id);
+        $car = $this->carRepository->getById($request->car_id);
 
         $order = $this->orderRepository->create([
             'barcode' => OrderEnums::PREFIX . trim(microtime()),
             'user_id' => $user->id,
-            'service_id' => $request->service_id,
-            'car_id' => $request->car_id,
+            'service_id' => $service->id,
+            'car_id' => $car->id,
             'status' => false,
             'price' => $service->price,
         ], $user);

@@ -27,7 +27,7 @@ class ServicesV1ControllerTest extends BaseTestCase
 
         Sanctum::actingAs($user, ['*']);
 
-        $response = $this->getJson('api/v1/services');
+        $response = $this->getJson('api/services?version=1');
         $response->assertStatus(200);
     }
 
@@ -37,7 +37,7 @@ class ServicesV1ControllerTest extends BaseTestCase
      */
     function it_should_not_return_services_with_wrong_credentials()
     {
-        $response = $this->getJson('api/v1/services');
+        $response = $this->getJson('api/services?version=1');
 
         $response->assertStatus(401);
         $response->assertJsonPath('message', 'Unauthenticated.');

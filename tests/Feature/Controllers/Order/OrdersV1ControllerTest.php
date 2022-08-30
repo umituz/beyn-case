@@ -29,7 +29,7 @@ class OrdersV1ControllerTest extends BaseTestCase
         $user = $this->createUser(123456);
         Sanctum::actingAs($user, ['*']);
 
-        $response = $this->getJson('api/v1/orders');
+        $response = $this->getJson('api/orders?version=1');
 
         $response->assertStatus(200);
     }
@@ -40,7 +40,7 @@ class OrdersV1ControllerTest extends BaseTestCase
      */
     function it_should_not_return_orders_with_wrong_credentials()
     {
-        $response = $this->getJson('api/v1/orders');
+        $response = $this->getJson('api/orders?version=1');
 
         $response->assertStatus(401);
         $response->assertJsonPath('message', 'Unauthenticated.');
@@ -62,7 +62,7 @@ class OrdersV1ControllerTest extends BaseTestCase
             'car_id' => $car->first()->id
         ];
 
-        $response = $this->postJson('api/v1/orders', $data);
+        $response = $this->postJson('api/orders?version=1', $data);
 
         $response->assertStatus(200);
 
@@ -96,7 +96,7 @@ class OrdersV1ControllerTest extends BaseTestCase
             'car_id' => $car->first()->id
         ];
 
-        $response = $this->postJson('api/v1/orders', $data);
+        $response = $this->postJson('api/orders?version=1', $data);
         $response->assertStatus(200);
 
         $response->assertJsonPath('message', 'Success');
