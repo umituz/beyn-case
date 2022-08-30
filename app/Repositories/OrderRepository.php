@@ -62,6 +62,7 @@ class OrderRepository implements OrderRepositoryInterface
     public function getUserOrdersByFilter($request): mixed
     {
         $orders = auth()->user()->orders()->with('service', 'car.brand');
+
         $orders = $orders->when($request->service_id, function ($query) use ($request) {
             $query->where('service_id', $request->service_id);
         });
@@ -70,15 +71,11 @@ class OrderRepository implements OrderRepositoryInterface
             $query->where('car_id', $request->car_id);
         });
 
-        $orders = $orders->when($request->brand_id, function ($query) use ($request) {
-            $query->where('car.brand_id', $request->brand_id);
-        });
-
         $orders = $orders->when($request->status, function ($query) use ($request) {
             $query->where('status', $request->status);
         });
 
-        return $orders->paginate();
+        return $orders->get();
     }
 
     /**
