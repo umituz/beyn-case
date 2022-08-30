@@ -49,7 +49,7 @@ class SyncAutoMobileJob extends BaseCommand implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @return bool
+     * @return bool|void
      */
     public function handle()
     {
