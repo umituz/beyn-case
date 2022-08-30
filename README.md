@@ -114,6 +114,8 @@ $ chmod 755 -R ./vendor/laravel/dusk/bin/
 
 ## RESTfull API Kaynakları
 
+#### Örnekler auth ve brands için oluşturulmuştur.
+
 ### [POST] `/api/auth/login?version=1`
 
 `email` ve `password` kabul eder. Bilgiler doğrusa, kullanının bilgilerini JSON formatında geri döner.
