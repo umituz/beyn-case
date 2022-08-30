@@ -28,3 +28,64 @@ Psrs
 - 120 karakter limitine uyuldu
 - Parametre tipleri eklendi metodlar için
 - Veri geri dönüşleri eklendi metodlar için
+
+
+## Kullanımı
+
+### 0. Gereksinimler
+
+* PHP 8 veya üzeri
+* MySQL
+* Composer
+* Git
+
+### 1 Gerekli kütüphanelerin kurulumu
+
+PHP kütüphanelerinin kurulması için:
+
+```console
+$ composer install
+```
+
+### 2. Konfigürasyonlar
+
+Ortam değişkenlerini ayarlamak için `.env.example` dosyasını `.env` olarak yeniden isimlendirin ve `DB_` ile başlayan
+değişkenleri düzenleyin.
+
+```console
+$ cp .env.example .env
+```
+
+Aşağıdaki komutla uygulama anahtarını yeniden ürettirin.
+
+```console
+$ php artisan key:generate
+```
+
+Gerekli veritabanı tablolarının oluşturulması için:
+
+```console
+$ php artisan migrate
+```
+
+### 3. Uygulamayı çalıştırmak
+
+Uygulamayı çalıştırmak için aşağıdaki komutla basit bir web sunucusu oluşturabilirsiniz:
+
+```console
+$ php artisan serve
+```
+
+uygulama şu an **localhost:8000** adresinde çalışıyor.
+
+Varsayılan verileri veritabanına eklemek için:
+
+```console
+$ php artisan db:seed
+```
+
+İleri tarih için zamanlanmış senkronizasyon için arkada sürekli açık olması gereken komut:
+
+```console
+$ php artisan schedule:work
+```
