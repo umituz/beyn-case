@@ -24,6 +24,7 @@ class CarResource extends JsonResource
         self::withoutWrapping();
 
         return [
+            'id' => $this->id,
             'brand' => $this->brand,
             'option' => $this->option,
             'engine_cylinders' => $this->engine_cylinders,

@@ -74,17 +74,6 @@ class OrdersV1Controller extends ApiController
     }
 
     /**
-     * @param OrderFilterRequest $request
-     * @return JsonResponse
-     */
-    public function filters(OrderFilterRequest $request): JsonResponse
-    {
-        $orders = $this->orderRepository->getUserOrdersByFilter($request);
-
-        return $this->success(__('Success'), OrderResource::collection($orders));
-    }
-
-    /**
      * @param int $id
      * @return JsonResponse
      */
@@ -93,5 +82,16 @@ class OrdersV1Controller extends ApiController
         $order = $this->orderRepository->getById($id);
 
         return $this->success(__('Success'), new OrderResource($order));
+    }
+
+    /**
+     * @param OrderFilterRequest $request
+     * @return JsonResponse
+     */
+    public function filters(OrderFilterRequest $request): JsonResponse
+    {
+        $orders = $this->orderRepository->getUserOrdersByFilter($request);
+
+        return $this->success(__('Success'), OrderResource::collection($orders));
     }
 }
