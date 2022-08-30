@@ -41,14 +41,19 @@
 									"urlencoded": []
 								},
 								"url": {
-									"raw": "{{apiUrl}}/api/v1/brands",
+									"raw": "{{apiUrl}}/api/brands?version=1",
 									"host": [
 										"{{apiUrl}}"
 									],
 									"path": [
 										"api",
-										"v1",
 										"brands"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -85,14 +90,19 @@
 									}
 								},
 								"url": {
-									"raw": "{{apiUrl}}/api/v1/brands",
+									"raw": "{{apiUrl}}/api/brands?version=1",
 									"host": [
 										"{{apiUrl}}"
 									],
 									"path": [
 										"api",
-										"v1",
 										"brands"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -132,15 +142,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{apiUrl}}/api/v1/brands/1",
+									"raw": "{{apiUrl}}/api/brands/2?version=1",
 									"host": [
 										"{{apiUrl}}"
 									],
 									"path": [
 										"api",
-										"v1",
 										"brands",
-										"1"
+										"2"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -177,15 +192,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{apiUrl}}/api/v1/brands/1",
+									"raw": "{{apiUrl}}/api/brands/1?version=1",
 									"host": [
 										"{{apiUrl}}"
 									],
 									"path": [
 										"api",
-										"v1",
 										"brands",
 										"1"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -222,15 +242,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{apiUrl}}/api/v1/brands/12",
+									"raw": "{{apiUrl}}/api/brands/12?version=1",
 									"host": [
 										"{{apiUrl}}"
 									],
 									"path": [
 										"api",
-										"v1",
 										"brands",
 										"12"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -270,14 +295,19 @@
 									"urlencoded": []
 								},
 								"url": {
-									"raw": "{{apiUrl}}/api/v1/cars",
+									"raw": "{{apiUrl}}/api/cars?version=1",
 									"host": [
 										"{{apiUrl}}"
 									],
 									"path": [
 										"api",
-										"v1",
 										"cars"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -312,15 +342,20 @@
 									"urlencoded": []
 								},
 								"url": {
-									"raw": "{{apiUrl}}/api/v1/cars/1",
+									"raw": "{{apiUrl}}/api/cars/1?version=1",
 									"host": [
 										"{{apiUrl}}"
 									],
 									"path": [
 										"api",
-										"v1",
 										"cars",
 										"1"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -357,15 +392,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{apiUrl}}/api/v1/cars/1",
+									"raw": "{{apiUrl}}/api/cars/1?version=1",
 									"host": [
 										"{{apiUrl}}"
 									],
 									"path": [
 										"api",
-										"v1",
 										"cars",
 										"1"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -402,14 +442,19 @@
 									}
 								},
 								"url": {
-									"raw": "{{apiUrl}}/api/v1/cars",
+									"raw": "{{apiUrl}}/api/cars?version=1",
 									"host": [
 										"{{apiUrl}}"
 									],
 									"path": [
 										"api",
-										"v1",
 										"cars"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -446,15 +491,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{apiUrl}}/api/v1/cars/1",
+									"raw": "{{apiUrl}}/api/cars/1?version=1",
 									"host": [
 										"{{apiUrl}}"
 									],
 									"path": [
 										"api",
-										"v1",
 										"cars",
 										"1"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -617,7 +667,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"car_id\":1\n}",
+									"raw": "{\n    \"service_id\":1\n}",
 									"options": {
 										"raw": {
 											"language": "json"

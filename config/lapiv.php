@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'uri',
+    'default' => 'query_string',
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
             'prefix' => 'v{version}',
         ],
         'query_string' => [
-            'key' => 'v',
+            'key' => 'version',
         ],
     ],
 
