@@ -14,6 +14,5 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-coverage
 .DS_Store
 dump.rdb

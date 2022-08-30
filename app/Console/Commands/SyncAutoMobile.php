@@ -52,7 +52,7 @@ class SyncAutoMobile extends BaseCommand
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
     public function handle()
     {
