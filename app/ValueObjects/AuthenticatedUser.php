@@ -11,10 +11,10 @@ use Illuminate\Contracts\Auth\Authenticatable;
  */
 class AuthenticatedUser
 {
-    private User $user;
+    private Authenticatable $user;
 
     /**
-     * @param User $user
+     * @param Authenticatable $user
      */
     public function __construct(Authenticatable $user)
     {
