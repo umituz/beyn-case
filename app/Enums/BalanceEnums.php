@@ -2,8 +2,12 @@
 
 namespace App\Enums;
 
-class BalanceEnums
+/**
+ * Class BalanceEnums
+ * @package App\Enums
+ */
+enum BalanceEnums: string
 {
-    const DEPOSIT_TYPE = 'deposit';
-    const WITHDRAW_TYPE = 'withdraw';
+    case DEPOSIT_TYPE = 'deposit';
+    case WITHDRAW_TYPE = 'withdraw';
 }

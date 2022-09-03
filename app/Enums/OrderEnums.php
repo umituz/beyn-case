@@ -2,7 +2,11 @@
 
 namespace App\Enums;
 
-class OrderEnums
+/**
+ * Class OrderEnums
+ * @package App\Enums
+ */
+enum OrderEnums: string
 {
-    const PREFIX = 'ORD-';
+    case PREFIX = 'ORD-';
 }

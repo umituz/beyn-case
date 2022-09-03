@@ -2,7 +2,11 @@
 
 namespace App\Enums;
 
-class VersionEnums
+/**
+ * Class VersionEnums
+ * @package App\Enums
+ */
+enum VersionEnums: string
 {
-    const VERSION_1 = 'api-version-1';
+    case VERSION_1 = 'api-version-1';
 }
