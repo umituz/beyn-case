@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\BalanceEnums;
+use App\ValueObjects\AuthenticatedUser;
 
 /**
  * Class UserService
@@ -27,5 +28,15 @@ class UserService
         }
 
         return $balance;
+    }
+
+    /**
+     * @return float
+     */
+    public static function getBalance(): float
+    {
+        $authenticatedUser = new AuthenticatedUser(auth()->user());
+
+        return $authenticatedUser->getBalance();
     }
 }
