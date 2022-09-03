@@ -3,7 +3,7 @@
 namespace App\Enums;
 
 /**
- * Class VersionEnums
+ * Enum VersionEnums
  * @package App\Enums
  */
 enum VersionEnums: string

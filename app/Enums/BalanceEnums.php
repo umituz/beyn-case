@@ -3,7 +3,7 @@
 namespace App\Enums;
 
 /**
- * Class BalanceEnums
+ * Enum BalanceEnums
  * @package App\Enums
  */
 enum BalanceEnums: string

@@ -3,7 +3,7 @@
 namespace App\Enums;
 
 /**
- * Class OrderEnums
+ * Enum OrderEnums
  * @package App\Enums
  */
 enum OrderEnums: string
