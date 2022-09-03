@@ -2,7 +2,6 @@
 
 namespace App\ValueObjects;
 
-use App\Models\User;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
