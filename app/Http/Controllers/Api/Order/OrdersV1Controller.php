@@ -19,24 +19,17 @@ use Illuminate\Http\JsonResponse;
  */
 class OrdersV1Controller extends ApiController
 {
-    private ServiceRepositoryInterface $serviceRepository;
-    private CarRepositoryInterface $carRepository;
-    private OrderRepositoryInterface $orderRepository;
-
     /**
      * @param CarRepositoryInterface $carRepository
      * @param ServiceRepositoryInterface $serviceRepository
      * @param OrderRepositoryInterface $orderRepository
      */
     public function __construct(
-        CarRepositoryInterface     $carRepository,
-        ServiceRepositoryInterface $serviceRepository,
-        OrderRepositoryInterface   $orderRepository,
+        protected CarRepositoryInterface     $carRepository,
+        protected ServiceRepositoryInterface $serviceRepository,
+        protected OrderRepositoryInterface   $orderRepository,
     )
     {
-        $this->serviceRepository = $serviceRepository;
-        $this->carRepository = $carRepository;
-        $this->orderRepository = $orderRepository;
     }
 
     /**

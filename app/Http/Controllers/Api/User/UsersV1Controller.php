@@ -15,18 +15,16 @@ use App\Services\UserService;
 class UsersV1Controller extends ApiController
 {
     private $user;
-    private UserRepositoryInterface $userRepository;
-    private UserService $userService;
 
     /**
      * @param UserRepositoryInterface $userRepository
      * @param UserService $userService
      */
-    public function __construct(UserRepositoryInterface $userRepository, UserService $userService)
+    public function __construct(
+        protected UserRepositoryInterface $userRepository,
+        protected UserService $userService)
     {
         $this->user = request()->user();
-        $this->userRepository = $userRepository;
-        $this->userService = $userService;
     }
 
     /**

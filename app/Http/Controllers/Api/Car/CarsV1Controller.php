@@ -15,14 +15,11 @@ use Illuminate\Http\JsonResponse;
  */
 class CarsV1Controller extends ApiController
 {
-    private CarRepositoryInterface $carRepository;
-
     /**
      * @param CarRepositoryInterface $carRepository
      */
-    public function __construct(CarRepositoryInterface $carRepository)
+    public function __construct(protected CarRepositoryInterface $carRepository)
     {
-        $this->carRepository = $carRepository;
     }
 
     /**

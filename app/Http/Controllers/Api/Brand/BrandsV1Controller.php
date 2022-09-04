@@ -15,14 +15,8 @@ use Illuminate\Http\JsonResponse;
  */
 class BrandsV1Controller extends ApiController
 {
-    private BrandRepositoryInterface $brandRepository;
-
-    /**
-     * @param BrandRepositoryInterface $brandRepository
-     */
-    public function __construct(BrandRepositoryInterface $brandRepository)
+    public function __construct(protected BrandRepositoryInterface $brandRepository)
     {
-        $this->brandRepository = $brandRepository;
     }
 
     /**
@@ -34,7 +28,7 @@ class BrandsV1Controller extends ApiController
     {
         $brands = $this->brandRepository->getAll();
 
-        return $this->success(__('Success'),  new BrandCollection($brands));
+        return $this->success(__('Success'), new BrandCollection($brands));
     }
 
     /**
@@ -47,20 +41,20 @@ class BrandsV1Controller extends ApiController
     {
         $brand = $this->brandRepository->create($request->validated());
 
-        return $this->success(__('Success'),  new BrandResource($brand));
+        return $this->success(__('Success'), new BrandResource($brand));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
     public function show($id): JsonResponse
     {
         $brand = $this->brandRepository->getById($id);
 
-        return $this->success(__('Success'),  new BrandResource($brand));
+        return $this->success(__('Success'), new BrandResource($brand));
     }
 
     /**
@@ -74,13 +68,13 @@ class BrandsV1Controller extends ApiController
     {
         $brand = $this->brandRepository->update($id, $request->validated());
 
-        return $this->success(__('Success'),  new BrandResource($brand));
+        return $this->success(__('Success'), new BrandResource($brand));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
     public function destroy($id): JsonResponse
