@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Scopes\ReverseScope;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,19 +26,6 @@ class Order extends BaseModel
         parent::boot();
 
         static::addGlobalScope(new ReverseScope());
-    }
-
-    /**
-     * Interact with the user's address.
-     *
-     * @return Attribute
-     */
-    protected function address(): Attribute
-    {
-        return Attribute::make(
-            #get: fn ($value) => ucfirst($value),
-            set: fn ($value) => 'ORD-' . $value,
-        );
     }
 
     /**
