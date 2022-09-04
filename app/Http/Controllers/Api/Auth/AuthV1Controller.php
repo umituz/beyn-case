@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\Events\UserRegisteredEvent;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\V1\Auth\LoginRequest;
 use App\Http\Requests\V1\Auth\RegisterRequest;
@@ -69,6 +70,8 @@ class AuthV1Controller extends ApiController
         }
 
         $user->access_token = $token;
+
+        event(new UserRegisteredEvent($user));
 
         return $this->success(message: __('Success'), data: UserResource::make($user));
     }

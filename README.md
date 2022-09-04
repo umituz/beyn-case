@@ -4,6 +4,7 @@
 
 * Docker
 * Git
+* Composer
 
 ### 1. Projeyi gerekli kurulumlar
 
@@ -34,6 +35,9 @@ $ php artisan octane:start
 * Composer
 * Git
 * Redis
+* Elasticsearch
+* Mailtrap Hesabı
+  * https://mailtrap.io/
 * Swoole
   * Sisteminize uygun olan uzantıyı buradan indirebilirsiniz. 
   * https://pecl.php.net/package/swoole
@@ -121,7 +125,7 @@ Birim testleri çalıştırmak için:
 
 ```console
 $ ./vendor/bin/phpunit
-$ php artisan serve
+$ php artisan test
 ```
 
 Tarayıcı üzerinde çalışan testleri çalıştırmak için öncelikle bir terminal'de uygulamayı ayağa kaldırın:
