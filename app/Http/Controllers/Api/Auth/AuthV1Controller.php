@@ -17,14 +17,11 @@ use Illuminate\Support\Facades\Hash;
  */
 class AuthV1Controller extends ApiController
 {
-    private UserRepositoryInterface $userRepository;
-
     /**
      * @param UserRepositoryInterface $userRepository
      */
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(protected UserRepositoryInterface $userRepository)
     {
-        $this->userRepository = $userRepository;
     }
 
     /**
