@@ -8,5 +8,5 @@ namespace App\Enums;
  */
 enum OrderEnums: string
 {
-    case PREFIX = 'ORD-';
+    const PREFIX = 'ORD-';
 }

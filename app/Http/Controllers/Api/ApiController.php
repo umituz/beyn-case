@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Enums\VersionEnums;
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
-use App\ValueObjects\AuthenticatedUser;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -17,10 +16,10 @@ class ApiController extends Controller
 {
     /**
      * @param $message
-     * @param array $data
+     * @param $data
      * @return JsonResponse
      */
-    public function success($message = null, $data = []): JsonResponse
+    public function success($message, $data): JsonResponse
     {
         if (is_null($message)) {
             $message = __('Successful');

@@ -15,14 +15,11 @@ use Illuminate\Http\JsonResponse;
  */
 class ServicesV1Controller extends ApiController
 {
-    private ServiceRepositoryInterface $serviceRepository;
-
     /**
      * @param ServiceRepositoryInterface $serviceRepository
      */
-    public function __construct(ServiceRepositoryInterface $serviceRepository)
+    public function __construct(protected ServiceRepositoryInterface $serviceRepository)
     {
-        $this->serviceRepository = $serviceRepository;
     }
 
     /**
