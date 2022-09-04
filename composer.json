@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.7",
         "predis/predis": "^2.0",
         "spiral/roadrunner": "^2.11",
-        "whtht/perfectly-cache": "^4.3"
+        "whtht/perfectly-cache": "^4.3",
+        "elasticquent/elasticquent": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

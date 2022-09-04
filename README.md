@@ -34,6 +34,7 @@ $ php artisan octane:start
 * Composer
 * Git
 * Redis
+* Elasticsearch
 * Swoole
   * Sisteminize uygun olan uzantıyı buradan indirebilirsiniz. 
   * https://pecl.php.net/package/swoole

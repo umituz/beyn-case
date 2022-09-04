@@ -185,6 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Elasticquent\ElasticquentServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -210,7 +211,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
     ])->toArray(),
 
 ];
