@@ -8,6 +8,6 @@ namespace App\Enums;
  */
 enum BalanceEnums: string
 {
-    case DEPOSIT_TYPE = 'deposit';
-    case WITHDRAW_TYPE = 'withdraw';
+    const DEPOSIT_TYPE = 'deposit';
+    const WITHDRAW_TYPE = 'withdraw';
 }

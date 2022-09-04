@@ -30,8 +30,9 @@ class UsersV1ControllerTest extends BaseTestCase
 
         $response = $this->getJson(self::PROFILE_ENDPOINT);
 
+
         $response->assertStatus(200);
-        $response->assertJsonPath('name', $user->name);
+        $response->assertJsonPath('data.name', $user->name);
         $this->assertDatabaseHas('users', ['id' => $user->id]);
     }
 
