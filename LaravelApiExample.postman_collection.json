@@ -1,11 +1,166 @@
 {
 	"info": {
-		"_postman_id": "3a88ea42-a12a-4262-b525-4c659eed4395",
+		"_postman_id": "a8b69a38-c1fa-4fc8-914a-62d95998d4f1",
 		"name": "LaravelApiExample",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "18298602"
 	},
 	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();",
+									"",
+									"var e = pm.environment;",
+									"if(pm.environment.name === undefined){",
+									"    e = pm.globals;",
+									"}",
+									"",
+									"e.set(\"token\", data.data.access_token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"umituz998@gmail.com\",\n    \"password\":\"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/auth/login?{{version}}",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "{{version}}",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ümit Kenan UZ\",\n    \"email\": \"umituz999@gmail.com\",\n    \"password\": 123456789,\n    \"password_confirmation\" : 123456789\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/api/auth/register?{{version}}",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							],
+							"query": [
+								{
+									"key": "{{version}}",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apiUrl}}/api/auth/logout?{{version}}",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							],
+							"query": [
+								{
+									"key": "{{version}}",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "Brands",
 			"item": [
@@ -49,7 +204,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -98,7 +253,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -151,7 +306,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -201,7 +356,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -239,14 +394,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{apiUrl}}/api/brands/12?{{version}}",
+							"raw": "{{apiUrl}}/api/brands/9?{{version}}",
 							"host": [
 								"{{apiUrl}}"
 							],
 							"path": [
 								"api",
 								"brands",
-								"12"
+								"9"
 							],
 							"query": [
 								{
@@ -296,7 +451,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -337,7 +492,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -386,7 +541,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -439,7 +594,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -489,7 +644,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -539,7 +694,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -591,7 +746,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -639,7 +794,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -689,7 +844,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -738,7 +893,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -788,7 +943,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -833,7 +988,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -874,7 +1029,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -923,7 +1078,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -973,7 +1128,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -1023,7 +1178,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -1069,7 +1224,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -1150,178 +1305,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Auth",
-			"item": [
-				{
-					"name": "Login",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var data = pm.response.json();",
-									"",
-									"var e = pm.environment;",
-									"if(pm.environment.name === undefined){",
-									"    e = pm.globals;",
-									"}",
-									"",
-									"e.set(\"token\", data.data.access_token);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"email\":\"umituz998@gmail.com\",\n    \"password\":\"123456789\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{apiUrl}}/api/auth/login?{{version}}",
-							"host": [
-								"{{apiUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"login"
-							],
-							"query": [
-								{
-									"key": "{{version}}",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Register",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Ümit Kenan UZ",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "1212umituz998@gmail.com232",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123456789",
-									"type": "text"
-								},
-								{
-									"key": "password_confirmation",
-									"value": "123456789",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{apiUrl}}/api/auth/register?{{version}}",
-							"host": [
-								"{{apiUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"register"
-							],
-							"query": [
-								{
-									"key": "{{version}}",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Logout",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{apiUrl}}/api/auth/logout?{{version}}",
-							"host": [
-								"{{apiUrl}}"
-							],
-							"path": [
-								"api",
-								"auth",
-								"logout"
-							],
-							"query": [
-								{
-									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -1364,7 +1348,7 @@
 	"variable": [
 		{
 			"key": "apiUrl",
-			"value": "http://127.0.0.1:8000",
+			"value": "http://localhost",
 			"type": "string"
 		},
 		{
