@@ -29,9 +29,9 @@ class CarsV1Controller extends ApiController
      */
     public function index(): JsonResponse
     {
-        $cars =  $this->carRepository->getAll();
+        $cars = $this->carRepository->getAll();
 
-        return $this->success(__('Success'),  new CarCollection($cars));
+        return $this->success(message: __('Success'), data: new CarCollection($cars));
     }
 
     /**
@@ -44,7 +44,7 @@ class CarsV1Controller extends ApiController
     {
         $car = $this->carRepository->create($request->validated());
 
-        return $this->success(__('Success'),  new CarResource($car));
+        return $this->success(message: __('Success'), data: new CarResource($car));
     }
 
     /**
@@ -55,7 +55,7 @@ class CarsV1Controller extends ApiController
     {
         $car = $this->carRepository->getById($id);
 
-        return $this->success(__('Success'),  new CarResource($car));
+        return $this->success(message: __('Success'), data: new CarResource($car));
     }
 
     /**
@@ -65,25 +65,28 @@ class CarsV1Controller extends ApiController
      * @param int $id
      * @return JsonResponse
      */
-    public function update(CarRequest $request, $id): JsonResponse
+    public function update(CarRequest $request, int $id): JsonResponse
     {
         $car = $this->carRepository->update($id, $request->validated());
 
-        return $this->success(__('Success'),  new CarResource($car));
+        return $this->success(message: __('Success'), data: new CarResource($car));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
-    public function destroy($id): JsonResponse
+    public function destroy(int $id): JsonResponse
     {
-       $this->carRepository->delete($id);
+        $this->carRepository->delete($id);
 
-        return $this->success(__('Success'), [
-            'message' => 'Deleted'
-        ]);
+        return $this->success(
+            message: __('Success'),
+            data: [
+                'message' => 'Deleted'
+            ]
+        );
     }
 }

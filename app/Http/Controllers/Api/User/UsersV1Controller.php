@@ -7,6 +7,7 @@ use App\Http\Requests\V1\User\BalanceRequest;
 use App\Http\Resources\V1\User\UserResource;
 use App\Repositories\UserRepositoryInterface;
 use App\Services\UserService;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Class UsersV1Controller
@@ -28,11 +29,14 @@ class UsersV1Controller extends ApiController
     }
 
     /**
-     * @return UserResource
+     * @return JsonResponse
      */
-    public function profile(): UserResource
+    public function profile(): JsonResponse
     {
-        return new UserResource($this->user);
+        $user =  new UserResource($this->user);
+
+        return $this->success(message: __('Success'), data: UserResource::make($user));
+
     }
 
     /**
@@ -48,6 +52,6 @@ class UsersV1Controller extends ApiController
             $this->user->id,
         );
 
-        return $this->success(__('Success'), UserResource::make($user));
+        return $this->success(message: __('Success'), data: UserResource::make($user));
     }
 }

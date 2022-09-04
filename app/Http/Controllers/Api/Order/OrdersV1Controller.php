@@ -41,7 +41,7 @@ class OrdersV1Controller extends ApiController
     {
         $orders = $this->orderRepository->getAll();
 
-        return $this->success(__('Success'),  new OrderCollection($orders));
+        return $this->success(message: __('Success'), data: new OrderCollection($orders));
     }
 
     /**
@@ -65,18 +65,18 @@ class OrdersV1Controller extends ApiController
             'price' => $service->price,
         ], $user);
 
-        return $this->success(__('Success'), OrderResource::make($order));
+        return $this->success(message: __('Success'), data: OrderResource::make($order));
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return JsonResponse
      */
-    public function show($id): JsonResponse
+    public function show(int $id): JsonResponse
     {
         $order = $this->orderRepository->getById($id);
 
-        return $this->success(__('Success'), new OrderResource($order));
+        return $this->success(message: __('Success'), data: new OrderResource($order));
     }
 
     /**
@@ -86,26 +86,29 @@ class OrdersV1Controller extends ApiController
      * @param int $id
      * @return JsonResponse
      */
-    public function update(OrderRequest $request, $id): JsonResponse
+    public function update(OrderRequest $request, int $id): JsonResponse
     {
         $car = $this->orderRepository->update($id, $request->validated());
 
-        return $this->success(__('Success'),  new OrderResource($car));
+        return $this->success(message: __('Success'), data: new OrderResource($car));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return JsonResponse
      */
-    public function destroy($id): JsonResponse
+    public function destroy(int $id): JsonResponse
     {
         $this->carRepository->delete($id);
 
-        return $this->success(__('Success'), [
-            'message' => 'Deleted'
-        ]);
+        return $this->success(
+            message: __('Success'),
+            data: [
+                'message' => 'Deleted'
+            ]
+        );
     }
 
     /**
@@ -116,6 +119,6 @@ class OrdersV1Controller extends ApiController
     {
         $orders = $this->orderRepository->getUserOrdersByFilter($request);
 
-        return $this->success(__('Success'), OrderResource::collection($orders));
+        return $this->success(message: __('Success'), data: OrderResource::collection($orders));
     }
 }

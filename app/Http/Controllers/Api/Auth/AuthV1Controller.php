@@ -40,7 +40,7 @@ class AuthV1Controller extends ApiController
 
         Auth::user()->access_token = $token;
 
-        return $this->success(__('Success'), UserResource::make(Auth::user()));
+        return $this->success(message: __('Success'), data: UserResource::make(Auth::user()));
     }
 
     /**
@@ -57,20 +57,20 @@ class AuthV1Controller extends ApiController
         ]);
 
         if (!$user) {
-            return $this->error(__('User failed to register!'));
+            return $this->error(message: __('User failed to register!'));
         }
 
         if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return $this->error(__('Login failed'));
+            return $this->error(message: __('Login failed'));
         }
 
         if (!$token = Auth::user()->createToken($request->email)->plainTextToken) {
-            return $this->error(__('Failed to create token!'));
+            return $this->error(message: __('Failed to create token!'));
         }
 
         $user->access_token = $token;
 
-        return $this->success(__('Success'), UserResource::make($user));
+        return $this->success(message: __('Success'), data: UserResource::make($user));
     }
 
     /**
@@ -80,8 +80,11 @@ class AuthV1Controller extends ApiController
     {
         auth()->user()->tokens()->delete();
 
-        return $this->success(__('Success'), [
-            'message' => __('Logged Out')
-        ]);
+        return $this->success(
+            message: __('Success'),
+            data: [
+                'message' => __('Logged Out')
+            ]
+        );
     }
 }

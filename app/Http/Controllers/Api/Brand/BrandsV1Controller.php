@@ -28,7 +28,7 @@ class BrandsV1Controller extends ApiController
     {
         $brands = $this->brandRepository->getAll();
 
-        return $this->success(__('Success'), new BrandCollection($brands));
+        return $this->success(message: __('Success'), data: new BrandCollection($brands));
     }
 
     /**
@@ -41,7 +41,7 @@ class BrandsV1Controller extends ApiController
     {
         $brand = $this->brandRepository->create($request->validated());
 
-        return $this->success(__('Success'), new BrandResource($brand));
+        return $this->success(message: __('Success'), data: new BrandResource($brand));
     }
 
     /**
@@ -50,11 +50,11 @@ class BrandsV1Controller extends ApiController
      * @param int $id
      * @return JsonResponse
      */
-    public function show($id): JsonResponse
+    public function show(int $id): JsonResponse
     {
         $brand = $this->brandRepository->getById($id);
 
-        return $this->success(__('Success'), new BrandResource($brand));
+        return $this->success(message: __('Success'), data: new BrandResource($brand));
     }
 
     /**
@@ -64,11 +64,11 @@ class BrandsV1Controller extends ApiController
      * @param int $id
      * @return JsonResponse
      */
-    public function update(BrandRequest $request, $id): JsonResponse
+    public function update(BrandRequest $request, int $id): JsonResponse
     {
         $brand = $this->brandRepository->update($id, $request->validated());
 
-        return $this->success(__('Success'), new BrandResource($brand));
+        return $this->success(message: __('Success'), data: new BrandResource($brand));
     }
 
     /**
@@ -77,12 +77,15 @@ class BrandsV1Controller extends ApiController
      * @param int $id
      * @return JsonResponse
      */
-    public function destroy($id): JsonResponse
+    public function destroy(int $id): JsonResponse
     {
         $this->brandRepository->delete($id);
 
-        return $this->success(__('Success'), [
-            'message' => 'Deleted'
-        ]);
+        return $this->success(
+            message: __('Success'),
+            data: [
+                'message' => 'Deleted'
+            ]
+        );
     }
 }
