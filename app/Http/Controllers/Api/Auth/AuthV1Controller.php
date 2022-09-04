@@ -7,12 +7,10 @@ use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\V1\Auth\LoginRequest;
 use App\Http\Requests\V1\Auth\RegisterRequest;
 use App\Http\Resources\V1\User\UserResource;
-use App\Mail\UserRegisteredMail;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 
 /**
  * Class AuthV1Controller
