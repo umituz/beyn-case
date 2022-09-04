@@ -1,4 +1,31 @@
-## Kullanımı
+## Docker Ortamına Kurulum İçin Gerekenler
+
+### 0. Gereksinimler
+
+* Docker
+* Git
+
+### 1. Projeyi gerekli kurulumlar
+
+Swoole default olarak sail paketi ile gelir.  <br>
+PHP kütüphanelerinin kurulması için:
+
+```console
+$ ./vendor/bin/sail up -d
+$ ./vendor/bin/sail composer require laravel/octane spiral/roadrunner
+
+$ php artisan octane:start
+```
+
+### 2. Projeyi çalıştırmak için
+
+Projeyi octane ile başlatmak için
+
+```console
+$ php artisan octane:start
+```
+
+## Local Ortama Kurulum İçin Gerekenler
 
 ### 0. Gereksinimler
 
@@ -7,12 +34,15 @@
 * Composer
 * Git
 * Redis
+* Swoole
+  * Sisteminize uygun olan uzantıyı buradan indirebilirsiniz. 
+  * https://pecl.php.net/package/swoole
 * Slack Entegrasyonu
   * Hata loglarını görebilmek için Slack'e mesaj gönderiyoruz. Test ortamında görebilmek için .env dosyasında SLACK_HOST değerini güncellememiz gerekiyor
   * https://webhook.site/ sitesinden Your Unique Url kısmındaki adresi kopyalayıp .env dosyasındaki SLACK_HOST ortam değişkenine aktarmak gerekiyo
    örnek: https://webhook.site/2f416b62-093d-4d73-80b3-f3d1ca72bec7
 
-### 1 Gerekli kütüphanelerin kurulumu
+### 1. Gerekli kütüphanelerin kurulumu
 
 PHP kütüphanelerinin kurulması için:
 
@@ -56,6 +86,11 @@ REDIS_CLIENT=predis
 REDIS_HOST=redis
 REDIS_PASSWORD=null
 REDIS_PORT=6379
+```
+
+Laravel Octane için swoole uzantısına  ihtiyacımız var. Bunun için local ortamımıza kurmamız gerekiyor.
+```console
+$ pecl install swoole
 ```
 
 ### 3. Uygulamayı çalıştırmak
