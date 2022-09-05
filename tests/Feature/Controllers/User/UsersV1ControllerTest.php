@@ -97,6 +97,6 @@ class UsersV1ControllerTest extends BaseTestCase
         $response = $this->putJson(self::BALANCE_ENDPOINT);
 
         $response->assertStatus(422);
-        $response->assertJsonPath('errors.amount.0', 'The amount field is required.');
+        $response->assertJsonPath('errors.meta.amount.0', 'The amount field is required.');
     }
 }

@@ -49,8 +49,8 @@ class AuthV1ControllerTest extends BaseTestCase
         $response = $this->postJson(self::LOGIN_ENDPOINT);
 
         $response->assertStatus(422);
-        $response->assertJsonPath('errors.email.0', 'The email field is required.');
-        $response->assertJsonPath('errors.password.0', 'The password field is required.');
+        $response->assertJsonPath('errors.meta.email.0', 'The email field is required.');
+        $response->assertJsonPath('errors.meta.password.0', 'The password field is required.');
     }
 
     /**
@@ -101,7 +101,7 @@ class AuthV1ControllerTest extends BaseTestCase
         $response = $this->postJson(self::REGISTER_ENDPOINT, $data);
 
         $response->assertStatus(422);
-        $response->assertJsonPath('errors.email.0', 'The email field is required.');
+        $response->assertJsonPath('errors.meta.email.0', 'The email field is required.');
         $this->assertDatabaseMissing('users', ['name' => $data['name'],]);
         $this->assertDatabaseCount('users', 0);
     }
@@ -119,7 +119,7 @@ class AuthV1ControllerTest extends BaseTestCase
         $response = $this->postJson(self::REGISTER_ENDPOINT, $data);
 
         $response->assertStatus(422);
-        $response->assertJsonPath('errors.email.0', 'The email has already been taken.');
+        $response->assertJsonPath('errors.meta.email.0', 'The email has already been taken.');
         $this->assertDatabaseMissing('users', ['name' => $data['name'],]);
         $this->assertDatabaseCount('users', 1);
     }
