@@ -27,7 +27,7 @@ class CarsV1ControllerTest extends BaseTestCase
 
         Sanctum::actingAs($user, ['*']);
 
-        $response = $this->getJson('api/cars?version=1');
+        $response = $this->getJson('test/api/cars?version=1');
 
         $response->assertStatus(200);
     }
