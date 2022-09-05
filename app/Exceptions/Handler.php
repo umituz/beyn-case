@@ -9,6 +9,10 @@ use Psr\Log\LogLevel;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
+/**
+ * Class Handler
+ * @package App\Exceptions
+ */
 class Handler extends ExceptionHandler
 {
     /**
