@@ -8,13 +8,13 @@ use App\Repositories\CarRepositoryInterface;
 use App\Services\NovassetsService;
 use App\Traits\NotifiableOnSlack;
 use Exception;
+use Faker\Core\File;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\File;
 
 /**
  * Class SyncAutoMobileJob
@@ -24,26 +24,18 @@ class SyncAutoMobileJob extends BaseCommand implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels, NotifiableOnSlack;
 
-    private NovassetsService $novassetsService;
-    private CarRepositoryInterface $carRepository;
-    private BrandRepositoryInterface $brandRepository;
-
     /**
      * Create a new job instance.
      *
      * @return void
      */
     public function __construct(
-        NovassetsService $novassetsService,
-        CarRepositoryInterface $carRepository,
-        BrandRepositoryInterface $brandRepository
+        protected NovassetsService $novassetsService,
+        protected CarRepositoryInterface $carRepository,
+        protected BrandRepositoryInterface $brandRepository
     )
     {
         parent::__construct();
-
-        $this->novassetsService = $novassetsService;
-        $this->carRepository = $carRepository;
-        $this->brandRepository = $brandRepository;
     }
 
     /**
@@ -53,9 +45,9 @@ class SyncAutoMobileJob extends BaseCommand implements ShouldQueue
      */
     public function handle()
     {
-        if (Cache::has('cars')) {
-            return Cache::get('cars');
-        }
+        #if (Cache::has('cars')) {
+        #    return Cache::get('cars');
+        #}
 
         $cars = $this->novassetsService->fetchAutomobiles();
 

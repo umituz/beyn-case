@@ -7,8 +7,6 @@ use App\Repositories\BrandRepositoryInterface;
 use App\Repositories\CarRepositoryInterface;
 use App\Services\NovassetsService;
 use App\Traits\NotifiableOnSlack;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Queue;
 
 /**
@@ -32,21 +30,14 @@ class SyncAutoMobile extends BaseCommand
      * @var string
      */
     protected $description = 'Sync with the latest car models';
-    private NovassetsService $novassetsService;
-    private CarRepositoryInterface $carRepository;
-    private BrandRepositoryInterface $brandRepository;
 
     public function __construct(
-        NovassetsService         $novassetsService,
-        CarRepositoryInterface   $carRepository,
-        BrandRepositoryInterface $brandRepository
+        protected NovassetsService         $novassetsService,
+        protected CarRepositoryInterface   $carRepository,
+        protected BrandRepositoryInterface $brandRepository
     )
     {
         parent::__construct();
-
-        $this->novassetsService = $novassetsService;
-        $this->carRepository = $carRepository;
-        $this->brandRepository = $brandRepository;
     }
 
     /**
@@ -54,10 +45,10 @@ class SyncAutoMobile extends BaseCommand
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         Queue::pushOn(
-            config('queue.connections.sync'),
+            config('queue.connections.redis.driver'),
             new SyncAutoMobileJob($this->novassetsService, $this->carRepository, $this->brandRepository)
         );
     }

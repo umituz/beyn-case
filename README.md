@@ -14,8 +14,6 @@ PHP kütüphanelerinin kurulması için:
 ```console
 $ ./vendor/bin/sail up -d
 $ ./vendor/bin/sail composer require laravel/octane spiral/roadrunner
-
-$ php artisan octane:start
 ```
 
 ### 2. Projeyi çalıştırmak için
@@ -105,7 +103,13 @@ Uygulamayı çalıştırmak için aşağıdaki komutla basit bir web sunucusu ol
 $ php artisan serve
 ```
 
-uygulama şu an **127.0.0.1:8000** adresinde çalışıyor.
+Laravel Octane kütüphanesiyle projeyi ayağa kaldırmak için
+```console
+$ php artisan octane:start
+$ php artisan octane:start --server=swoole
+$ php artisan octane:start --server=roadrunner
+```
+uygulama şu an **127.0.0.1:8000** adresinde çalışır.
 
 Varsayılan verileri veritabanına eklemek için:
 
@@ -117,6 +121,13 @@ $ php artisan db:seed
 
 ```console
 $ php artisan schedule:work
+```
+
+Komut dosyasını çalıştırarak bir job tetiklemiş oluruz ve de job redis ile belirtilen senkronizasyon işlemlerini yapar.
+
+```console
+$ php artisan sync:automobile
+$ php artisan queue:work --queue=redis --timeout=60
 ```
 
 ## Test
@@ -134,7 +145,7 @@ Tarayıcı üzerinde çalışan testleri çalıştırmak için öncelikle bir te
 $ php artisan serve
 ```
 
-daha sonra gerekli driver'ları kurmak ve testleri çalıştırmak için (bu testler `.env` dosyasında belirttiğiniz
+Selenium ile otomasyon kullanmak için gerekli driver'ları kurmak ve testleri çalıştırmak için (bu testler `.env` dosyasında belirttiğiniz
 veritabanını kullanır ve bu testlerin çalışması uzun sürebilir):
 
 ```console
@@ -151,7 +162,7 @@ $ chmod 755 -R ./vendor/laravel/dusk/bin/
 ```
 
 
-## RESTfull API Kaynakları
+## RESTful API Kaynakları
 
 #### Örnekler auth ve brands için oluşturulmuştur.
 
