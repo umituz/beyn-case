@@ -20,6 +20,8 @@ class NovassetsService
      */
     public function fetchAutomobiles(): mixed
     {
+        ini_set('memory_limit', '2048M');
+
         try {
             $client = Http::timeout(60)->get(self::API_URL . '/automobile.json');
 
