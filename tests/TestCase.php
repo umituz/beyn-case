@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Foundation\Mix;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -13,6 +14,35 @@ use ReflectionException;
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
+
+    /**
+     * @return void
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutMix();
+        $this->setPrerequisites();
+    }
+
+    /**
+     * Register an empty handler for Laravel Mix in the container.
+     *
+     * @return $this
+     */
+    protected function withoutMix()
+    {
+        if ($this->originalMix == null) {
+            $this->originalMix = app(Mix::class);
+        }
+
+        $this->swap(Mix::class, function () {
+            return '';
+        });
+
+        return $this;
+    }
 
     /**
      * Create a trait mock including mocking all the methods except ignored once and disabling constructor.
@@ -47,7 +77,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * @return void
      */
-    protected function setPrerequisites(): void
+    protected function setPrerequisites()
     {
         Eloquent::unguard();
     }

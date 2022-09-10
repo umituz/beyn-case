@@ -15,9 +15,10 @@ class ReverseScope implements Scope
     /**
      * @param Builder $builder
      * @param Model $model
+     * @return Builder
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->orderBy('id','desc');
+        return $builder->orderByDesc('id');
     }
 }
