@@ -5,6 +5,7 @@
 * Docker
 * Git
 * Composer
+* Supervisor
 
 ### 1. Projeyi gerekli kurulumlar
 
@@ -34,6 +35,7 @@ $ php artisan octane:start
 * Git
 * Redis
 * Elasticsearch
+* Supervisor
 * Mailtrap Hesabı
   * https://mailtrap.io/
 * Swoole
