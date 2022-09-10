@@ -58,6 +58,8 @@ return [
 
     'asset_url' => env('ASSET_URL'),
 
+    'http_only_xsrf_token_cookie' => env('HTTP_ONLY_XSRF_TOKEN_COOKIE', false),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
