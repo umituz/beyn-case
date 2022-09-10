@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a8b69a38-c1fa-4fc8-914a-62d95998d4f1",
+		"_postman_id": "d9d20e82-d917-4ed8-8c85-1b3e86c886e2",
 		"name": "LaravelApiExample",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "18298602"
@@ -71,7 +71,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -111,7 +111,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": null
+									"value": ""
 								}
 							]
 						}
@@ -152,7 +152,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -204,7 +204,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -253,7 +253,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -306,7 +306,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -356,7 +356,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -451,7 +451,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -492,7 +492,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -541,7 +541,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -594,7 +594,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -644,7 +644,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -694,7 +694,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -746,7 +746,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -794,7 +794,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -844,7 +844,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -893,7 +893,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -943,7 +943,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -988,7 +988,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -1029,7 +1029,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -1078,7 +1078,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -1128,7 +1128,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -1178,7 +1178,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -1224,7 +1224,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -1305,7 +1305,7 @@
 							"query": [
 								{
 									"key": "{{version}}",
-									"value": ""
+									"value": null
 								}
 							]
 						}
