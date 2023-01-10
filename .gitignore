@@ -19,3 +19,4 @@ dump.rdb
 rr
 .rr.yaml
 /coverage
+/public/vendor
